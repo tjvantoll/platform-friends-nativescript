@@ -1,0 +1,38 @@
+.app-logo
+{
+    margin:20;
+    vertical-align:center;
+}
+
+.title {
+    font-size: 30;
+    horizontal-align: center;
+    margin-top:20;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.sub-title {
+    font-size: 20;
+    horizontal-align: center;
+    margin:5;
+    color: #ffffff;
+}
+
+.login-container {
+    margin: 30;
+    width: 300;
+}
+
+.login-button {
+    margin:15;
+    background-color: #1bbc9b;
+    color: #ffffff;
+}
+
+.footer {
+    vertical-align: bottom;
+    horizontal-align: center;
+    color: #ffffff;
+    font-size: 15;
+}

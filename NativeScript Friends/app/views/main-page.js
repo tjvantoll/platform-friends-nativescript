@@ -1,4 +1,4 @@
-var vmModule = require("./main-view-model");
+var vmModule = require("../view-models/main-view-model");
 
 // Event handler for Page "loaded" event attached in main-page.xml
 function pageLoaded(args) {
