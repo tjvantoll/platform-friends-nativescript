@@ -1,6 +1,8 @@
 .app-logo
 {
     margin:20;
+    width: 247;
+    height: 32;
     vertical-align:center;
 }
 
@@ -21,7 +23,7 @@
 
 .login-container {
     margin: 30;
-    width: 300;
+    width: 260;
 }
 
 .login-button {
@@ -31,6 +33,7 @@
 }
 
 .footer {
+    margin-top: 40;
     vertical-align: bottom;
     horizontal-align: center;
     color: #ffffff;

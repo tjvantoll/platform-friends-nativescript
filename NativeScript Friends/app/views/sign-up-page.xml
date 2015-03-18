@@ -1,0 +1,22 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded"
+      xmlns:customControls="app/xml-declaration/breadcrumb">
+    <ScrollView>
+        <GridLayout>
+            <StackLayout>
+                <customControls:Breadcrumb />
+                <TextField id="name" hint="Name" text="{{Name}}"/>
+                <StackLayout cssClass="register-section">
+                    <TextField id="email" keyboardType="email" hint="Email" text="{{Email}}"/>
+                    <TextField id="username" hint="Username" text="{{Username}}"/>
+                    <TextField id="password" hint="Password" secure="true" text="{{Password}}"/>
+                </StackLayout>
+                <StackLayout cssClass="register-section">
+                    <TextField id="birth-date" hint="Birth Date" text="{{BirthDate}}"/>
+                    <TextField id="gender" hint="Gender" text="{{Gender}}"/>
+                </StackLayout>
+                <TextView id="about" text="{{About}}" cssClass="register-section"/>
+                <Button text="Register" id="register" cssClass="register-button"/>
+            </StackLayout>
+        </GridLayout>
+    </ScrollView>
+</Page>

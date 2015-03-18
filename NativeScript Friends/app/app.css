@@ -2,3 +2,15 @@ Page {
     background-color: #2d3e50;
 }
 
+.breadcrumb-left-button {
+    background-color: red;
+    width: 50;
+    horizontal-align: left;
+}
+
+.breadcrumb-right-button {
+    background-color: blue;
+    width: 50;
+    horizontal-align: right;
+}
+

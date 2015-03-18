@@ -1,14 +1,18 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
-    <StackLayout>
-        <Image id="FAB" url="~/app/res/logo-telerik_devcloud@2x.png" cssClass="app-logo" />
-        <Label text="Friends" cssClass="title" />
-        <Label text="Sample Application" cssClass="sub-title" />
-        <StackLayout cssClass="login-container">
-            <TextField id="username" hint="username" text="{{Username}}"/>
-            <TextField id="password" hint="password" secure="true" text="{{Password}}"/>
-            <Button text="Login" id="login" cssClass="login-button"/>
-        </StackLayout>
-        <Label text="Don't have an account?" cssClass="sub-title" />
-        <Label text="2015 Telerik Inc." cssClass="footer" />
-    </StackLayout>
+    <ScrollView>
+        <GridLayout>
+            <StackLayout>
+                <Image id="FAB" url="~/app/res/logo-telerik_devcloud@2x.png" cssClass="app-logo" />
+                <Label text="Friends" cssClass="title" />
+                <Label text="Sample Application" cssClass="sub-title" />
+                <StackLayout cssClass="login-container">
+                    <TextField id="username" hint="Username" text="{{Username}}"/>
+                    <TextField id="password" hint="Password" secure="true" text="{{Password}}"/>
+                    <Button text="Login" id="login" cssClass="login-button"/>
+                </StackLayout>
+                <Label text="Don't have an account?" cssClass="sub-title" />
+                <Label text="2015 Telerik Inc." bottom="1" cssClass="footer" />
+            </StackLayout>
+        </GridLayout>
+    </ScrollView>
 </Page>
