@@ -8,10 +8,12 @@
                 <StackLayout cssClass="login-container">
                     <TextField id="username" hint="Username" text="{{Username}}"/>
                     <TextField id="password" hint="Password" secure="true" text="{{Password}}"/>
-                    <Button text="Login" id="login" cssClass="login-button"/>
                 </StackLayout>
-                <Label text="Don't have an account?" cssClass="sub-title" />
-                <Label text="2015 Telerik Inc." bottom="1" cssClass="footer" />
+                <Button text="Login" id="login" cssClass="login-button"/>
+                <GridLayout tap="navigateRegister">
+                    <Label text="Don't have an account?" cssClass="sub-title" />
+                </GridLayout>
+                <Label text="2015 Telerik Inc." cssClass="footer" />
             </StackLayout>
         </GridLayout>
     </ScrollView>

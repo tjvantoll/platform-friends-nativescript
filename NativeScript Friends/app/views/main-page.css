@@ -22,12 +22,13 @@
 }
 
 .login-container {
-    margin: 30;
-    width: 260;
+    margin: 15;
+    padding: 5;
+    background-color: #ffffff;
 }
 
 .login-button {
-    margin:15;
+    margin:0 15 15 15;
     background-color: #1bbc9b;
     color: #ffffff;
 }
@@ -39,3 +40,4 @@
     color: #ffffff;
     font-size: 15;
 }
+

@@ -3,16 +3,22 @@
     <ScrollView>
         <GridLayout>
             <StackLayout>
-                <customControls:Breadcrumb />
-                <TextField id="name" hint="Name" text="{{Name}}"/>
+                <GridLayout cssClass="header-container">
+                    <GridLayout tap="goBack">
+                        <Image url="~/app/res/icon-arrow_left@2x.png" cssClass="header-button align-left"/>
+                    </GridLayout>
+                    <Label text="Sign Up" cssClass="header-context-label" />
+                </GridLayout>
                 <StackLayout cssClass="register-section">
+                    <TextField id="name" hint="Name" text="{{Name}}"/>
                     <TextField id="email" keyboardType="email" hint="Email" text="{{Email}}"/>
                     <TextField id="username" hint="Username" text="{{Username}}"/>
                     <TextField id="password" hint="Password" secure="true" text="{{Password}}"/>
-                </StackLayout>
-                <StackLayout cssClass="register-section">
                     <TextField id="birth-date" hint="Birth Date" text="{{BirthDate}}"/>
-                    <TextField id="gender" hint="Gender" text="{{Gender}}"/>
+                    <GridLayout tap="chooseGender" >
+                        <Image id="gender-icon" url="~/app/res/right-arrow.png" />
+                        <Label id="gender" text="{{ gender }}" />
+                    </GridLayout>
                 </StackLayout>
                 <TextView id="about" text="{{About}}" cssClass="register-section"/>
                 <Button text="Register" id="register" cssClass="register-button"/>
