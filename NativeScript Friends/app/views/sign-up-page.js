@@ -1,11 +1,17 @@
 var vmModule = require("../view-models/sign-up-view-model");
 var frameModule = require("ui/frame");
 var dialogs = require("ui/dialogs");
+var view = require("ui/core/view");
 
 // Event handler for Page "loaded" event attached in sign-up-page.xml
 function pageLoaded(args) {
     var page = args.object;
     page.bindingContext = vmModule.signUpViewModel;
+    
+    // var birthDatePickerContainer = view.getViewById(page, "birthDatePickerContainer");
+    
+    // var datePicker = new android.widget.DatePicker(this);
+    // birthDatePickerContainer.addChild(datePicker);
 }
 
 function goBack(args) {
@@ -23,6 +29,66 @@ function chooseGender(args) {
     });
 }
 
+function chooseBirthDate(args) {
+    var currentYear = new Date().getFullYear();
+    
+    var selectedYear = "";
+    var selectedMonth = "";
+    var selectedDay = "";
+    
+    var availableYears = [];
+    var availableMonths = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]; 
+    
+    for(var i = 0; i < 100; i++){
+        availableYears.push(String(currentYear - i));
+    }
+    
+    //Select Year
+    var options = {
+        message: "Year",
+        actions: availableYears
+    };
+    dialogs.action(options).then(function (result) {
+        
+            selectedYear = result;
+        
+            //Select Month
+            var options = {
+                message: "Month",
+                actions: availableMonths
+            };
+            dialogs.action(options).then(function (result) {
+                
+                selectedMonth = result;
+                var selectedMonthId = availableMonths.indexOf(selectedMonth) + 1;
+                
+                var numberOfDays = new Date(selectedYear, selectedMonthId, 0).getDate();
+                
+                var availableDays = [];
+                
+                for(var i = numberOfDays; i > 0; i--){
+                    availableDays.push(String(numberOfDays - i + 1));
+                }
+                
+                //Select Day
+                var options = {
+                    message: "Day",
+                    actions: availableDays
+                };
+                dialogs.action(options).then(function (result) {
+
+                    selectedDay = result;
+
+                    vmModule.signUpViewModel.set("birthdate", selectedDay + " " + selectedMonth + " " + selectedYear);
+
+                });
+
+            });
+        
+    });
+}
+
+exports.chooseBirthDate = chooseBirthDate;
 exports.pageLoaded = pageLoaded;
 exports.goBack = goBack;
 exports.chooseGender = chooseGender;

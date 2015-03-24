@@ -10,17 +10,20 @@
                     <Label text="Sign Up" cssClass="header-context-label" />
                 </GridLayout>
                 <StackLayout cssClass="register-section">
-                    <TextField id="name" hint="Name" text="{{Name}}"/>
-                    <TextField id="email" keyboardType="email" hint="Email" text="{{Email}}"/>
-                    <TextField id="username" hint="Username" text="{{Username}}"/>
+                    <TextField id="name" hint="Name" text="{{name}}"/>
+                    <TextField id="email" keyboardType="email" hint="Email" text="{{email}}"/>
+                    <TextField id="username" hint="Username" text="{{username}}"/>
                     <TextField id="password" hint="Password" secure="true" text="{{Password}}"/>
-                    <TextField id="birth-date" hint="Birth Date" text="{{BirthDate}}"/>
+                    <GridLayout tap="chooseBirthDate" id="birthDatePickerContainer">
+                        <Image cssClass="arrow-icon" url="~/app/res/right-arrow.png" />
+                        <Label id="birth-date" text="{{ birthdate }}" />
+                    </GridLayout>
                     <GridLayout tap="chooseGender" >
-                        <Image id="gender-icon" url="~/app/res/right-arrow.png" />
+                        <Image cssClass="arrow-icon" url="~/app/res/right-arrow.png" />
                         <Label id="gender" text="{{ gender }}" />
                     </GridLayout>
                 </StackLayout>
-                <TextView id="about" text="{{About}}" cssClass="register-section"/>
+                <TextView id="about" text="{{about}}" cssClass="about-section" />
                 <Button text="Register" id="register" cssClass="register-button"/>
             </StackLayout>
         </GridLayout>

@@ -4,6 +4,13 @@
     background-color: #ffffff;
 }
 
+.about-section {
+    margin: 2 15 0 15;
+    height: 100;
+    padding: 5;
+    background-color: #ffffff;
+}
+
 .register-button {
     margin:15 15 15 15;
     background-color: #1bbc9b;
@@ -16,8 +23,15 @@
     horizontal-align: left;
 }
 
-#gender-icon {
+#birth-date {
+    margin:15 25;
+    font-size: 15;
+    horizontal-align: left;
+}
+
+.arrow-icon {
     width: 20;
     height: 20;
     horizontal-align: left;
 }
+
