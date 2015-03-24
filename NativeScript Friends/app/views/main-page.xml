@@ -2,18 +2,14 @@
     <ScrollView>
         <GridLayout>
             <StackLayout>
-                <Image id="FAB" url="~/app/res/logo-telerik_devcloud@2x.png" cssClass="app-logo" />
-                <Label text="Friends" cssClass="title" />
-                <Label text="Sample Application" cssClass="sub-title" />
+                <Image url="~/app/res/friends.png" cssClass="app-logo" />
                 <StackLayout cssClass="login-container">
-                    <TextField id="username" hint="Username" text="{{Username}}"/>
-                    <TextField id="password" hint="Password" secure="true" text="{{Password}}"/>
+                    <TextField id="username" hint="e-mail" text="{{Username}}"/>
+                    <TextField id="password" hint="password" secure="true" text="{{Password}}"/>
                 </StackLayout>
-                <Button text="Login" id="login" cssClass="login-button"/>
-                <GridLayout tap="navigateRegister">
-                    <Label text="Don't have an account?" cssClass="sub-title" />
-                </GridLayout>
-                <Label text="2015 Telerik Inc." cssClass="footer" />
+                <Button text="Log in" id="login" cssClass="login-button"/>
+                <Label text="Don't have an account yet?" cssClass="sub-title" />
+                <Button text="Sign up for free" id="signup" tap="navigateRegister" cssClass="signup-button"/>
             </StackLayout>
         </GridLayout>
     </ScrollView>

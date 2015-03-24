@@ -1,43 +1,33 @@
 .app-logo
 {
     margin:20;
-    width: 247;
-    height: 32;
+    width: 180;
     vertical-align:center;
 }
 
-.title {
-    font-size: 30;
-    horizontal-align: center;
-    margin-top:20;
-    font-weight: bold;
-    color: #ffffff;
-}
-
 .sub-title {
-    font-size: 20;
     horizontal-align: center;
-    margin:5;
-    color: #ffffff;
+    margin:40 5 5 5;
 }
 
 .login-container {
     margin: 15;
     padding: 5;
-    background-color: #ffffff;
 }
 
 .login-button {
     margin:0 15 15 15;
-    background-color: #1bbc9b;
+    background-color: #e91e63;
     color: #ffffff;
 }
 
-.footer {
-    margin-top: 40;
-    vertical-align: bottom;
-    horizontal-align: center;
-    color: #ffffff;
-    font-size: 15;
+.signup-button{
+    margin:0 15 15 15;
+    background-color: #1976d2;
+    color: #ffffff; 
+}
+
+#password {
+    margin-top: 20;
 }
 
