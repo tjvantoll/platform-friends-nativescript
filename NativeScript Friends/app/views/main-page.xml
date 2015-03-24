@@ -3,10 +3,8 @@
         <GridLayout>
             <StackLayout>
                 <Image url="~/app/res/friends.png" cssClass="app-logo" />
-                <StackLayout cssClass="login-container">
-                    <TextField id="username" hint="e-mail" text="{{Username}}"/>
-                    <TextField id="password" hint="password" secure="true" text="{{Password}}"/>
-                </StackLayout>
+                <TextField id="username" cssClass="text-input" hint="e-mail" text="{{Username}}"/>
+                <TextField id="password" cssClass="text-input" hint="password" secure="true" text="{{Password}}"/>
                 <Button text="Log in" id="login" cssClass="login-button"/>
                 <Label text="Don't have an account yet?" cssClass="sub-title" />
                 <Button text="Sign up for free" id="signup" tap="navigateRegister" cssClass="signup-button"/>

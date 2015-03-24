@@ -7,13 +7,12 @@
                     <GridLayout tap="goBack">
                         <Image url="~/app/res/icon-arrow_left@2x.png" cssClass="header-button align-left"/>
                     </GridLayout>
-                    <Label text="Sign Up" cssClass="header-context-label" />
+                    <Label text="Sign up" cssClass="header-context-label" />
                 </GridLayout>
-                <StackLayout cssClass="register-section">
-                    <TextField id="name" hint="Name" text="{{name}}"/>
-                    <TextField id="email" keyboardType="email" hint="Email" text="{{email}}"/>
-                    <TextField id="username" hint="Username" text="{{username}}"/>
-                    <TextField id="password" hint="Password" secure="true" text="{{Password}}"/>
+                    <TextField id="name" cssClass="text-input" hint="name" text="{{name}}"/>
+                    <TextField id="email" cssClass="text-input" keyboardType="email" hint="e-mail" text="{{email}}"/>
+                    <TextField id="username" cssClass="text-input" hint="username" text="{{username}}"/>
+                    <TextField id="password" cssClass="text-input" hint="password" secure="true" text="{{Password}}"/>
                     <GridLayout tap="chooseBirthDate" id="birthDatePickerContainer">
                         <Image cssClass="arrow-icon" url="~/app/res/right-arrow.png" />
                         <Label id="birth-date" text="{{ birthdate }}" />
@@ -21,10 +20,9 @@
                     <GridLayout tap="chooseGender" >
                         <Image cssClass="arrow-icon" url="~/app/res/right-arrow.png" />
                         <Label id="gender" text="{{ gender }}" />
-                    </GridLayout>
-                </StackLayout>
-                <TextView id="about" text="{{about}}" cssClass="about-section" />
-                <Button text="Register" id="register" cssClass="register-button"/>
+                </GridLayout>
+                <TextField id="about" cssClass="text-input" hint="about" text="{{about}}" />
+                <Button text="Sign up" id="register" cssClass="signup-button"/>
             </StackLayout>
         </GridLayout>
     </ScrollView>
