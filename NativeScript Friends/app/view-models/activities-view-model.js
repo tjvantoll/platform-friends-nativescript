@@ -12,7 +12,9 @@ Object.defineProperty(activitiesViewModel.prototype, "activities", {
         var el = new everlive({ apiKey: BS_API_KEY });
         var that = this;
         el.data('Activities').get().then(function(data) {
+           
            that._activities.push(data.result); 
+            
         }, function(error) {
            alert('Error gettings activities[' + error.message + ']');
         });      

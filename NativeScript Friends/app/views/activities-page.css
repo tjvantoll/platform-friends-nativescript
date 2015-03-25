@@ -1,4 +1,25 @@
-.activityContainer {
+.activity-container {
     margin: 10;
+}
+
+.activity-title {
+    color: #E91E63;
+    margin: 5;
+}
+
+.activity-summary {
+    margin: 5;
+}
+
+.activity-date {
+    margin: 5;
+    color: #B0B0B0;
+}
+
+.activity-avatar {
+    margin: 10;
+    width: 40;
+    height: 40;
+    vertical-align: top;
 }
 

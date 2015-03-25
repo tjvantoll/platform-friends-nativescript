@@ -9,6 +9,10 @@ function pageLoaded(args) {
     var page = args.object;
     page.bindingContext = new vmModule.activitiesViewModel();
     
+    if (platformModule.device.os == "Android") {
+        frameModule.topmost().android.actionBar.hide();
+    }
+    
 }
 
 exports.pageLoaded = pageLoaded;

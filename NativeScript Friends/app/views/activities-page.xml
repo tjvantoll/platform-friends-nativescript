@@ -1,25 +1,23 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded"
-      xmlns:customControls="app/xml-declaration/breadcrumb">
-    <ScrollView>
-        <GridLayout rows="*, auto">
-            <StackLayout>
-                
-                <StackLayout>
+<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
+
+        <GridLayout rows="auto, *">
+
+
                     <GridLayout cssClass="header-container">
                         <GridLayout tap="">
                             <Image url="~/app/res/logout.png" cssClass="header-button align-left"/>
                         </GridLayout>
                         <Label text="Activities" cssClass="header-context-label" />
                     </GridLayout>
-                </StackLayout>
+
                 
-                <StackLayout style="height: auto;">
-                    <ListView items="{{ activities }}" itemTap="">
+   
+                    <ListView items="{{ activities }}" itemTap="" row="1">
                         <ListView.itemTemplate>
                             <StackLayout orientation="horizontal" >
-                                <Image url="~/app/res/avatar.png" stretch="fill" width="24" height="24"/>
-                                <StackLayout cssClass="activityContainer">
-                                    <Label cssClass="projectName">
+                                <Image url="~/app/res/avatar.png" stretch="fill" cssClass="activity-avatar"/>
+                                <StackLayout cssClass="activity-container">
+                                    <Label cssClass="activity-title">
                                         <Label.formattedText>
                                             <FormattedString>
                                               <FormattedString.spans>
@@ -28,14 +26,15 @@
                                             </FormattedString>
                                           </Label.formattedText>
                                     </Label>
-                                    <Label text="{{ Text || 'test' }}" cssClass="activityText" textWrap="true" />
+                                    <Label text="{{ Text || '-' }}" cssClass="activity-summary" textWrap="true" />
+                                    <Label text="{{ CreatedAt || '-' }}" cssClass="activity-date" />
                               </StackLayout>
                             </StackLayout> 
                         </ListView.itemTemplate>
                     </ListView>
-                </StackLayout>
+
                 
-            </StackLayout>
+
         </GridLayout>
-    </ScrollView>
+ 
 </Page>
