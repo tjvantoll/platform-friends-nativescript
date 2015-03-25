@@ -1,32 +1,41 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded"
       xmlns:customControls="app/xml-declaration/breadcrumb">
     <ScrollView>
-        <GridLayout>
-            <GridLayout cssClass="header-container">
-                <Label text="Activities" cssClass="header-context-label" />
-                <GridLayout tap="">
-                    <Image url="~/app/res/icon-add@2x.png" cssClass="header-button align-right"/>
-                </GridLayout>
-            </GridLayout>
-            <ListView items="{{ tasks }}" itemTap="listViewItemTap" row="1">
-                <ListView.itemTemplate>
-                    <StackLayout orientation="horizontal" >
-                        <Image url="~/app/res/ic_checkmark.png" stretch="fill" width="24" height="24" cssClass="completeIcon"/>
-                        <StackLayout cssClass="taskContainer">
-                            <Label cssClass="projectName">
-                                <Label.formattedText>
-                                    <FormattedString>
-                                      <FormattedString.spans>
-                                        <Span text="To-do" fontAttributes="Bold, Italic" />
-                                      </FormattedString.spans>
-                                    </FormattedString>
-                                  </Label.formattedText>
-                            </Label>
-                            <Label text="{{ Name }}" cssClass="taskName" />
-                        </StackLayout>
-                    </StackLayout>
-                </ListView.itemTemplate>
-            </ListView>
+        <GridLayout rows="*, auto">
+            <StackLayout>
+                
+                <StackLayout>
+                    <GridLayout cssClass="header-container">
+                        <GridLayout tap="">
+                            <Image url="~/app/res/logout.png" cssClass="header-button align-left"/>
+                        </GridLayout>
+                        <Label text="Activities" cssClass="header-context-label" />
+                    </GridLayout>
+                </StackLayout>
+                
+                <StackLayout style="height: auto;">
+                    <ListView items="{{ activities }}" itemTap="">
+                        <ListView.itemTemplate>
+                            <StackLayout orientation="horizontal" >
+                                <Image url="~/app/res/avatar.png" stretch="fill" width="24" height="24"/>
+                                <StackLayout cssClass="activityContainer">
+                                    <Label cssClass="projectName">
+                                        <Label.formattedText>
+                                            <FormattedString>
+                                              <FormattedString.spans>
+                                                <Span text="Angel Tsvetkov" fontAttributes="Bold" />
+                                              </FormattedString.spans>
+                                            </FormattedString>
+                                          </Label.formattedText>
+                                    </Label>
+                                    <Label text="{{ Text || 'test' }}" cssClass="activityText" textWrap="true" />
+                              </StackLayout>
+                            </StackLayout> 
+                        </ListView.itemTemplate>
+                    </ListView>
+                </StackLayout>
+                
+            </StackLayout>
         </GridLayout>
     </ScrollView>
 </Page>

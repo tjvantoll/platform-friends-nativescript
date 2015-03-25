@@ -5,7 +5,7 @@
             <StackLayout>
                 <GridLayout cssClass="header-container">
                     <GridLayout tap="goBack">
-                        <Image url="~/app/res/icon-arrow_left@2x.png" cssClass="header-button align-left"/>
+                        <Image url="~/app/res/back.png" cssClass="header-button align-left"/>
                     </GridLayout>
                     <Label text="Sign up" cssClass="header-context-label" />
                 </GridLayout>
