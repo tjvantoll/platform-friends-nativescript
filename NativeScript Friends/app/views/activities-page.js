@@ -1,12 +1,9 @@
 var vmModule = require("../view-models/activities-view-model");
-var frameModule = require("ui/frame");
-var dialogs = require("ui/dialogs");
-var view = require("ui/core/view");
 
 function pageLoaded(args) {
     
     var page = args.object;
-    page.bindingContext = new vmModule.activitiesViewModel();
+    page.bindingContext = new vmModule.activitiesViewModel;
     
 }
 

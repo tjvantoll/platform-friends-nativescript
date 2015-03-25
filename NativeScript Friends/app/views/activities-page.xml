@@ -9,7 +9,7 @@
         <ListView items="{{ activities }}" itemTap="" row="1">
             <ListView.itemTemplate>
                 <StackLayout orientation="horizontal" >
-                    <Image src="~app/res/avatar.png" stretch="fill" cssClass="activity-avatar"/>
+                    <Image src="avatar.png" stretch="fill" cssClass="activity-avatar"/>
                     <StackLayout cssClass="activity-container">
                         <Label cssClass="activity-title">
                             <Label.formattedText>

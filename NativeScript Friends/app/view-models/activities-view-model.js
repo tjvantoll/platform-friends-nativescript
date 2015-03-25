@@ -16,7 +16,7 @@ Object.defineProperty(activitiesViewModel.prototype, "activities", {
            that._activities.push(data.result); 
             
         }, function(error) {
-           alert('Error gettings activities[' + error.message + ']');
+           alert("Activities can't be retrieved");
         });      
 
         return this._activities;        

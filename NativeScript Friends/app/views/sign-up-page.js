@@ -88,6 +88,11 @@ function chooseBirthDate(args) {
     });
 }
 
+function signUp(args){
+    frameModule.topmost().navigate("app/views/activities-page");
+}
+
+exports.signUp = signUp;
 exports.chooseBirthDate = chooseBirthDate;
 exports.pageLoaded = pageLoaded;
 exports.goBack = goBack;
