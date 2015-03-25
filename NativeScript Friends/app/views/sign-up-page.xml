@@ -4,7 +4,7 @@
             <StackLayout>
                 <GridLayout cssClass="header-container">
                     <GridLayout tap="goBack">
-                        <Image url="~/app/res/back.png" cssClass="header-button align-left"/>
+                        <Image src="~/app/res/back.png" cssClass="header-button align-left"/>
                     </GridLayout>
                     <Label text="Sign up" cssClass="header-context-label" />
                 </GridLayout>
@@ -13,11 +13,11 @@
                     <TextField id="username" cssClass="text-input" hint="username" text="{{username}}"/>
                     <TextField id="password" cssClass="text-input" hint="password" secure="true" text="{{Password}}"/>
                     <GridLayout tap="chooseBirthDate" id="birthDatePickerContainer">
-                        <Image cssClass="arrow-icon" url="~/app/res/right-arrow.png" />
+                        <Image cssClass="arrow-icon" src="~/app/res/right-arrow.png" />
                         <Label id="birth-date" text="{{ birthdate }}" />
                     </GridLayout>
                     <GridLayout tap="chooseGender" >
-                        <Image cssClass="arrow-icon" url="~/app/res/right-arrow.png" />
+                        <Image cssClass="arrow-icon" src="~/app/res/right-arrow.png" />
                         <Label id="gender" text="{{ gender }}" />
                 </GridLayout>
                 <TextField id="about" cssClass="text-input" hint="about" text="{{about}}" />
