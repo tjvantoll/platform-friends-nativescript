@@ -16,5 +16,10 @@ function navigateRegister(args){
     frameModule.topmost().navigate("app/views/sign-up-page");
 }
 
+function login(args){
+    frameModule.topmost().navigate("app/views/activities-page");
+}
+
 exports.navigateRegister = navigateRegister;
+exports.login = login;
 exports.pageLoaded = pageLoaded;
