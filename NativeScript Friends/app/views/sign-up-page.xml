@@ -1,5 +1,4 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded"
-      xmlns:customControls="app/xml-declaration/breadcrumb">
+<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
     <ScrollView>
         <GridLayout>
             <StackLayout>
