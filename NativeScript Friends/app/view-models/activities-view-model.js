@@ -37,17 +37,27 @@ Object.defineProperty(activitiesViewModel.prototype, "activities", {
         
         var expandExp = {
             "UserId": {
-                "ReturnAs": "UserName",
-                "SingleField": "DisplayName"
+                "ReturnAs": "User",
+                "Expand": {
+                    "Picture": "Picture"
+                }
+            },
+            "Picture": {
+                "ReturnAs": "Picture",
+                "SingleField": "Uri"
             }
         };
+        
         
         var data = el.data('Activities');
         
         data.expand(expandExp).get().then(function(data) {
             
            for(var i = 0; i < data.result.length; i++){
-               data.result[i].dateConverter = dateConverter;
+               var current = data.result[i];
+               current.dateConverter = dateConverter;
+               current.UserName = current.User.DisplayName;
+               current.AvatarUri = current.User.Picture == null ? null : current.User.Picture.Uri;
            }
 
            that._activities.push(data.result); 
