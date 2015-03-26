@@ -3,7 +3,6 @@ var observable = require("data/observable");
 var counter = 42;
 
 var mainViewModel = new observable.Observable();
-mainViewModel.set("message", counter + " taps left");
 mainViewModel.tapAction = function () {
    counter--;
    if (counter <= 0) {

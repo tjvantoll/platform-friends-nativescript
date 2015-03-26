@@ -7,11 +7,6 @@ var view = require("ui/core/view");
 function pageLoaded(args) {
     var page = args.object;
     page.bindingContext = vmModule.signUpViewModel;
-    
-    // var birthDatePickerContainer = view.getViewById(page, "birthDatePickerContainer");
-    
-    // var datePicker = new android.widget.DatePicker(this);
-    // birthDatePickerContainer.addChild(datePicker);
 }
 
 function goBack(args) {
@@ -88,6 +83,11 @@ function chooseBirthDate(args) {
     });
 }
 
+function signUp(args){
+    frameModule.topmost().navigate("app/views/activities-page");
+}
+
+exports.signUp = signUp;
 exports.chooseBirthDate = chooseBirthDate;
 exports.pageLoaded = pageLoaded;
 exports.goBack = goBack;

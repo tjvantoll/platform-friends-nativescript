@@ -1,24 +1,71 @@
 var observable = require("data/observable");
 var observableArray = require("data/observable-array");
-var everlive = require("../lib/everlive.all.min");
+var Everlive = require("../lib/everlive.all.min");
 
 var activitiesViewModel = function (source)
 {
-    this._activities = new observableArray.ObservableArray(); 
+    this._activities = new observableArray.ObservableArray();
+}
+
+var dateConverter = {
+	toView: function (value, format) {
+		var result = format;
+		var day = value.getDate();
+		result = result.replace("DD", month < 10 ? "0" + day : day);
+		var month = value.getMonth() + 1;
+		result = result.replace("MM", month < 10 ? "0" + month : month);
+		result = result.replace("YYYY", value.getFullYear());
+		return result;
+	},
+	toModel: function (value, format) {
+		var ddIndex = format.indexOf("DD");
+		var day = parseInt(value.substr(ddIndex, 2));
+		var mmIndex = format.indexOf("MM");
+		var month = parseInt(value.substr(mmIndex, 2));
+		var yyyyIndex = format.indexOf("YYYY");
+		var year = parseInt(value.substr(yyyyIndex, 4));
+		var result = new Date(year, month - 1, day);
+		return result;
+	}
 }
 
 Object.defineProperty(activitiesViewModel.prototype, "activities", {
     get: function () {
-        var el = new everlive({ apiKey: BS_API_KEY });
+        
+        var el = new Everlive({ apiKey: BS_API_KEY });
         var that = this;
-        el.data('Activities').get().then(function(data) {
-           
+        
+        var expandExp = {
+            "UserId": {
+                "ReturnAs": "User",
+                "Expand": {
+                    "Picture": "Picture"
+                }
+            },
+            "Picture": {
+                "ReturnAs": "Picture",
+                "SingleField": "Uri"
+            }
+        };
+        
+        
+        var data = el.data('Activities');
+        
+        data.expand(expandExp).get().then(function(data) {
+            
+           for(var i = 0; i < data.result.length; i++){
+               var current = data.result[i];
+               current.dateConverter = dateConverter;
+               current.UserName = current.User.DisplayName;
+               current.AvatarUri = current.User.Picture == null ? null : current.User.Picture.Uri;
+           }
+
            that._activities.push(data.result); 
             
         }, function(error) {
-           alert('Error gettings activities[' + error.message + ']');
+           alert("Activities can't be retrieved");
         });      
-
+        
         return this._activities;        
     },
         enumerable: true,

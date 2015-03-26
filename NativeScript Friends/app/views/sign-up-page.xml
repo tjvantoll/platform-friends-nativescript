@@ -21,7 +21,7 @@
                         <Label id="gender" text="{{ gender }}" />
                 </GridLayout>
                 <TextField id="about" cssClass="text-input" hint="about" text="{{about}}" />
-                <Button text="Sign up" id="register" cssClass="signup-button"/>
+                <Button text="Sign up" id="register" tap="signUp" cssClass="signup-button"/>
             </StackLayout>
         </GridLayout>
     </ScrollView>

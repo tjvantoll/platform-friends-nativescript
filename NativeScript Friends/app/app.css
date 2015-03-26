@@ -1,5 +1,5 @@
 Page {
-    
+    background-color: #ffffff;
 }
 
 .header-container {
@@ -30,6 +30,7 @@ Page {
     font-size: 20;
     horizontal-align: left;
     margin:17 20 20 60;
+    margin-left: 20;
     color: #ffffff;
 }
 
@@ -48,6 +49,12 @@ Page {
     margin:15 15 15 15;
     background-color: #e91e63;
     color: #ffffff;
+}
+
+.activity-indicator
+{
+    horizontal-align:center;
+    vertical-align:center;
 }
 
 
