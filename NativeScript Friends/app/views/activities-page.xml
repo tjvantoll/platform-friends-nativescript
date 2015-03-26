@@ -1,7 +1,7 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
     <GridLayout rows="auto, *">
         <GridLayout cssClass="header-container">
-            <GridLayout tap="">
+            <GridLayout tap="logout">
                 <Image src="~/app/res/logout.png" cssClass="header-button align-left"/>
             </GridLayout>
             <Label text="Activities" cssClass="header-context-label" />
@@ -9,22 +9,25 @@
         <ListView items="{{ activities }}" itemTap="" row="1">
             <ListView.itemTemplate>
                 <StackLayout orientation="horizontal" >
-                    <Image src="~/app/res/avatar.png" stretch="fill" cssClass="activity-avatar"/>
+                    <StackLayout>
+                        <Image src="~/app/res/avatar.png" stretch="fill" cssClass="activity-avatar"/>
+                    </StackLayout>
                     <StackLayout cssClass="activity-container">
                         <Label cssClass="activity-title">
                             <Label.formattedText>
                                 <FormattedString>
                                   <FormattedString.spans>
-                                    <Span text="Angel Tsvetkov" fontAttributes="Bold" />
+                                    <Span text="{{ UserName }}" fontAttributes="Bold" />
                                   </FormattedString.spans>
                                 </FormattedString>
                               </Label.formattedText>
                         </Label>
                         <Label text="{{ Text || '-' }}" cssClass="activity-summary" textWrap="true" />
-                        <Label text="{{ CreatedAt || '-' }}" cssClass="activity-date" />
+                        <Label text="{{ CreatedAt, CreatedAt | dateConverter('DD.MM.YYYY') }}" cssClass="activity-date" />
                   </StackLayout>
                 </StackLayout> 
-            </ListView.itemTemplate>
+            </ListView.itemTemplate>  
         </ListView>
+<!--             <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" /> -->
     </GridLayout>
 </Page>
