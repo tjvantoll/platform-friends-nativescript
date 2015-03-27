@@ -1,8 +1,3 @@
-.activity-date {
-    margin: 5 5 5 0;
-    color: #B0B0B0;
-}
-
 .activity-avatar {
     width: 50;
     height: 50;
@@ -12,4 +7,15 @@
 
 .activity-user {
     color: #FFFFFF;
+    font-size: 12;
+}
+
+.margin-right {
+    margin:0 20 0 0
+}
+
+.activity-text {
+    margin: 20;
+    font-size: 12;
+    vertical-align: top;
 }

@@ -32,9 +32,9 @@ var activityViewModel = (function (_super) {
     Object.defineProperty(activityViewModel.prototype, "activityDateFormatted", {
         get: function () 
         {
-            var m_names = new Array("Jan", "Feb", "Mar", 
-            "Apr", "May", "Jun", "Jul", "Aug", "Sep", 
-            "Oct", "Nov", "Dec");
+            var m_names = new Array("JAN", "FEB", "MAR", 
+            "APR", "MAY", "JUN", "JUL", "AUG", "SEP", 
+            "OCT", "NOV", "DEC");
 
             var d = new Date(this._activity.CreatedAt);
             var curr_date = d.getDate();

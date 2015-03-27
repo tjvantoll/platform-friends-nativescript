@@ -7,15 +7,15 @@
                 <Image src="~/app/res/back.png" cssClass="header-button align-left" />
             </StackLayout>
 
-            <GridLayout row="1" columns="auto, auto" verticalAlignment="bottom">
+            <GridLayout row="1" columns="*, auto" verticalAlignment="bottom">
                 <StackLayout orientation="horizontal">
                     <Image src="{{ activity.AvatarUri || '~/app/res/avatar.png' }}" stretch="fill" cssClass="activity-avatar"/>
                     <Label text="{{ activity.UserName }}" cssClass="activity-user" />
                 </StackLayout>
-                <Label text="{{ activityDateFormatted }}" col="1" cssClass="activity-user" />
+                <Label text="{{ activityDateFormatted }}" col="1" cssClass="activity-user align-right margin-right" />
             </GridLayout>
         </GridLayout>
 
-        <Label text="{{activity.Text}}" row="1" />
+        <Label text="{{activity.Text}}" row="1" textWrap="true" cssClass="activity-text" />
     </GridLayout>
 </Page>
