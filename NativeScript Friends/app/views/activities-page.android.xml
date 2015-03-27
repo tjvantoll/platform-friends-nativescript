@@ -2,7 +2,7 @@
     <GridLayout rows="auto, *">
         <GridLayout cssClass="header-container">
             <GridLayout tap="logout">
-                <Image src="~/app/res/logout.png" cssClass="header-button align-left"/>
+                <Image src="~/app/res/logout_new.png" cssClass="header-button align-left rotateLeftx180"/>
             </GridLayout>
             <Label text="Activities" cssClass="header-context-label" />
         </GridLayout>
@@ -30,5 +30,8 @@
             </ListView.itemTemplate>  
         </ListView>
 <!--             <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" /> -->
+    <AbsoluteLayout cssClass="fabContainer" style.visibility="true" row="2">
+      <Image src="~/app/res/add.png" tap="" stretch="fill" cssClass="fab" />
+    </AbsoluteLayout>
     </GridLayout>
 </Page>
