@@ -15,6 +15,10 @@ function onActivityTap(args) {
     });   
 }
 
+function addActivity(){
+    alert("In Progress...");
+}
+
 function logout(args){
     frameModule.topmost().navigate("app/views/main-page");
 }
@@ -22,3 +26,4 @@ function logout(args){
 exports.pageLoaded = pageLoaded;
 exports.onActivityTap = onActivityTap;
 exports.logout = logout;
+exports.addActivity = addActivity;

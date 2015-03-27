@@ -1,0 +1,34 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
+    <GridLayout rows="auto, *">
+        <GridLayout cssClass="header-container">
+            <GridLayout tap="logout">
+                <Image src="~/app/res/logout.png" cssClass="header-button align-left"/>
+            </GridLayout>
+            <Label text="Activities" cssClass="header-context-label" />
+        </GridLayout>
+        <ListView items="{{ activities }}" itemTap="onActivityTap" row="1">
+            <ListView.itemTemplate>
+                <StackLayout orientation="horizontal">
+                    <StackLayout>
+                        <Image src="{{ AvatarUri || '~/app/res/avatar.png' }}" stretch="fill" cssClass="activity-avatar"/>
+                    </StackLayout>
+                    <StackLayout cssClass="activity-container">
+                        <Label cssClass="activity-name-ios">
+                            <Label.formattedText>
+                                <FormattedString>
+                                  <FormattedString.spans>
+                                    <Span text="{{ UserName }}" fontAttributes="Bold" />
+                                  </FormattedString.spans>
+                                </FormattedString>
+                              </Label.formattedText>
+                        </Label>
+                        <Label text="{{ Text || '-' }}" cssClass="activity-summary-ios" textWrap="true" />
+                        <Image src="{{ Picture || '' }}" stretch="fill" cssClass="activity-picture"/>
+                        <Label text="{{ CreatedAt, CreatedAt | dateConverter('DD.MM.YYYY') }}" cssClass="activity-date-ios" />
+                  </StackLayout>
+                </StackLayout> 
+            </ListView.itemTemplate>  
+        </ListView>
+<!--             <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" /> -->
+    </GridLayout>
+</Page>
