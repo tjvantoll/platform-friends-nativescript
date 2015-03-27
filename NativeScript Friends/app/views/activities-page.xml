@@ -6,9 +6,9 @@
             </GridLayout>
             <Label text="Activities" cssClass="header-context-label" />
         </GridLayout>
-        <ListView items="{{ activities }}" itemTap="" row="1">
+        <ListView items="{{ activities }}" itemTap="onActivityTap" row="1">
             <ListView.itemTemplate>
-                <StackLayout orientation="horizontal" >
+                <StackLayout orientation="horizontal">
                     <StackLayout>
                         <Image src="{{ AvatarUri || '~/app/res/avatar.png' }}" stretch="fill" cssClass="activity-avatar"/>
                     </StackLayout>

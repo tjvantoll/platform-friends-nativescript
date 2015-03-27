@@ -1,0 +1,11 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
+    <GridLayout rows="auto, *">
+        <GridLayout cssClass="header-container" bindingContext="{{ activity }}">
+            <GridLayout tap="backButtonClicked">
+                <Image src="~/app/res/back.png" />
+            </GridLayout>
+            <Image src="{{ Picture || '~/app/res/friends.png' }}" stretch="fill" /> 
+        </GridLayout>
+        <Label text="{{ Text }}" row="1" />
+    </GridLayout>
+</Page>

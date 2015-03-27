@@ -1,10 +1,18 @@
 var vmModule = require("../view-models/activities-view-model");
 var frameModule = require("ui/frame");
+var viewModel;
 
 function pageLoaded(args) {
-    
     var page = args.object;
-    page.bindingContext = new vmModule.activitiesViewModel();;
+    viewModel = new vmModule.activitiesViewModel();
+    page.bindingContext = viewModel;
+}
+
+function onActivityTap(args) {
+    frameModule.topmost().navigate({
+        moduleName: "app/views/activity-page",
+        context: viewModel.activities.getItem(args.index)
+    });   
 }
 
 function logout(args){
@@ -12,4 +20,5 @@ function logout(args){
 }
 
 exports.pageLoaded = pageLoaded;
+exports.onActivityTap = onActivityTap;
 exports.logout = logout;
