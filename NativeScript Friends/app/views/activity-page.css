@@ -1,0 +1,15 @@
+.activity-date {
+    margin: 5 5 5 0;
+    color: #B0B0B0;
+}
+
+.activity-avatar {
+    width: 50;
+    height: 50;
+    margin: 20 15;
+    vertical-align: top;
+}
+
+.activity-user {
+    color: #FFFFFF;
+}

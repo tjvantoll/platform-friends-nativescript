@@ -1,20 +1,18 @@
 var vmModule = require("../view-models/activity-view-model");
 var frameModule = require("ui/frame");
-
-function pageLoaded(args) {
-    var page = args.object;
-    page.bindingContext = new vmModule.activityViewModel();
-}
+var viewModel;
 
 function pageNavigatedTo(args) {
     var page = args.object;
-    page.bindingContext = page.navigationContext;
-    alert(JSON.stringify(page));
+    //viewModel.set("activity", activity)
+    viewModel = new vmModule.activityViewModel();
+    viewModel.activity = page.navigationContext;
+    page.bindingContext = viewModel
 }
 
 function backButtonClicked(args){
-    frameModule.topmost().navigate("app/views/main-page");
+    frameModule.topmost().navigate("app/views/activities-page");
 }
 
-exports.pageLoaded = pageLoaded;
 exports.backButtonClicked = backButtonClicked;
+exports.pageNavigatedTo = pageNavigatedTo;
