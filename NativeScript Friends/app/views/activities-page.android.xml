@@ -31,7 +31,7 @@
         </ListView>
 <!--             <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" /> -->
     <AbsoluteLayout cssClass="fabContainer" style.visibility="true" row="2">
-      <Image src="~/app/res/add.png" tap="" stretch="fill" cssClass="fab" />
+      <Image src="~/app/res/add.png" tap="addActivity" stretch="fill" cssClass="fab" />
     </AbsoluteLayout>
     </GridLayout>
 </Page>
