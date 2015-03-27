@@ -2,26 +2,42 @@
     margin: 10;
 }
 
-.activity-title {
+.activity-name-android {
     color: #E91E63;
     margin: 5 0;
 }
 
-.activity-summary {
+.activity-name-ios {
+    color: #E91E63;
+    margin: 8 0;
+}
+
+.activity-summary-android {
     margin: 5 0;
     font-size: 13;
 }
 
-.activity-date {
+.activity-summary-ios {
+    margin: 5 0;
+    font-size: 10;
+}
+
+.activity-date-android {
     margin: 5 5 5 0;
     color: #B0B0B0;
-        font-size: 13;
+    font-size: 13;
+}
+
+.activity-date-ios {
+    margin: 5 5 5 0;
+    color: #B0B0B0;
+    font-size: 11;
 }
 
 .activity-avatar {
     width: 50;
     height: 50;
-    margin: 20 15;
+    margin: 20 10 20 15;
     vertical-align: top;
 }
 
