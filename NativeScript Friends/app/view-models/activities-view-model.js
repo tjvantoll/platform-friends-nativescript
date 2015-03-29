@@ -17,8 +17,6 @@ cache.invalid = imageSource.fromFile("~/app/res/avatar.png");
 cache.placeholder = imageSource.fromFile("~/app/res/avatar.png");
 cache.maxRequests = 5;
 
-
-
 var ActivitiesViewModel = (function (_super){
     
     __extends(ActivitiesViewModel, _super);

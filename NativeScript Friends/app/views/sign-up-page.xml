@@ -8,21 +8,25 @@
                     </GridLayout>
                     <Label text="Sign up" cssClass="header-context-label" />
                 </GridLayout>
-                    <TextField id="name" cssClass="text-input" hint="name" text="{{name}}"/>
-                    <TextField id="email" cssClass="text-input" keyboardType="email" hint="e-mail" text="{{email}}"/>
-                    <TextField id="username" cssClass="text-input" hint="username" text="{{username}}"/>
-                    <TextField id="password" cssClass="text-input" hint="password" secure="true" text="{{Password}}"/>
+                    <TextField id="name" cssClass="text-input" hint="name" text="{{ name }}"/>
+                    <TextField id="email" cssClass="text-input" keyboardType="email" hint="e-mail" text="{{ email }}"/>
+                    <TextField id="username" cssClass="text-input" hint="username" text="{{ username }}"/>
+                    <TextField id="password" cssClass="text-input" hint="password" secure="true" text="{{ password }}"/>
                     <GridLayout tap="chooseBirthDate" id="birthDatePickerContainer">
                         <Image cssClass="arrow-icon" src="~/app/res/right-arrow.png" />
-                        <Label id="birth-date" text="{{ birthdate }}" />
+                        <Label id="birth-date" text="{{ birthDate || 'Birth Date' }}" />
                     </GridLayout>
                     <GridLayout tap="chooseGender" >
                         <Image cssClass="arrow-icon" src="~/app/res/right-arrow.png" />
-                        <Label id="gender" text="{{ gender }}" />
+                        <Label id="gender" text="{{ gender || 'Gender' }}" />
                 </GridLayout>
-                <TextField id="about" cssClass="text-input" hint="about" text="{{about}}" />
-                <Button text="Sign up" id="register" tap="signUp" cssClass="signup-button"/>
+                <TextField id="about" cssClass="text-input" hint="about" text="{{ about }}" />
+                <Button text="Sign up" id="register" tap="{{ signUp }}" cssClass="signup-button"/>
             </StackLayout>
+            <AbsoluteLayout  cssClass="activity-indicator" style.visibility="true" row="2">
+              <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" />
+            </AbsoluteLayout>
         </GridLayout>
+
     </ScrollView>
 </Page>

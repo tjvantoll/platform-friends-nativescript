@@ -29,11 +29,11 @@
                 </StackLayout> 
             </ListView.itemTemplate>  
         </ListView>
-    <AbsoluteLayout  cssClass="activity-indicator" style.visibility="true" row="2">
-      <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" />
-    </AbsoluteLayout>
     <AbsoluteLayout cssClass="fabContainer" style.visibility="true" row="2">
       <Image src="~/app/res/add.png" tap="addActivity" stretch="fill" cssClass="fab" />
+    </AbsoluteLayout>
+    <AbsoluteLayout  cssClass="activity-indicator" style.visibility="true" row="2">
+      <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" />
     </AbsoluteLayout>
     </GridLayout>
 </Page>
