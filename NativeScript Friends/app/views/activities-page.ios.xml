@@ -29,6 +29,8 @@
                 </StackLayout> 
             </ListView.itemTemplate>  
         </ListView>
-<!--             <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" /> -->
+        <AbsoluteLayout  cssClass="activity-indicator" style.visibility="true" row="2">
+          <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" />
+        </AbsoluteLayout>
     </GridLayout>
 </Page>
