@@ -11,6 +11,7 @@ var Everlive = require("../lib/everlive.all.min");
 var imageSource = require("image-source");
 var imageCache = require("ui/image-cache");
 var view = require("ui/core/view");
+var platformModule = require("platform");
 
 var cache = new imageCache.Cache();
 cache.invalid = imageSource.fromFile("~/app/res/avatar.png");

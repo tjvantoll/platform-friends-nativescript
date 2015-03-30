@@ -5,6 +5,7 @@ var observable = require("data/observable");
 var platformModule = require("platform");
 
 var viewModel;
+var isAndroid = true;
 
 function pageLoaded(args) {
     var page = args.object;
