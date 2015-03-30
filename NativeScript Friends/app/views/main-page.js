@@ -6,7 +6,7 @@ var viewModule = require("ui/core/view");
 // Event handler for Page "loaded" event attached in main-page.xml
 function pageLoaded(args) {
     var page = args.object;
-    page.bindingContext = vmModule.mainViewModel;
+    page.bindingContext = new vmModule.MainViewModel();
     
     if (platformModule.device.os == "Android") {
         frameModule.topmost().android.actionBar.hide();
@@ -20,10 +20,9 @@ function navigateRegister(args){
     frameModule.topmost().navigate("app/views/sign-up-page");
 }
 
-function login(args){
-    frameModule.topmost().navigate("app/views/activities-page");
-}
+// function login(args){
+//     frameModule.topmost().navigate("app/views/activities-page");
+// }
 
 exports.navigateRegister = navigateRegister;
-exports.login = login;
 exports.pageLoaded = pageLoaded;
