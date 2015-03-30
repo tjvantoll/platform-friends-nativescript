@@ -1,11 +1,21 @@
 var vmModule = require("../view-models/activities-view-model");
 var frameModule = require("ui/frame");
+var view = require("ui/core/view");
+var observable = require("data/observable");
+
 var viewModel;
 
 function pageLoaded(args) {
     var page = args.object;
-    viewModel = new vmModule.activitiesViewModel();
+    viewModel = new vmModule.ActivitiesViewModel();
     page.bindingContext = viewModel;
+    
+    //Hide activity indicator when the ListView items loading begin
+    var listView = view.getViewById(page, "activitiesView");
+    listView.on("itemLoading", function (args) {
+        viewModel.set("isLoading",false);
+        
+    });
 }
 
 function onActivityTap(args) {

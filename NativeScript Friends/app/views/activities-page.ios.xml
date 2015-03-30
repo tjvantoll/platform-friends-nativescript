@@ -2,11 +2,11 @@
     <GridLayout rows="auto, *">
         <GridLayout cssClass="header-container">
             <GridLayout tap="logout">
-                <Image src="~/app/res/logout.png" cssClass="header-button align-left"/>
+                <Image src="~/app/res/logout_new.png" cssClass="header-button align-left"/>
             </GridLayout>
             <Label text="Activities" cssClass="header-context-label" />
         </GridLayout>
-        <ListView items="{{ activities }}" itemTap="onActivityTap" row="1">
+        <ListView id="activitiesView" items="{{ activities }}" itemTap="onActivityTap" row="1">
             <ListView.itemTemplate>
                 <StackLayout orientation="horizontal">
                     <StackLayout>
@@ -29,6 +29,8 @@
                 </StackLayout> 
             </ListView.itemTemplate>  
         </ListView>
-<!--             <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" /> -->
+        <AbsoluteLayout  cssClass="activity-indicator" style.visibility="true" row="2">
+          <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" />
+        </AbsoluteLayout>
     </GridLayout>
 </Page>

@@ -1,5 +1,5 @@
 var application = require("application");
-application.mainModule = "app/views/activities-page";
+application.mainModule = "app/views/main-page";
 
 /*
  * Define constants which we will use across the application

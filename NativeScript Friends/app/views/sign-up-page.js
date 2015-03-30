@@ -3,10 +3,14 @@ var frameModule = require("ui/frame");
 var dialogs = require("ui/dialogs");
 var view = require("ui/core/view");
 
+var viewModel;
+
 // Event handler for Page "loaded" event attached in sign-up-page.xml
 function pageLoaded(args) {
     var page = args.object;
-    page.bindingContext = vmModule.signUpViewModel;
+    viewModel = new vmModule.SignUpViewModel();
+    page.bindingContext = viewModel;
+    
 }
 
 function goBack(args) {
@@ -19,7 +23,7 @@ function chooseGender(args) {
         actions: ["Male", "Female"],
     };
     dialogs.action(options).then(function (result) {
-        vmModule.signUpViewModel.set("gender", result);
+        viewModel.set("gender", result);
         
     });
 }
@@ -74,7 +78,7 @@ function chooseBirthDate(args) {
 
                     selectedDay = result;
 
-                    vmModule.signUpViewModel.set("birthdate", selectedDay + " " + selectedMonth + " " + selectedYear);
+                    viewModel.set("birthdate", selectedDay + " " + selectedMonth + " " + selectedYear);
 
                 });
 
@@ -83,11 +87,7 @@ function chooseBirthDate(args) {
     });
 }
 
-function signUp(args){
-    frameModule.topmost().navigate("app/views/activities-page");
-}
 
-exports.signUp = signUp;
 exports.chooseBirthDate = chooseBirthDate;
 exports.pageLoaded = pageLoaded;
 exports.goBack = goBack;
