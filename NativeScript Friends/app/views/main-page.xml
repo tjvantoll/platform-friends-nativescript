@@ -1,14 +1,12 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
-    <ScrollView>
-        <GridLayout>
-            <StackLayout>
-                <Image src="~/app/res/friends.png" cssClass="app-logo" />
-                <TextField id="username" cssClass="text-input" hint="e-mail" text="{{ username }}"/>
-                <TextField id="password" cssClass="text-input" hint="password" secure="true" text="{{ password }}"/>
-                <Button text="Log in" id="login" cssClass="login-button" tap="{{ logIn }}" />
-                <Label text="Don't have an account yet?" cssClass="sub-title" />
-                <Button text="Sign up for free" id="signup" tap="navigateRegister" cssClass="signup-button"/>
-            </StackLayout>
-        </GridLayout>
-    </ScrollView>
+    <GridLayout>
+        <StackLayout>
+            <Image src="~/app/res/friends.png" cssClass="app-logo" />
+            <TextField id="username" cssClass="text-input" hint="e-mail" text="{{ username }}"/>
+            <TextField id="password" cssClass="text-input" hint="password" secure="true" text="{{ password }}"/>
+            <Button text="Log in" id="login" cssClass="login-button" tap="{{ logIn }}" />
+            <Label text="Don't have an account yet?" cssClass="sub-title" />
+            <Button text="Sign up for free" id="signup" tap="navigateRegister" cssClass="signup-button"/>
+        </StackLayout>
+    </GridLayout>
 </Page>
