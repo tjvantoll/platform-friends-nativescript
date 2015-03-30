@@ -12,10 +12,10 @@
                     <TextField id="email" cssClass="text-input" keyboardType="email" hint="e-mail" text="{{ email }}"/>
                     <TextField id="username" cssClass="text-input" hint="username" text="{{ username }}"/>
                     <TextField id="password" cssClass="text-input" hint="password" secure="true" text="{{ password }}"/>
-                    <GridLayout tap="chooseBirthDate" id="birthDatePickerContainer">
+<!--                     <GridLayout tap="chooseBirthDate" id="birthDatePickerContainer">
                         <Image cssClass="arrow-icon" src="~/app/res/right-arrow.png" />
                         <Label id="birth-date" text="{{ birthDate || 'Birth Date' }}" />
-                    </GridLayout>
+                    </GridLayout> -->
                     <GridLayout tap="chooseGender" >
                         <Image cssClass="arrow-icon" src="~/app/res/right-arrow.png" />
                         <Label id="gender" text="{{ gender || 'Gender' }}" />

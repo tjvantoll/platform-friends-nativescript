@@ -27,7 +27,7 @@ var SignUpViewModel = (function (_super){
           DisplayName: "",
           Email: "",
           gender: "",
-          birthDate: 0,
+          // birthDate: 0,
           about: ""
         };    
     }
@@ -60,7 +60,7 @@ var SignUpViewModel = (function (_super){
                     that.set("name", "");
                     that.set("email", "");
                     that.set("gender", "");
-                    that.set("birthDate", "");
+                    // that.set("birthDate", "");
                     that.set("about", "");
 
                     dialogs.alert({
@@ -144,16 +144,16 @@ var SignUpViewModel = (function (_super){
         configurable: true
     });
     
-    Object.defineProperty(SignUpViewModel.prototype, "birthDate", {
-        get: function () {
-            return this._info.birthDate;
-        },
-        set: function(value) {
-            this._info.birthDate = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
+    // Object.defineProperty(SignUpViewModel.prototype, "birthDate", {
+    //     get: function () {
+    //         return this._info.birthDate;
+    //     },
+    //     set: function(value) {
+    //         this._info.birthDate = value;
+    //     },
+    //     enumerable: true,
+    //     configurable: true
+    // });
     
     Object.defineProperty(SignUpViewModel.prototype, "about", {
         get: function () {
