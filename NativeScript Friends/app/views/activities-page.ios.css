@@ -4,18 +4,18 @@
 
 .activity-name {
     color: #E91E63;
-    margin: 5 0;
+    margin: 8 0;
 }
 
 .activity-summary {
     margin: 5 0;
-    font-size: 13;
+    font-size: 10;
 }
 
 .activity-date {
     margin: 5 5 5 0;
     color: #B0B0B0;
-    font-size: 13;
+    font-size: 11;
 }
 
 .activity-avatar {
