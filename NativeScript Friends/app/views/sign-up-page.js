@@ -2,6 +2,7 @@ var vmModule = require("../view-models/sign-up-view-model");
 var frameModule = require("ui/frame");
 var dialogs = require("ui/dialogs");
 var view = require("ui/core/view");
+var platformModule = require("platform");
 
 var viewModel;
 
@@ -9,7 +10,11 @@ var viewModel;
 function pageLoaded(args) {
     var page = args.object;
     viewModel = new vmModule.SignUpViewModel();
-    page.bindingContext = viewModel;
+    page.bindingContext = viewModel;    
+    
+    if (platformModule.device.os == "iOS") {
+        frameModule.topmost().ios.controller.navigationBarHidden = true;
+    }
     
 }
 

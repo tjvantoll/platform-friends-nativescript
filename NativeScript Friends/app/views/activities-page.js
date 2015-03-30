@@ -2,6 +2,7 @@ var vmModule = require("../view-models/activities-view-model");
 var frameModule = require("ui/frame");
 var view = require("ui/core/view");
 var observable = require("data/observable");
+var platformModule = require("platform");
 
 var viewModel;
 
@@ -16,6 +17,10 @@ function pageLoaded(args) {
         viewModel.set("isLoading",false);
         
     });
+    
+    if (platformModule.device.os == "iOS") {
+        frameModule.topmost().ios.controller.navigationBarHidden = true;
+    }
 }
 
 function onActivityTap(args) {

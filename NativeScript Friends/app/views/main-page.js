@@ -10,6 +10,11 @@ function pageLoaded(args) {
     
     if (platformModule.device.os == "Android") {
         frameModule.topmost().android.actionBar.hide();
+        frameModule.topmost().android.cachePagesOnNavigate = true;
+    }
+    
+    if (platformModule.device.os == "iOS") {
+        frameModule.topmost().ios.controller.navigationBarHidden = true;
     }
     
     //Hide the keyboard on load
