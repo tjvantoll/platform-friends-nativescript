@@ -41,7 +41,7 @@ var MainViewModel = (function (_super){
             function (data) {
                 if(typeof(data.result) !== 'undefined' && typeof(data.result.principal_id) !== 'undefined'){
                     //Store in local storage
-                    LocalSettings.setString("principal_id", data.result.principal_id);
+                    // LocalSettings.setString("principal_id", data.result.principal_id);
                     frameModule.topmost().navigate("app/views/activities-page");
                 }
                 else{
