@@ -10,7 +10,7 @@ function pageLoaded(args) {
     
     if (platformModule.device.os == "Android") {
         frameModule.topmost().android.actionBar.hide();
-        frameModule.topmost().android.cachePagesOnNavigate = true;
+        // frameModule.topmost().android.cachePagesOnNavigate = true;
     }
     
     if (platformModule.device.os == "iOS") {
@@ -24,10 +24,6 @@ function pageLoaded(args) {
 function navigateRegister(args){
     frameModule.topmost().navigate("app/views/sign-up-page");
 }
-
-// function login(args){
-//     frameModule.topmost().navigate("app/views/activities-page");
-// }
 
 exports.navigateRegister = navigateRegister;
 exports.pageLoaded = pageLoaded;

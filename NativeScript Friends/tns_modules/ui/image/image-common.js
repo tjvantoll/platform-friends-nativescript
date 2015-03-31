@@ -18,27 +18,30 @@ var IMAGE = "Image";
 var ISLOADING = "isLoading";
 var STRETCH = "stretch";
 function isValidSrc(src) {
-    return types.isString(src);
+    return types.isString(src) || types.isUndefined(src) || (src === null);
 }
 function onSrcPropertyChanged(data) {
     var image = data.object;
     var value = data.newValue;
     if (isValidSrc(value)) {
+        // alert("url: " + value);
         value = value.trim();
         image.imageSource = null;
         image["_url"] = value;
-        image._setValue(Image.isLoadingProperty, true);
-        if (imageSource.isFileOrResourcePath(value)) {
-            image.imageSource = imageSource.fromFileOrResource(value);
-            image._setValue(Image.isLoadingProperty, false);
-        }
-        else {
-            imageSource.fromUrl(value).then(function (r) {
-                if (image["_url"] === value) {
-                    image.imageSource = r;
-                    image._setValue(Image.isLoadingProperty, false);
-                }
-            });
+        if(value) {
+            image._setValue(Image.isLoadingProperty, true);
+            if (imageSource.isFileOrResourcePath(value)) {
+                image.imageSource = imageSource.fromFileOrResource(value);
+                image._setValue(Image.isLoadingProperty, false);
+            }
+            else {
+                imageSource.fromUrl(value).then(function (r) {
+                    if (image["_url"] === value) {
+                        image.imageSource = r;
+                        image._setValue(Image.isLoadingProperty, false);
+                    }
+                });
+            }
         }
     }
     else if (value instanceof imageSource.ImageSource) {
@@ -92,6 +95,7 @@ var Image = (function (_super) {
         var widthMode = utils.layout.getMeasureSpecMode(widthMeasureSpec);
         var height = utils.layout.getMeasureSpecSize(heightMeasureSpec);
         var heightMode = utils.layout.getMeasureSpecMode(heightMeasureSpec);
+        
         trace.write(this + " :onMeasure: " + utils.layout.getMode(widthMode) + " " + width + ", " + utils.layout.getMode(heightMode) + " " + height, trace.categories.Layout);
         var nativeWidth = this.imageSource ? this.imageSource.width : 0;
         var nativeHeight = this.imageSource ? this.imageSource.height : 0;
@@ -99,6 +103,7 @@ var Image = (function (_super) {
         var measureHeight = Math.max(nativeHeight, this.minHeight);
         var finiteWidth = widthMode !== utils.layout.UNSPECIFIED;
         var finiteHeight = heightMode !== utils.layout.UNSPECIFIED;
+        
         if (nativeWidth !== 0 && nativeHeight !== 0 && (finiteWidth || finiteHeight)) {
             var scale = Image.computeScaleFactor(width, height, finiteWidth, finiteHeight, nativeWidth, nativeHeight, this.stretch);
             var resultW = nativeWidth * scale.width;
@@ -107,6 +112,7 @@ var Image = (function (_super) {
             measureHeight = finiteHeight ? Math.min(resultH, height) : resultH;
             trace.write("Image stretch: " + this.stretch + ", nativeWidth: " + nativeWidth + ", nativeHeight: " + nativeHeight, trace.categories.Layout);
         }
+        
         var widthAndState = view.View.resolveSizeAndState(measureWidth, width, widthMode, 0);
         var heightAndState = view.View.resolveSizeAndState(measureHeight, height, heightMode, 0);
         this.setMeasuredDimension(widthAndState, heightAndState);
@@ -139,7 +145,7 @@ var Image = (function (_super) {
         return { width: scaleW, height: scaleH };
     };
     Image.srcProperty = new dependencyObservable.Property(SRC, IMAGE, new proxy.PropertyMetadata("", dependencyObservable.PropertyMetadataSettings.None, onSrcPropertyChanged));
-    Image.imageSourceProperty = new dependencyObservable.Property(IMAGE_SOURCE, IMAGE, new proxy.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.None));
+    Image.imageSourceProperty = new dependencyObservable.Property(IMAGE_SOURCE, IMAGE, new proxy.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.AffectsLayout));
     Image.isLoadingProperty = new dependencyObservable.Property(ISLOADING, IMAGE, new proxy.PropertyMetadata(false, dependencyObservable.PropertyMetadataSettings.None));
     Image.stretchProperty = new dependencyObservable.Property(STRETCH, IMAGE, new proxy.PropertyMetadata(enums.Stretch.aspectFit, dependencyObservable.PropertyMetadataSettings.AffectsLayout));
     return Image;

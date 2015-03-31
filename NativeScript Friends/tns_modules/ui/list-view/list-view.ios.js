@@ -158,8 +158,10 @@ var ListView = (function (_super) {
     ListView.prototype.requestLayout = function () {
         if (!this._preparingCell) {
             _super.prototype.requestLayout.call(this);
+            this._ios.reloadData();
         }
     };
+    
     ListView.prototype.measure = function (widthMeasureSpec, heightMeasureSpec) {
         var changed = this._setCurrentMeasureSpecs(widthMeasureSpec, heightMeasureSpec);
         _super.prototype.measure.call(this, widthMeasureSpec, heightMeasureSpec);

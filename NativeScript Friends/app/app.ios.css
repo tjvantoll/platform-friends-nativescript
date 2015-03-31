@@ -2,12 +2,13 @@ Page {
     background-color: #ffffff;
 }
 
-.ios {
+.android {
     visibility: collapsed;
 }
 
 .header-container {
-    background-color: #1976d2;
+    background-color: #ffffff;
+    
 }
 
 .align-right {
@@ -37,7 +38,7 @@ Page {
     vertical-align: middle;
     font-size: 20;
     margin:17 20 20 0;
-    color: #ffffff;
+    color: #4c4c4c;
 }
 
 .text-input {
@@ -61,6 +62,11 @@ Page {
 {
     vertical-align: center;
     horizontal-align: center;
+}
+
+.header-text{
+    font-size: 15;
+    color: #4c4c4c;
 }
 
 
