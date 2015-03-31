@@ -1,5 +1,5 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
-    <GridLayout rows="auto, *" width="600">
+    <GridLayout rows="auto, auto, *">
         <GridLayout cssClass="header-container" columns="auto, *, auto">
             <Label text="LOGOUT" cssClass="header-text align-left ios" />
             <Image src="~/app/res/logout_new.png" tap="logout" cssClass="header-button align-left android"/>
@@ -7,7 +7,8 @@
             <Label text="Friends" cssClass="header-context-label align-center ios" col="1"/>
             <Label text="ADD" cssClass="header-text align-right ios" col="2"/>
         </GridLayout>
-        <ListView id="activitiesView" items="{{ activities }}" itemTap="onActivityTap" row="1">
+        <StackLayout cssClass="horizontal-line ios" row="1"></StackLayout>
+        <ListView id="activitiesView" items="{{ activities }}" itemTap="onActivityTap" row="2">
             <ListView.itemTemplate>
                 <GridLayout columns="auto, *" >
                     <StackLayout>

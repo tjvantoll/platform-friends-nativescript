@@ -28,11 +28,6 @@ Page {
     margin: 20;
 }
 
-.header-label {
-    color: #ffffff;
-    margin: 15 20 15 20;
-}
-
 .header-context-label {
     vertical-align: middle;
     font-size: 20;
