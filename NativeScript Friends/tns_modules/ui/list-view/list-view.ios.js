@@ -158,7 +158,7 @@ var ListView = (function (_super) {
     ListView.prototype.requestLayout = function () {
         if (!this._preparingCell) {
             _super.prototype.requestLayout.call(this);
-            this._ios.reloadData();
+            // this._ios.reloadData();
         }
     };
     
