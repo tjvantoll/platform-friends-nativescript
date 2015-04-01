@@ -10,20 +10,20 @@
             <ListView.itemTemplate>
                 <StackLayout orientation="horizontal">
                     <StackLayout>
-                        <Image src="{{ AvatarUri || '~/app/res/avatar.png' }}" stretch="fill" cssClass="activity-avatar"/>
+                        <Image src="{{ avatarImageSource || '~/app/res/avatar.png' }}" stretch="fill" cssClass="activity-avatar"/>
                     </StackLayout>
                     <StackLayout cssClass="activity-container">
                         <Label cssClass="activity-name-android">
                             <Label.formattedText>
                                 <FormattedString>
                                   <FormattedString.spans>
-                                    <Span text="{{ UserName }}" fontAttributes="Bold" />
+                                    <Span text="{{ userName }}" fontAttributes="Bold" />
                                   </FormattedString.spans>
                                 </FormattedString>
                               </Label.formattedText>
                         </Label>
                         <Label text="{{ Text || '-' }}" cssClass="activity-summary-android" textWrap="true" />
-                        <Image src="{{ Picture || '' }}" stretch="fill" cssClass="activity-picture"/>
+                        <Image src="{{ pictureImageSource || '' }}" stretch="fill" cssClass="activity-picture" minWidth="1" minHeight="1" />
                         <Label text="{{ CreatedAt, CreatedAt | dateConverter('DD.MM.YYYY') }}" cssClass="activity-date-android" />
                   </StackLayout>
                 </StackLayout> 

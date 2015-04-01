@@ -18,7 +18,7 @@ function pageLoaded(args) {
         
     });
     
-    if (platformModule.device.os == "iOS") {
+    if (platformModule.device.os === "iOS") {
         frameModule.topmost().ios.controller.navigationBarHidden = true;
     }
 }

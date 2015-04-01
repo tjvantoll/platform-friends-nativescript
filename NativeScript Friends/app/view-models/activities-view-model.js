@@ -7,14 +7,15 @@ var __extends = this.__extends || function (d, b) {
 
 var observable = require("data/observable");
 var observableArray = require("data/observable-array");
+var activityItemViewModel = require("./activity-item-view-model");
 var Everlive = require("../lib/everlive.all.min");
 var imageSource = require("image-source");
 var imageCache = require("ui/image-cache");
 var view = require("ui/core/view");
 
 var cache = new imageCache.Cache();
-cache.invalid = imageSource.fromFile("~/app/res/avatar.png");
-cache.placeholder = imageSource.fromFile("~/app/res/avatar.png");
+//cache.invalid = imageSource.fromFile("~/app/res/avatar.png");
+//cache.placeholder = imageSource.fromFile("~/app/res/avatar.png");
 cache.maxRequests = 5;
 
 var ActivitiesViewModel = (function (_super){
@@ -49,18 +50,16 @@ var ActivitiesViewModel = (function (_super){
 
 
             var data = el.data('Activities');
-
+            
             data.expand(expandExp).get().then(function(data) {
-
                for(var i = 0; i < data.result.length; i++){
-                   var current = data.result[i];
-                   current.dateConverter = dateConverter;
-                   current.UserName = current.User.DisplayName;
-                   current.AvatarUri = current.User.Picture == null ? null : current.User.Picture.Uri;
+                   data.result[i].dateConverter = dateConverter;
+                   var activityItem = new activityItemViewModel.ActivityItemViewModel(data.result[i]);
+
+                   data.result[i] = activityItem;
                }
 
-               that._activities.push(data.result); 
-
+                that._activities.push(data.result); 
             }, function(error) {
                alert("Activities can't be retrieved");
             });      
