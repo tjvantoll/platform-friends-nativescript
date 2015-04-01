@@ -4,7 +4,7 @@
             <Label text="LOGOUT" tap="logout" cssClass="header-text align-left ios" />
             <Image src="~/app/res/logout_new.png" tap="logout" cssClass="header-button align-left android"/>
             <Label text="Activities" cssClass="header-context-label align-left android" col="1"/> 
-            <Label text="Friends" cssClass="header-context-label align-center ios" col="1"/>
+            <Label text="Friends" colSpan="3" cssClass="header-context-label align-center ios" />
             <Label text="ADD" tap="addActivity" cssClass="header-text align-right ios" col="2"/>
         </GridLayout>
         <StackLayout cssClass="horizontal-line ios" row="1"></StackLayout>

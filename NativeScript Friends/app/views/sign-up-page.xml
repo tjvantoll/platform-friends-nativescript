@@ -1,11 +1,12 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
     <GridLayout rows="auto, *">
-        <GridLayout cssClass="header-container">
-            <GridLayout tap="goBack">
-                <Image src="~/app/res/back.png" cssClass="header-button align-left"/>
-            </GridLayout>
-            <Label text="Sign up" cssClass="header-context-label" />
+        <GridLayout cssClass="header-container" columns="auto, *">
+            <Image src="~/app/res/backios.png" tap="goBack" cssClass="header-button align-left ios"/>
+            <Image src="~/app/res/back.png" tap="goBack" cssClass="header-button align-left android"/>
+            <Label text="Sign up" cssClass="header-context-label align-left android" col="1"/> 
+            <Label text="Friends" colSpan="2" cssClass="header-context-label align-center ios" />
         </GridLayout>
+        <StackLayout cssClass="horizontal-line ios" row="1"></StackLayout>
         <StackLayout row="1">
             <TextField id="name" cssClass="text-input" hint="name" text="{{ name }}"/>
             <TextField id="email" cssClass="text-input" keyboardType="email" hint="e-mail" text="{{ email }}"/>
