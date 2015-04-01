@@ -2,7 +2,7 @@
     <GridLayout rows="auto,auto,auto, *">
         <GridLayout cssClass="header-container" columns="auto, *, auto">
             <Label text="CANCEL" tap="backButtonClicked" cssClass="header-text align-left ios" />
-            <Image src="~/app/res/back.png" tap="backButtonClicked" cssClass="header-button align-left android"/>
+            <Image src="~/app/res/back-light.png" tap="backButtonClicked" cssClass="header-button align-left android"/>
             <Label text="Post" cssClass="header-context-label align-left android" col="1"/> 
             <Label text="Friends" colSpan="3" cssClass="header-context-label align-center ios" />
             <Label text="DONE" cssClass="header-text align-right ios" tap="addActivity" col="2"/>
@@ -10,7 +10,7 @@
         <StackLayout cssClass="horizontal-line ios" row="1"></StackLayout>
         <TextView text="{{ activity }}" row="2" textWrap="true" cssClass="text-input" />
         <AbsoluteLayout cssClass="fabContainer android"  row="3">
-          <Image src="~/app/res/donebig.png" tap="addActivity" stretch="fill" cssClass="fab" />
+          <Image src="~/app/res/done.png" tap="addActivity" stretch="fill" cssClass="fab" />
         </AbsoluteLayout>
         <AbsoluteLayout  cssClass="activity-indicator" style.visibility="true" row="4">
           <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" />
