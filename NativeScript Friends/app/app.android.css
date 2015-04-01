@@ -58,4 +58,18 @@ Page {
     horizontal-align: center;
 }
 
+.fab {
+    width: 60;
+    height: 60;
+    horizontal-align: right;
+    margin: 20;
+}
+
+.fabContainer
+{
+    vertical-align: bottom;
+    horizontal-align: right;
+
+}
+
 

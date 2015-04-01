@@ -1,0 +1,16 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="pageNavigatedTo">
+    <GridLayout rows="auto, *">
+        <GridLayout cssClass="header-container" columns="auto, *, auto">
+            <Label text="BACK" tap="backButtonClicked" cssClass="header-text align-left ios" />
+            <Image src="~/app/res/logout_new.png" tap="backButtonClicked" cssClass="header-button align-left android"/>
+            <Label text="Post" cssClass="header-context-label align-left android" col="1"/> 
+            <Label text="Friends" cssClass="header-context-label align-center ios" col="1"/>
+            <Label text="ADD" cssClass="header-text align-right ios" col="2"/>
+        </GridLayout>
+
+        <TextView text="{{ activity }}" row="1" textWrap="true" cssClass="activity-text" />
+        <AbsoluteLayout cssClass="fabContainer android"  row="2">
+          <Image src="~/app/res/donebig.png" tap="addActivity" stretch="fill" cssClass="fab" />
+        </AbsoluteLayout>
+    </GridLayout>
+</Page>

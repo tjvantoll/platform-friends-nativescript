@@ -32,7 +32,7 @@ function onActivityTap(args) {
 }
 
 function addActivity(){
-    alert("In Progress...");
+    frameModule.topmost().navigate("app/views/add-activity-page");
 }
 
 function logout(args){
