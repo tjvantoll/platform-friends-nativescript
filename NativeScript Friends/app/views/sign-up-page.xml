@@ -1,12 +1,13 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
-    <GridLayout rows="auto, *">
-        <GridLayout cssClass="header-container">
-            <GridLayout tap="goBack">
-                <Image src="~/app/res/back.png" cssClass="header-button align-left"/>
-            </GridLayout>
-            <Label text="Sign up" cssClass="header-context-label" />
+    <GridLayout rows="auto, auto, *">
+        <GridLayout cssClass="header-container" columns="auto, *">
+            <Image src="~/app/res/backios.png" tap="goBack" cssClass="header-button align-left ios"/>
+            <Image src="~/app/res/back.png" tap="goBack" cssClass="header-button align-left android"/>
+            <Label text="Sign up" cssClass="header-context-label align-left android" col="1"/> 
+            <Label text="Friends" colSpan="2" cssClass="header-context-label align-center ios" />
         </GridLayout>
-        <StackLayout row="1">
+        <StackLayout cssClass="horizontal-line ios" row="1"></StackLayout>
+        <StackLayout row="2">
             <TextField id="name" cssClass="text-input" hint="name" text="{{ name }}"/>
             <TextField id="email" cssClass="text-input" keyboardType="email" hint="e-mail" text="{{ email }}"/>
             <TextField id="username" cssClass="text-input" hint="username" text="{{ username }}"/>
@@ -19,7 +20,7 @@
             <TextField id="about" cssClass="text-input" hint="about" text="{{ about }}" />
             <Button text="Sign up" id="register" tap="{{ signUp }}" cssClass="signup-button"/>
         </StackLayout>
-        <AbsoluteLayout  cssClass="activity-indicator" style.visibility="true" row="2">
+        <AbsoluteLayout  cssClass="activity-indicator" style.visibility="true">
           <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" />
         </AbsoluteLayout>
     </GridLayout>

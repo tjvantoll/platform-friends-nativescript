@@ -25,13 +25,12 @@ Page {
 .header-button {
     height: 20;
     width: 20;
-    margin: 20 40 20 20;
+    margin: 0 20;
 }
 
 .header-context-label {
-    vertical-align: middle;
     font-size: 20;
-    margin:10 20 10 0;
+    margin:10 0;
     color: #4c4c4c;
 }
 
@@ -61,7 +60,8 @@ Page {
 .header-text{
     font-size: 10;
     color: #4c4c4c;
-    margin: 15;
+    padding: 15;
+    margin: 0 15;
 }
 
 .horizontal-line {
