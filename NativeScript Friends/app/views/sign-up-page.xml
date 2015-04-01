@@ -8,10 +8,9 @@
         </GridLayout>
         <StackLayout cssClass="horizontal-line ios" row="1"></StackLayout>
         <StackLayout row="2">
-            <TextField id="name" cssClass="text-input" hint="name" text="{{ name }}"/>
             <TextField id="email" cssClass="text-input" keyboardType="email" hint="e-mail" text="{{ email }}"/>
-            <TextField id="username" cssClass="text-input" hint="username" text="{{ username }}"/>
             <TextField id="password" cssClass="text-input" hint="password" secure="true" text="{{ password }}"/>
+            <TextField id="name" cssClass="text-input" hint="name" text="{{ name }}"/>
 <!--        <GridLayout tap="chooseBirthDate" id="birthDatePickerContainer">
                 <Image cssClass="arrow-icon" src="~/app/res/right-arrow.png" />
                 <Label id="birth-date" text="{{ birthDate || 'Birth Date' }}" />
@@ -20,7 +19,7 @@
             <TextField id="about" cssClass="text-input" hint="about" text="{{ about }}" />
             <Button text="Sign up" id="register" tap="{{ signUp }}" cssClass="signup-button"/>
         </StackLayout>
-        <AbsoluteLayout  cssClass="activity-indicator" style.visibility="true">
+        <AbsoluteLayout  cssClass="activity-indicator" style.visibility="true" row="3">
           <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" />
         </AbsoluteLayout>
     </GridLayout>

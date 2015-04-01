@@ -24,7 +24,6 @@ var addActivityViewModel = (function (_super) {
         {
             if (this._activity !== value) {
                 this._activity = value;
-                this.notify({ object: this, eventName: observable.knownEvents.propertyChange, propertyName: "activity", value: value });
             }
         }
     });

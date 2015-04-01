@@ -22,7 +22,7 @@ var MainViewModel = (function (_super){
         this._isLoading = false;
         
         //User
-        this._username;
+        this._email;
         this._password;   
     }
     
@@ -30,18 +30,19 @@ var MainViewModel = (function (_super){
        
         var that = this;
 
-        var el = new Everlive({ apiKey: BS_API_KEY });
+        var el = new Everlive({ apiKey: BS_API_KEY, token: LocalSettings.getString(TOKEN_DATA_KEY) });
 
-        if(validationModule.validate(that._username, [validationModule.minLengthConstraint],"Invalid username") &&
+        if(validationModule.validate(that._email, [validationModule.minLengthConstraint,validationModule.validEmailConstraint],"Invalid email") &&
            validationModule.validate(that._password, [validationModule.minLengthConstraint],"Invalid password")){
             
             this.set("isLoading", true);
        
-            el.Users.login(that._username, that._password, 
+            el.Users.login(that._email, that._password, 
             function (data) {
-                if(typeof(data.result) !== 'undefined' && typeof(data.result.principal_id) !== 'undefined'){
+                if(typeof(data.result) !== 'undefined' && typeof(data.result.principal_id) !== 'undefined' && typeof(data.result.access_token) !== 'undefined'){
                     //Store in local storage
-                    // LocalSettings.setString("principal_id", data.result.principal_id);
+                    LocalSettings.setString(TOKEN_DATA_KEY, data.result.access_token);
+                    LocalSettings.setString(USER_ID, data.result.principal_id);
                     frameModule.topmost().navigate("app/views/activities-page");
                 }
                 else{
@@ -65,12 +66,12 @@ var MainViewModel = (function (_super){
         configurable: true
     });
 
-    Object.defineProperty(MainViewModel.prototype, "username", {
+    Object.defineProperty(MainViewModel.prototype, "email", {
         get: function () {
-            return this._username;
+            return this._email;
         },
         set: function(value) {
-            this._username = value;
+            this._email = value;
         },
         enumerable: true,
         configurable: true

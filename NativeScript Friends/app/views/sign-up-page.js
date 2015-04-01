@@ -18,8 +18,12 @@ function pageLoaded(args) {
     
 }
 
-function goBack(args) {
-    frameModule.topmost().navigate("app/views/main-page");
+function goBack(args){
+    if (frameModule.topmost().canGoBack) {
+        frameModule.topmost().goBack();
+    } else {
+        frameModule.topmost().navigate("app/views/activities-page");
+    }
 }
 
 function chooseGender(args) {

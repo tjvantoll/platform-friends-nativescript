@@ -8,9 +8,12 @@
             <Label text="DONE" cssClass="header-text align-right ios" tap="addActivity" col="2"/>
         </GridLayout>
         <StackLayout cssClass="horizontal-line ios" row="1"></StackLayout>
-        <TextView text="{{ activity }}" row="2" textWrap="true" cssClass="activity-text" />
+        <TextView text="{{ activity }}" row="2" textWrap="true" cssClass="text-input" />
         <AbsoluteLayout cssClass="fabContainer android"  row="3">
           <Image src="~/app/res/donebig.png" tap="addActivity" stretch="fill" cssClass="fab" />
+        </AbsoluteLayout>
+        <AbsoluteLayout  cssClass="activity-indicator" style.visibility="true" row="4">
+          <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" />
         </AbsoluteLayout>
     </GridLayout>
 </Page>

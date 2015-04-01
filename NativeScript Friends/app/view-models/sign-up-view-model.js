@@ -21,7 +21,7 @@ var SignUpViewModel = (function (_super){
         this._isLoading = false;
         
         //User
-        this._username;
+        this._email;
         this._password;
         this._info = {
           DisplayName: "",
@@ -38,37 +38,41 @@ var SignUpViewModel = (function (_super){
 
         var el = new Everlive({ apiKey: BS_API_KEY });
 
-        if(validationModule.validate(that._username, [validationModule.minLengthConstraint],"Invalid username") &&
+        if(validationModule.validate(that._email, [validationModule.minLengthConstraint, validationModule.validEmailConstraint],"Invalid email" &&
            validationModule.validate(that._password, [validationModule.minLengthConstraint],"Invalid password") &&
-           validationModule.validate(that._info.DisplayName, [validationModule.minLengthConstraint],"Invalid name") &&
-           validationModule.validate(that._info.Email, [validationModule.minLengthConstraint, validationModule.validEmailConstraint],"Invalid email")
+           validationModule.validate(that._info.DisplayName, [validationModule.minLengthConstraint],"Invalid name")
+          )
           ){
             
             this.set("isLoading", true);
        
             el.Users.register(
-                that._username,
+                that._email,
                 that._password,
                 that._info,
                 function(data) {
 
-                    that.set("isLoading", false);
+                    el.Users.login(that._email, that._password, 
+                    function (data) {
 
-                    //Clear all fields
-                    that.set("username", "");
-                    that.set("password", "");
-                    that.set("name", "");
-                    that.set("email", "");
-                    that.set("gender", "");
-                    // that.set("birthDate", "");
-                    that.set("about", "");
+                            //Store in local storage
+                            LocalSettings.setString(TOKEN_DATA_KEY, data.result.access_token);
+                            LocalSettings.setString(USER_ID, data.result.principal_id);
+                            
+                            that.set("isLoading", false);
 
-                    dialogs.alert({
-                      title: "Sign up",
-                      message: "Successful",
-                      okButtonText: "Go get it!"
-                    }).then(function () {
-                        frameModule.topmost().navigate("app/views/activities-page");
+                            // //Clear all fields
+                            that.set("password", "");
+                            that.set("name", "");
+                            that.set("email", "");
+                            that.set("gender", "");
+                            // that.set("birthDate", "");
+                            that.set("about", "");
+                            frameModule.topmost().navigate("app/views/activities-page");
+
+                    },
+                    function(error){
+                        alert(error.message || "Can't log in! Please try again!");
                     });
                 },
                 function(error) {         
@@ -89,12 +93,13 @@ var SignUpViewModel = (function (_super){
         configurable: true
     });
 
-    Object.defineProperty(SignUpViewModel.prototype, "username", {
+    Object.defineProperty(SignUpViewModel.prototype, "email", {
         get: function () {
-            return this._username;
+            return this._email;
         },
         set: function(value) {
-            this._username = value;
+            this._email = value;
+            this._info.Email = value;
         },
         enumerable: true,
         configurable: true
@@ -117,17 +122,6 @@ var SignUpViewModel = (function (_super){
         },
         set: function(value) {
             this._info.DisplayName = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    
-    Object.defineProperty(SignUpViewModel.prototype, "email", {
-        get: function () {
-            return this._info.Email;
-        },
-        set: function(value) {
-            this._info.Email = value;
         },
         enumerable: true,
         configurable: true
