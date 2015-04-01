@@ -14,11 +14,11 @@
     margin:0 20 0 0
 }
 
+.margin-top {
+    margin: 20
+}
+
 .activity-text {
     margin: 20;
     font-size: 12;
-}
-
-.align-top {
-    vertical-align: top;
 }

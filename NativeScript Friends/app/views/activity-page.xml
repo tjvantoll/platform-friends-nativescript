@@ -3,9 +3,7 @@
         <GridLayout cssClass="header-container" rows="auto, auto">
             <Image src="{{ activity.pictureImageSource || '~/app/res/default-activity.png' }}" stretch="aspectFill" rowSpan="2"/>
             <Image src="~/app/res/mask-activity.png" stretch="fill" rowSpan="2"/>
-            <StackLayout tap="backButtonClicked" cssClass="align-left align-top">
-                <Image src="~/app/res/back.png" cssClass="header-button align-left" />
-            </StackLayout>
+            <Image src="~/app/res/back.png" tap="backButtonClicked" cssClass="header-button align-left align-top margin-top" />
 
             <GridLayout row="1" columns="*, auto" verticalAlignment="bottom">
                 <StackLayout orientation="horizontal">

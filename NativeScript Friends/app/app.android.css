@@ -22,6 +22,10 @@ Page {
     horizontal-align: center;
 }
 
+.align-top {
+    vertical-align: top;
+}
+
 .header-button {
     height: 20;
     width: 20;
