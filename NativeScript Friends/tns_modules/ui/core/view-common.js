@@ -499,14 +499,14 @@ var View = (function (_super) {
                 break;
             case utils.layout.AT_MOST:
                 if (specSize < size) {
-                    result = Math.round(specSize) | utils.layout.MEASURED_STATE_TOO_SMALL;
+                    result = Math.round(specSize + 0.5) | utils.layout.MEASURED_STATE_TOO_SMALL;
                 }
                 break;
             case utils.layout.EXACTLY:
                 result = specSize;
                 break;
         }
-        return Math.round(result) | (childMeasuredState & utils.layout.MEASURED_STATE_MASK);
+        return Math.round(result + 0.5) | (childMeasuredState & utils.layout.MEASURED_STATE_MASK);
     };
     View.layoutChild = function (parent, child, left, top, right, bottom) {
         if (!child || !child._isVisible) {

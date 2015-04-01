@@ -5,6 +5,7 @@ var observable = require("data/observable");
 var platformModule = require("platform");
 
 var viewModel;
+var isAndroid = true;
 
 function pageLoaded(args) {
     var page = args.object;
@@ -31,7 +32,7 @@ function onActivityTap(args) {
 }
 
 function addActivity(){
-    alert("In Progress...");
+    frameModule.topmost().navigate("app/views/add-activity-page");
 }
 
 function logout(args){

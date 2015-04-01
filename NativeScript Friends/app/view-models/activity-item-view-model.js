@@ -51,13 +51,13 @@ var ActivityItemViewModel = (function (_super){
             var that = this;
             var url = this._source.User.Picture === null ? null : this._source.User.Picture.Uri;
             
-            if (this._source && !this._avatarImageSource && url) {
+            if (!url) {
+                this._avatarImageSource = null;
+            } else if (this._source && !this._avatarImageSource) {
                imageSource.fromUrl(url).then(function (result) {
                     that._avatarImageSource = result;
                     that.notify({ object: that, eventName: observable.knownEvents.propertyChange, propertyName: "avatarImageSource", value: that._avatarImageSource });
                 });
-            } else {
-                this._avatarImageSource = null;
             }
             
             return this._avatarImageSource;

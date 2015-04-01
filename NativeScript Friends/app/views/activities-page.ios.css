@@ -9,7 +9,8 @@
 
 .activity-summary {
     margin: 5 0;
-    font-size: 10;
+    font-size: 11;
+    min-height: 10;
 }
 
 .activity-date {
@@ -28,19 +29,6 @@
 .activity-picture {
     margin: 10 0;
     vertical-align: top;
-}
-
-.fab {
-    width: 60;
-    height: 60;
-    horizontal-align: right;
-    margin: 20;
-}
-
-.fabContainer
-{
-    vertical-align: bottom;
-    horizontal-align: right;
 }
 
 

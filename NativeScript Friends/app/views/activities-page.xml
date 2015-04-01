@@ -1,19 +1,21 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
-    <GridLayout rows="auto, *">
-        <GridLayout cssClass="header-container">
-            <GridLayout tap="logout">
-                <Image src="~/app/res/logout_new.png" cssClass="header-button align-left rotateLeftx180"/>
-            </GridLayout>
-            <Label text="Activities" cssClass="header-context-label" />
+    <GridLayout rows="auto, auto, *">
+        <GridLayout cssClass="header-container" columns="auto, *, auto">
+            <Label text="LOGOUT" tap="logout" cssClass="header-text align-left ios" />
+            <Image src="~/app/res/logout_new.png" tap="logout" cssClass="header-button align-left android"/>
+            <Label text="Activities" cssClass="header-context-label align-left android" col="1"/> 
+            <Label text="Friends" cssClass="header-context-label align-center ios" col="1"/>
+            <Label text="ADD" tap="addActivity" cssClass="header-text align-right ios" col="2"/>
         </GridLayout>
-        <ListView id="activitiesView" items="{{ activities }}" itemTap="onActivityTap" row="1">
+        <StackLayout cssClass="horizontal-line ios" row="1"></StackLayout>
+        <ListView id="activitiesView" items="{{ activities }}" itemTap="onActivityTap" row="2">
             <ListView.itemTemplate>
-                <StackLayout orientation="horizontal">
+                <GridLayout columns="auto, *" >
                     <StackLayout>
-                        <Image src="{{ avatarImageSource || '~/app/res/avatar.png' }}" stretch="fill" cssClass="activity-avatar"/>
+                        <Image src="{{ avatarImageSource  || '~/app/res/avatar.png' }}" stretch="fill" cssClass="activity-avatar"/>
                     </StackLayout>
-                    <StackLayout cssClass="activity-container">
-                        <Label cssClass="activity-name-android">
+                    <StackLayout cssClass="activity-container" col="1">
+                        <Label cssClass="activity-name">
                             <Label.formattedText>
                                 <FormattedString>
                                   <FormattedString.spans>
@@ -22,18 +24,18 @@
                                 </FormattedString>
                               </Label.formattedText>
                         </Label>
-                        <Label text="{{ Text || '-' }}" cssClass="activity-summary-android" textWrap="true" />
-                        <Image src="{{ pictureImageSource || '' }}" stretch="fill" cssClass="activity-picture" minWidth="1" minHeight="1" />
-                        <Label text="{{ CreatedAt, CreatedAt | dateConverter('DD.MM.YYYY') }}" cssClass="activity-date-android" />
+                        <Label text="{{ Text }}" cssClass="activity-summary" textWrap="true"/>
+                        <Image src="{{ pictureImageSource  || '' }}" cssClass="activity-picture" />
+                        <Label text="{{ CreatedAt, CreatedAt | dateConverter('DD.MM.YYYY') }}" cssClass="activity-date"/>
                   </StackLayout>
-                </StackLayout> 
+                </GridLayout> 
             </ListView.itemTemplate>  
         </ListView>
-    <AbsoluteLayout cssClass="fabContainer" style.visibility="true" row="2">
-      <Image src="~/app/res/add.png" tap="addActivity" stretch="fill" cssClass="fab" />
-    </AbsoluteLayout>
-    <AbsoluteLayout  cssClass="activity-indicator" style.visibility="true" row="2">
-      <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" />
-    </AbsoluteLayout>
+        <AbsoluteLayout cssClass="fabContainer android"  row="2">
+          <Image src="~/app/res/add.png" tap="addActivity" stretch="fill" cssClass="fab" />
+        </AbsoluteLayout>
+        <AbsoluteLayout  cssClass="activity-indicator" style.visibility="true" row="2">
+          <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" />
+        </AbsoluteLayout>
     </GridLayout>
 </Page>
