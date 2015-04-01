@@ -35,6 +35,16 @@ function goBack(args){
     }
 }
 
+function commentButtonClicked(args){
+    
+}
+
+function deleteButtonClicked(args){
+
+}
+
 exports.backButtonClicked = backButtonClicked;
+exports.commentButtonClicked = commentButtonClicked;
+exports.deleteButtonClicked = deleteButtonClicked;
 exports.pageNavigatedTo = pageNavigatedTo;
 exports.onSwipe = onSwipe;
