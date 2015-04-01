@@ -1,21 +1,21 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="pageNavigatedTo">
-    <GridLayout rows="auto, *">
+<Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="pageNavigatedTo" swipe="onSwipe">
+    <GridLayout rows="auto, *" >
         <GridLayout cssClass="header-container" rows="auto, auto">
             <Image src="{{ activity.pictureImageSource || '~/app/res/default-activity.png' }}" stretch="aspectFill" rowSpan="2"/>
             <Image src="~/app/res/mask-activity.png" stretch="fill" rowSpan="2"/>
-            <StackLayout tap="backButtonClicked">
+            <StackLayout tap="backButtonClicked" cssClass="align-left align-top">
                 <Image src="~/app/res/back.png" cssClass="header-button align-left" />
             </StackLayout>
 
             <GridLayout row="1" columns="*, auto" verticalAlignment="bottom">
                 <StackLayout orientation="horizontal">
-                    <Image src="{{ activity.avatarImageSource || '~/app/res/avatar.png' }}" stretch="fill" cssClass="activity-avatar"/>
+                    <Image src="{{ activity.avatarImageSource || '~/app/res/avatar.png' }}" stretch="fill" cssClass="activity-avatar align-top"/>
                     <Label text="{{ activity.userName }}" cssClass="activity-user" />
                 </StackLayout>
                 <Label text="{{ activityDateFormatted }}" col="1" cssClass="activity-user align-right margin-right" />
             </GridLayout>
         </GridLayout>
 
-        <Label text="{{activity.Text}}" row="1" textWrap="true" cssClass="activity-text" />
+        <Label text="{{activity.Text}}" row="1" textWrap="true" cssClass="activity-text align-top" />
     </GridLayout>
 </Page>
