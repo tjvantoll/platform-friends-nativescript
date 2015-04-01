@@ -46,6 +46,10 @@ var activityViewModel = (function (_super) {
         }
     });
     
+    activityViewModel.prototype.deleteActivity = function () {
+       alert("test");
+    };
+    
     return activityViewModel;
 })(observable.Observable);
 

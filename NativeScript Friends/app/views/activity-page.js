@@ -40,7 +40,19 @@ function commentButtonClicked(args){
 }
 
 function deleteButtonClicked(args){
-
+    var dialogs = require("ui/dialogs");
+    dialogs.confirm({
+        title: "Delete activity",
+        message: "Are you sure?",
+        okButtonText: "Delete",
+        cancelButtonText: "Cancel"
+        })
+    .then(function (result) {
+        if(result)
+        {
+             viewModel.deleteActivity();    
+        }
+    });
 }
 
 exports.backButtonClicked = backButtonClicked;
