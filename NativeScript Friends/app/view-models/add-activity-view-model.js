@@ -7,7 +7,7 @@ var __extends = this.__extends || function (d, b) {
 
 var observable = require("data/observable");
 
-var addActivityViewModel = (function (_super) {
+var AddActivityViewModel = (function (_super) {
     __extends(AddActivityViewModel, _super);
 
     function AddActivityViewModel(source) {
