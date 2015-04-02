@@ -5,6 +5,7 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 
+var LocalSettings = require("local-settings");
 var observable = require("data/observable");
 
 var activityViewModel = (function (_super) {
@@ -46,19 +47,50 @@ var activityViewModel = (function (_super) {
         }
     });
     
+    Object.defineProperty(activityViewModel.prototype, "userCanDeleteActivity", {
+        get: function () 
+        {
+            var userId = LocalSettings.getString(USER_ID);
+            return this._activity.User.Id === userId;
+        }
+    });
+    
+    Object.defineProperty(activityViewModel.prototype, "booleanToVisibilityConverter", {
+        get: function () 
+        {
+            return booleanToVisibilityConverter;
+        }
+    });
+    
     activityViewModel.prototype.deleteActivity = function () {
-        var activities = EVERLIVE.data("Activities");
-        activities.destroySingle({ Id: this.activity.Id },
-            function(){
-                alert("Activity successfully deleted.");
-            },
-            function(error){
-                alert(JSON.stringify(error));
-            }
-        );
+        var that = this;
+        
+        return new Promise(function (resolve, reject) {
+            var activities = EVERLIVE.data("Activities");
+            
+            activities.destroySingle({ Id: that._activity.Id },
+                function(){
+                    alert("Activity successfully deleted.");
+                    return resolve(true);
+                },
+                function(error){
+                    alert(JSON.stringify(error));
+                    return resolve(false);
+                }
+            );
+        });
     };
     
     return activityViewModel;
 })(observable.Observable);
+
+var booleanToVisibilityConverter = {
+	toView: function (value, format) {
+		return value === true ? "visible" : "collapsed";
+	},
+	toModel: function (value, format) {
+		return value === "visible";
+	}
+}
 
 exports.activityViewModel = activityViewModel;

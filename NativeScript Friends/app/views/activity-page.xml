@@ -6,8 +6,9 @@
             <Image src="~/app/res/back-light.png" tap="backButtonClicked" cssClass="header-button align-left align-top margin-top" />
             
             <StackLayout orientation="horizontal" cssClass="align-right align-top">
+                <Image src="~/app/res/delete.png" tap="deleteButtonClicked" cssClass="header-button margin-top" 
+                    visibility="{{ userCanDeleteActivity, userCanDeleteActivity | booleanToVisibilityConverter() }}" />
                 <Image src="~/app/res/comment.png" tap="commentButtonClicked" cssClass="header-button margin-top" />
-                <Image src="~/app/res/delete.png" tap="deleteButtonClicked" cssClass="header-button margin-top" />
             </StackLayout>
                         
             <GridLayout row="1" columns="*, auto" verticalAlignment="bottom">

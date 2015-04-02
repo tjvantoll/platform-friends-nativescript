@@ -27,7 +27,7 @@ function onSwipe(args){
     }
 }
 
-function goBack(args){
+function goBack(){
     if (frameModule.topmost().canGoBack) {
         frameModule.topmost().goBack();
     } else {
@@ -53,7 +53,12 @@ function deleteButtonClicked(args){
     .then(function (result) {
         if(result)
         {
-             viewModel.deleteActivity();    
+             viewModel.deleteActivity()
+                .then(function(isDeleted) {
+                    if (isDeleted){
+                        goBack();
+                    }
+                });    
         }
     });
 }
