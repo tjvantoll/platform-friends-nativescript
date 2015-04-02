@@ -10,7 +10,7 @@
         <StackLayout cssClass="horizontal-line ios" row="1"></StackLayout>
         <TextView text="{{ activity }}" row="2" textWrap="true" cssClass="text-input" />
         <AbsoluteLayout cssClass="fabContainer android"  row="3">
-          <Image src="~/app/res/done.png" tap="addActivity" stretch="fill" cssClass="fab" />
+          <Image src="~/app/res/done.png" stretch="fill" tap="addActivity" cssClass="fab" />
         </AbsoluteLayout>
         <AbsoluteLayout  cssClass="activity-indicator" style.visibility="true" row="4">
           <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" />
