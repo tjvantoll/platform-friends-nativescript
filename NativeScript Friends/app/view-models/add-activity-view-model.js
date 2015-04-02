@@ -23,29 +23,32 @@ var AddActivityViewModel = (function (_super) {
         var userId = LocalSettings.getString(USER_ID);
         var data = EVERLIVE.data('Activities');
 
-        //Load busy indicator
-        this.set("isLoading", true);
         var that = this;
+        
+        if(validationModule.validate(this._activity, [validationModule.minLengthConstraint],"Invalid activity")){
+            //Load busy indicator
+            this.set("isLoading", true);
+            
+            data.create({ 
+                'Text' : this.activity,
+                'UserId': userId
+            },
+            function(data){
+                that.set("isLoading",false);
+                if(typeof(doneCallback) === 'function'){
+                    doneCallback();
+                } 
+            },
+            function(error){
+                that.set("isLoading",false);
+                if(typeof(errorCallback) === 'function'){
+                    errorCallback(error);
+                } 
+            });
 
-        data.create({ 
-            'Text' : this.activity,
-            'UserId': userId
-        },
-        function(data){
-            that.set("isLoading",false);
-            if(typeof(doneCallback) === 'function'){
-                doneCallback();
-            } 
-        },
-        function(error){
-            that.set("isLoading",false);
-            if(typeof(errorCallback) === 'function'){
-                errorCallback(error);
-            } 
-        });
-
-        //Clear text field
-        this.set("activity", "");
+            //Clear text field
+            this.set("activity", "");
+        }
     };
 
     Object.defineProperty(AddActivityViewModel.prototype, "activity", {
