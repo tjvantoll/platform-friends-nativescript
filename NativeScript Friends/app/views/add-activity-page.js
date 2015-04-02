@@ -3,17 +3,29 @@ var frameModule = require("ui/frame");
 var platformModule = require("platform");
 var Everlive = require("../lib/everlive.all.min");
 var LocalSettings = require("local-settings");
+var view = require("ui/core/view");
 var viewModel;
 
 function pageNavigatedTo(args) {
     var page = args.object;
     viewModel = new vmModule.AddActivityViewModel();
-    page.bindingContext = viewModel
+    page.bindingContext = viewModel;
     
     if (platformModule.device.os == "iOS") {
         frameModule.topmost().ios.controller.navigationBarHidden = true;
     }
     
+    setFocusToTextField(page);
+    verifyUserPermissions();
+
+}
+
+function setFocusToTextField(page){
+    var activityTextBox = view.getViewById(page, "add-activity-text");
+    activityTextBox.focus();
+}
+
+function verifyUserPermissions(){
     var userId = LocalSettings.getString(USER_ID);
     if(typeof(userId) === 'undefined' || userId === ""){
         frameModule.topmost().navigate("app/views/main-page");
