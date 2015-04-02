@@ -21,7 +21,11 @@ function pageNavigatedTo(args) {
 }
 
 function backButtonClicked(args){
-    frameModule.topmost().navigate("app/views/activities-page");
+    if (frameModule.topmost().canGoBack) {
+        frameModule.topmost().goBack();
+    } else {
+        frameModule.topmost().navigate("app/views/activities-page");
+    }
 }
 
 function addActivity() {
