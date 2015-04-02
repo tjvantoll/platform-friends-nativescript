@@ -7,15 +7,15 @@ var __extends = this.__extends || function (d, b) {
 
 var observable = require("data/observable");
 
-var addActivityViewModel = (function (_super) {
-    __extends(AddActivityViewModel, _super);
+var addCommentViewModel = (function (_super) {
+    __extends(addCommentViewModel, _super);
 
-    function AddActivityViewModel(source) {
+    function addCommentViewModel(source) {
         _super.call(this);
         this._activity = new observable.Observable();
     }
 
-    Object.defineProperty(AddActivityViewModel.prototype, "activity", {
+    Object.defineProperty(addCommentViewModel.prototype, "activity", {
         get: function () 
         {
             return this._activity;
@@ -24,11 +24,16 @@ var addActivityViewModel = (function (_super) {
         {
             if (this._activity !== value) {
                 this._activity = value;
+                this.notify({ object: this, eventName: observable.knownEvents.propertyChange, propertyName: "activity", value: value });
             }
         }
     });
+         
+    addCommentViewModel.prototype.save = function () {
+        
+    };
     
-    return AddActivityViewModel;
+    return addCommentViewModel;
 })(observable.Observable);
 
-exports.AddActivityViewModel = AddActivityViewModel;
+exports.addCommentViewModel = addCommentViewModel;

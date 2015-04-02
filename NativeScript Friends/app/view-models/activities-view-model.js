@@ -13,7 +13,6 @@ var imageSource = require("image-source");
 var imageCache = require("ui/image-cache");
 var view = require("ui/core/view");
 var platformModule = require("platform");
-var LocalSettings = require("local-settings");
 
 var cache = new imageCache.Cache();
 //cache.invalid = imageSource.fromFile("~/app/res/avatar.png");
@@ -34,7 +33,6 @@ var ActivitiesViewModel = (function (_super){
     Object.defineProperty(ActivitiesViewModel.prototype, "activities", {
         get: function () {
 
-            var el = new Everlive({ apiKey: BS_API_KEY, token: LocalSettings.getString(TOKEN_DATA_KEY) });
             var that = this;
 
             var expandExp = {
@@ -51,7 +49,7 @@ var ActivitiesViewModel = (function (_super){
             };
 
 
-            var data = el.data('Activities');
+            var data = everlive.data('Activities');
             
             data.expand(expandExp).get().then(function(data) {
                for(var i = 0; i < data.result.length; i++){

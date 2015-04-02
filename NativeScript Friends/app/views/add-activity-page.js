@@ -7,9 +7,7 @@ var viewModel;
 
 function pageNavigatedTo(args) {
     var page = args.object;
-    //viewModel.set("activity", activity)
-    viewModel = new vmModule.addActivityViewModel();
-    viewModel.activity = page.navigationContext;
+    viewModel = new vmModule.AddActivityViewModel();
     page.bindingContext = viewModel
     
     if (platformModule.device.os == "iOS") {

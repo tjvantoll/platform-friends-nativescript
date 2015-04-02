@@ -22,7 +22,7 @@ var MainViewModel = (function (_super){
         this._isLoading = false;
         
         //User
-        this._email;
+        this._username;
         this._password;   
     }
     
@@ -30,19 +30,16 @@ var MainViewModel = (function (_super){
        
         var that = this;
 
-        var el = new Everlive({ apiKey: BS_API_KEY });
-
-        if(validationModule.validate(that._email, [validationModule.minLengthConstraint,validationModule.validEmailConstraint],"Invalid email") &&
+        if(validationModule.validate(that._username, [validationModule.minLengthConstraint],"Invalid username") &&
            validationModule.validate(that._password, [validationModule.minLengthConstraint],"Invalid password")){
             
             this.set("isLoading", true);
        
-            el.Users.login(that._email, that._password, 
+            everlive.Users.login(that._username, that._password, 
             function (data) {
-                if(typeof(data.result) !== 'undefined' && typeof(data.result.principal_id) !== 'undefined' && typeof(data.result.access_token) !== 'undefined'){
+                if(typeof(data.result) !== 'undefined' && typeof(data.result.principal_id) !== 'undefined'){
                     //Store in local storage
-                    LocalSettings.setString(TOKEN_DATA_KEY, data.result.access_token);
-                    LocalSettings.setString(USER_ID, data.result.principal_id);
+                    // LocalSettings.setString("principal_id", data.result.principal_id);
                     frameModule.topmost().navigate("app/views/activities-page");
                 }
                 else{
@@ -66,12 +63,12 @@ var MainViewModel = (function (_super){
         configurable: true
     });
 
-    Object.defineProperty(MainViewModel.prototype, "email", {
+    Object.defineProperty(MainViewModel.prototype, "username", {
         get: function () {
-            return this._email;
+            return this._username;
         },
         set: function(value) {
-            this._email = value;
+            this._username = value;
         },
         enumerable: true,
         configurable: true
