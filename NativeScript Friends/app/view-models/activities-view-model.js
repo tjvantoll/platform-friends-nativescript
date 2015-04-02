@@ -33,7 +33,6 @@ var ActivitiesViewModel = (function (_super){
     Object.defineProperty(ActivitiesViewModel.prototype, "activities", {
         get: function () {
 
-            var el = new Everlive({ apiKey: BS_API_KEY });
             var that = this;
 
             var expandExp = {
@@ -50,7 +49,7 @@ var ActivitiesViewModel = (function (_super){
             };
 
 
-            var data = el.data('Activities');
+            var data = everlive.data('Activities');
             
             data.expand(expandExp).get().then(function(data) {
                for(var i = 0; i < data.result.length; i++){

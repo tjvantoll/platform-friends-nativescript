@@ -30,14 +30,12 @@ var MainViewModel = (function (_super){
        
         var that = this;
 
-        var el = new Everlive({ apiKey: BS_API_KEY });
-
         if(validationModule.validate(that._username, [validationModule.minLengthConstraint],"Invalid username") &&
            validationModule.validate(that._password, [validationModule.minLengthConstraint],"Invalid password")){
             
             this.set("isLoading", true);
        
-            el.Users.login(that._username, that._password, 
+            everlive.Users.login(that._username, that._password, 
             function (data) {
                 if(typeof(data.result) !== 'undefined' && typeof(data.result.principal_id) !== 'undefined'){
                     //Store in local storage

@@ -36,7 +36,10 @@ function goBack(args){
 }
 
 function commentButtonClicked(args){
-    
+    frameModule.topmost().navigate({
+        moduleName: "app/views/add-comment-page",
+        context: viewModel.activity
+    });
 }
 
 function deleteButtonClicked(args){
