@@ -11,10 +11,6 @@
             <TextField id="email" cssClass="text-input" keyboardType="email" hint="e-mail" text="{{ email }}"/>
             <TextField id="password" cssClass="text-input" hint="password" secure="true" text="{{ password }}"/>
             <TextField id="name" cssClass="text-input" hint="name" text="{{ name }}"/>
-<!--        <GridLayout tap="chooseBirthDate" id="birthDatePickerContainer">
-                <Image cssClass="arrow-icon" src="~/app/res/right-arrow.png" />
-                <Label id="birth-date" text="{{ birthDate || 'Birth Date' }}" />
-            </GridLayout> -->
             <Label id="gender" cssClass="text-input" text="{{ gender || 'Gender' }}" tap="chooseGender"/>
             <TextField id="about" cssClass="text-input" hint="about" text="{{ about }}" />
             <Button text="Sign up" id="register" tap="{{ signUp }}" cssClass="signup-button"/>

@@ -21,31 +21,22 @@ function pageNavigatedTo(args) {
 }
 
 function backButtonClicked(args){
-    frameModule.topmost().navigate("app/views/activities-page");
+    if (frameModule.topmost().canGoBack) {
+        frameModule.topmost().goBack();
+    } else {
+        frameModule.topmost().navigate("app/views/activities-page");
+    }
 }
 
-function addActivity(args){
-    var userId = LocalSettings.getString(USER_ID);
-    var data = EVERLIVE.data('Activities');
-    
-    //Load busy indicator
-    viewModel.set("isLoading", true);
-    
-    data.create({ 
-        'Text' : viewModel.activity,
-        'UserId': userId
-    },
-        function(data){
-            viewModel.set("isLoading",false);
-            backButtonClicked();
+function addActivity() {
+    viewModel.addActivity(
+        function(){
+            frameModule.topmost().navigate("app/views/activities-page");
         },
         function(error){
-            viewModel.set("isLoading",false);
             alert(JSON.stringify(error));
-        });
-    
-    //Clear text field
-    viewModel.set("activity", "");
+        }
+    );
 }
 
 exports.backButtonClicked = backButtonClicked;

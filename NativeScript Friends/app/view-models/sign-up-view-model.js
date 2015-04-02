@@ -10,6 +10,7 @@ var Everlive = require("../lib/everlive.all.min");
 var dialogs = require("ui/dialogs");
 var frameModule = require("ui/frame");
 var validationModule = require("../utils/validate");
+var LocalSettings = require("local-settings");
 
 var SignUpViewModel = (function (_super){
     
@@ -48,7 +49,6 @@ var SignUpViewModel = (function (_super){
                 that._password,
                 that._info,
                 function(data) {
-                      alert(that._email);
 
                     EVERLIVE.Users.login(that._email, that._password, 
                     function (data) {

@@ -22,7 +22,7 @@ function goBack(args){
     if (frameModule.topmost().canGoBack) {
         frameModule.topmost().goBack();
     } else {
-        frameModule.topmost().navigate("app/views/activities-page");
+        frameModule.topmost().navigate("app/views/main-page");
     }
 }
 
