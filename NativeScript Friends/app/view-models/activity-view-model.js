@@ -70,12 +70,11 @@ var activityViewModel = (function (_super) {
             
             activities.destroySingle({ Id: that._activity.Id },
                 function(){
-                    alert("Activity successfully deleted.");
-                    return resolve(true);
+                    return resolve();
                 },
                 function(error){
                     alert(JSON.stringify(error));
-                    return resolve(false);
+                    return reject();
                 }
             );
         });

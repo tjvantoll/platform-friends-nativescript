@@ -53,12 +53,7 @@ function deleteButtonClicked(args){
     .then(function (result) {
         if(result)
         {
-             viewModel.deleteActivity()
-                .then(function(isDeleted) {
-                    if (isDeleted){
-                        goBack();
-                    }
-                });    
+             viewModel.deleteActivity().then(function() { goBack(); });    
         }
     });
 }
