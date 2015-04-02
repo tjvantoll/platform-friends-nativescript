@@ -2,24 +2,32 @@ var vmModule = require("../view-models/main-view-model");
 var frameModule = require("ui/frame");
 var platformModule = require("platform");
 var viewModule = require("ui/core/view");
+var viewModel;
 
 // Event handler for Page "loaded" event attached in main-page.xml
 function pageLoaded(args) {
     var page = args.object;
-    page.bindingContext = new vmModule.MainViewModel();
+    viewModel = new vmModule.MainViewModel();
+    page.bindingContext = viewModel;
     
     if (platformModule.device.os == "Android") {
         frameModule.topmost().android.actionBar.hide();
-        frameModule.topmost().android.cachePagesOnNavigate = true;
     }
     
     if (platformModule.device.os == "iOS") {
         frameModule.topmost().ios.controller.navigationBarHidden = true;
     }
+    
+    clearEmailAndPassword();
 }
 
 function navigateRegister(args){
     frameModule.topmost().navigate("app/views/sign-up-page");
+}
+
+function clearEmailAndPassword(){
+    viewModel.set("email", "");
+    viewModel.set("password", "");
 }
 
 exports.navigateRegister = navigateRegister;
