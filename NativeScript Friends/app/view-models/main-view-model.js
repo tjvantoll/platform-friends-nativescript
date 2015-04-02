@@ -30,7 +30,7 @@ var MainViewModel = (function (_super){
        
         var that = this;
 
-        var el = new Everlive({ apiKey: BS_API_KEY, token: LocalSettings.getString(TOKEN_DATA_KEY) });
+        var el = new Everlive({ apiKey: BS_API_KEY });
 
         if(validationModule.validate(that._email, [validationModule.minLengthConstraint,validationModule.validEmailConstraint],"Invalid email") &&
            validationModule.validate(that._password, [validationModule.minLengthConstraint],"Invalid password")){

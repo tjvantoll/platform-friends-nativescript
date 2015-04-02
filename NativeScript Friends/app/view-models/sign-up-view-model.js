@@ -51,6 +51,7 @@ var SignUpViewModel = (function (_super){
                 that._password,
                 that._info,
                 function(data) {
+                      alert(that._email);
 
                     el.Users.login(that._email, that._password, 
                     function (data) {
