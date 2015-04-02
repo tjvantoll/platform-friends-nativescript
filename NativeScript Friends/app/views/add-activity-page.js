@@ -25,10 +25,8 @@ function backButtonClicked(args){
 }
 
 function addActivity(args){
-      
-    var el = new Everlive({ apiKey: BS_API_KEY, token: LocalSettings.getString(TOKEN_DATA_KEY) });
     var userId = LocalSettings.getString(USER_ID);
-    var data = el.data('Activities');
+    var data = EVERLIVE.data('Activities');
     
     //Load busy indicator
     viewModel.set("isLoading", true);

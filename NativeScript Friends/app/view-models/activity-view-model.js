@@ -47,7 +47,7 @@ var activityViewModel = (function (_super) {
     });
     
     activityViewModel.prototype.deleteActivity = function () {
-        var activities = everlive.data("Activities");
+        var activities = EVERLIVE.data("Activities");
         activities.destroySingle({ Id: this.activity.Id },
             function(){
                 alert("Activity successfully deleted.");

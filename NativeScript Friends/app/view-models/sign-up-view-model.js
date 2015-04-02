@@ -33,10 +33,7 @@ var SignUpViewModel = (function (_super){
     }
     
    SignUpViewModel.prototype.signUp = function() {
-       
         var that = this;
-
-        var el = new Everlive({ apiKey: BS_API_KEY });
 
         if(validationModule.validate(that._email, [validationModule.minLengthConstraint, validationModule.validEmailConstraint],"Invalid email" &&
            validationModule.validate(that._password, [validationModule.minLengthConstraint],"Invalid password") &&
@@ -46,14 +43,14 @@ var SignUpViewModel = (function (_super){
             
             this.set("isLoading", true);
        
-            el.Users.register(
+            EVERLIVE.Users.register(
                 that._email,
                 that._password,
                 that._info,
                 function(data) {
                       alert(that._email);
 
-                    el.Users.login(that._email, that._password, 
+                    EVERLIVE.Users.login(that._email, that._password, 
                     function (data) {
 
                             //Store in local storage
@@ -67,7 +64,6 @@ var SignUpViewModel = (function (_super){
                             that.set("name", "");
                             that.set("email", "");
                             that.set("gender", "");
-                            // that.set("birthDate", "");
                             that.set("about", "");
                             frameModule.topmost().navigate("app/views/activities-page");
 
@@ -138,17 +134,6 @@ var SignUpViewModel = (function (_super){
         enumerable: true,
         configurable: true
     });
-    
-    // Object.defineProperty(SignUpViewModel.prototype, "birthDate", {
-    //     get: function () {
-    //         return this._info.birthDate;
-    //     },
-    //     set: function(value) {
-    //         this._info.birthDate = value;
-    //     },
-    //     enumerable: true,
-    //     configurable: true
-    // });
     
     Object.defineProperty(SignUpViewModel.prototype, "about", {
         get: function () {

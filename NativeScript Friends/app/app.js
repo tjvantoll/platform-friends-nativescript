@@ -7,5 +7,7 @@ application.mainModule = "app/views/main-page";
 global.BS_API_KEY = "mmfUiB9IBDxb6mvR";
 global.TOKEN_DATA_KEY = "authenticationToken";
 global.USER_ID = "userId";
+global.EVERLIVE = null;
+
 
 application.start();

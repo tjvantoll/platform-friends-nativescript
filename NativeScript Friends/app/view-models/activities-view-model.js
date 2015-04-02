@@ -49,7 +49,7 @@ var ActivitiesViewModel = (function (_super){
             };
 
 
-            var data = everlive.data('Activities');
+            var data = EVERLIVE.data('Activities');
             
             data.expand(expandExp).get().then(function(data) {
                for(var i = 0; i < data.result.length; i++){
