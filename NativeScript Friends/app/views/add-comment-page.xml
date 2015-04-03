@@ -5,12 +5,15 @@
             <Image src="~/app/res/back-light.png" tap="backButtonClicked" cssClass="header-button align-left android"/>
             <Label text="Post" cssClass="header-context-label align-left android" col="1"/> 
             <Label text="Friends" colSpan="3" cssClass="header-context-label align-center ios" />
-            <Label text="DONE" cssClass="header-text align-right ios" tap="addActivity" col="2"/>
+            <Label text="DONE" cssClass="header-text align-right ios" tap="addComment" col="2"/>
         </GridLayout>
         <StackLayout cssClass="horizontal-line ios" row="1"></StackLayout>
-        <!--<TextView text="{{ activity }}" row="2" textWrap="true" cssClass="activity-text" /> -->
-        <AbsoluteLayout cssClass="fabContainer android"  row="3">
-          <Image src="~/app/res/done.png" tap="addActivity" stretch="fill" cssClass="fab" />
+        <TextView text="{{ commentText || '' }}" id="add-activity-text" row="2" textWrap="true" cssClass="text-input" />
+        <AbsoluteLayout cssClass="fabContainer android" rowSpan="3">
+          <Image src="~/app/res/done.png" stretch="fill" id="test-element" tap="addActivity" cssClass="fab" />
+        </AbsoluteLayout>
+        <AbsoluteLayout cssClass="activity-indicator" style.visibility="true" rowSpan="3">
+          <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" />
         </AbsoluteLayout>
     </GridLayout>
 </Page>

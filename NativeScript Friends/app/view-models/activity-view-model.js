@@ -8,6 +8,15 @@ var __extends = this.__extends || function (d, b) {
 var LocalSettings = require("local-settings");
 var observable = require("data/observable");
 
+var booleanToVisibilityConverter = {
+	toView: function (value, format) {
+		return value === true ? "visible" : "collapsed";
+	},
+	toModel: function (value, format) {
+		return value === "visible";
+	}
+}
+
 var activityViewModel = (function (_super) {
     __extends(activityViewModel, _super);
 
@@ -82,14 +91,5 @@ var activityViewModel = (function (_super) {
     
     return activityViewModel;
 })(observable.Observable);
-
-var booleanToVisibilityConverter = {
-	toView: function (value, format) {
-		return value === true ? "visible" : "collapsed";
-	},
-	toModel: function (value, format) {
-		return value === "visible";
-	}
-}
 
 exports.activityViewModel = activityViewModel;

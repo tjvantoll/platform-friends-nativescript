@@ -1,5 +1,6 @@
 var vmModule = require("../view-models/add-comment-view-model");
 var frameModule = require("ui/frame");
+var platformModule = require("platform");
 var viewModel;
 
 function pageNavigatedTo(args) {
@@ -18,7 +19,7 @@ function backButtonClicked(args){
     goBack();
 }
 
-function goBack(args){
+function goBack(){
     if (frameModule.topmost().canGoBack) {
         frameModule.topmost().goBack();
     } else {
@@ -29,5 +30,10 @@ function goBack(args){
     }
 }
 
+function addComment() {
+    viewModel.addComment().then(goBack);
+}
+
 exports.backButtonClicked = backButtonClicked;
 exports.pageNavigatedTo = pageNavigatedTo;
+exports.addComment = addComment;
