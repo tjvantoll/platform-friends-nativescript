@@ -22,13 +22,12 @@ var SignUpViewModel = (function (_super){
         this._isLoading = false;
         
         //User
-        this._email;
-        this._password;
+        this._email = "";
+        this._password = "";
         this._info = {
           DisplayName: "",
           Email: "",
           gender: "",
-          // birthDate: 0,
           about: ""
         };    
     }
@@ -36,10 +35,9 @@ var SignUpViewModel = (function (_super){
    SignUpViewModel.prototype.signUp = function() {
         var that = this;
 
-        if(validationModule.validate(that._email, [validationModule.minLengthConstraint, validationModule.validEmailConstraint],"Invalid email" &&
+        if(validationModule.validate(that._email, [validationModule.minLengthConstraint, validationModule.validEmailConstraint],"Invalid email") &&
            validationModule.validate(that._password, [validationModule.minLengthConstraint],"Invalid password") &&
            validationModule.validate(that._info.DisplayName, [validationModule.minLengthConstraint],"Invalid name")
-          )
           ){
             
             this.set("isLoading", true);

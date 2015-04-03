@@ -1,8 +1,8 @@
 exports.validate = function(value, constraints, errorMessage){
     var result = true;
     
-    if(typeof(value) === 'undefined'){
-        alert(errorMessage);
+    if(typeof(value) === 'undefined' && value === ""){
+        alert("Test" + errorMessage);
         return false;
     }
     
