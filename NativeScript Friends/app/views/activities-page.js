@@ -24,7 +24,7 @@ function bindActivityIndicatorWithListView(page){
     var listView = view.getViewById(page, "activitiesView");
     listView.on("itemLoading", function (args) {
         viewModel.set("isLoading",false);
-        
+ 
     });
 }
 

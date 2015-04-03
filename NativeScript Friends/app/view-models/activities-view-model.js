@@ -51,7 +51,10 @@ var ActivitiesViewModel = (function (_super){
 
             var data = EVERLIVE.data('Activities');
             
-            data.expand(expandExp).get().then(function(data) {
+            var query = new Everlive.Query();
+            query.orderDesc('CreatedAt');
+            
+            data.expand(expandExp).get(query).then(function(data) {
                for(var i = 0; i < data.result.length; i++){
                    data.result[i].dateConverter = dateConverter;
                    var activityItem = new activityItemViewModel.ActivityItemViewModel(data.result[i]);

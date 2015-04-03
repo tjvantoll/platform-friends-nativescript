@@ -32,6 +32,6 @@
             </ListView.itemTemplate>  
         </ListView>
         <ActivityIndicator rowSpan="3" busy="{{ isLoading }}" cssClass="activity-indicator" />
-        <Image src="~/app/res/add.png" rowSpan="3" tap="addActivity" stretch="fill" cssClass="fab fabContainer android" />
+        <Image src="~/app/res/add.png" rowSpan="3" id="add-activity" tap="addActivity" stretch="fill" cssClass="fab fabContainer android" />
     </GridLayout>
 </Page>
