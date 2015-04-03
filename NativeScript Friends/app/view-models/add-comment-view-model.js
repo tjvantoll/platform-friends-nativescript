@@ -55,10 +55,10 @@ var addCommentViewModel = (function (_super) {
         return new Promise(function (resolve, reject) {
             if (validationModule.validate(that._commentText, [validationModule.minLengthConstraint], "Invalid comment")) {
                 //Load busy indicator
-                this.set("isLoading", true);
+                that.set("isLoading", true);
                 
                 data.create({ 
-                        'Text' : that._commentText,
+                        'Comment' : that._commentText,
                         'UserId': userId,
                         'ActivityId': that._activity.Id
                     },

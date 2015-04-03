@@ -9,10 +9,10 @@
         </GridLayout>
         <StackLayout cssClass="horizontal-line ios" row="1"></StackLayout>
         <TextView text="{{ commentText || '' }}" id="add-activity-text" row="2" textWrap="true" cssClass="text-input" />
-        <AbsoluteLayout cssClass="fabContainer android" rowSpan="3">
-          <Image src="~/app/res/done.png" stretch="fill" id="test-element" tap="addActivity" cssClass="fab" />
+        <AbsoluteLayout cssClass="fabContainer android" rowSpan="4">
+          <Image src="~/app/res/done.png" stretch="fill" id="test-element" tap="addComment" cssClass="fab" />
         </AbsoluteLayout>
-        <AbsoluteLayout cssClass="activity-indicator" style.visibility="true" rowSpan="3">
+        <AbsoluteLayout cssClass="activity-indicator" style.visibility="true" rowSpan="4">
           <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" />
         </AbsoluteLayout>
     </GridLayout>
