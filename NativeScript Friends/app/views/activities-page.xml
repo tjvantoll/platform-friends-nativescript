@@ -31,11 +31,7 @@
                 </GridLayout> 
             </ListView.itemTemplate>  
         </ListView>
-        <AbsoluteLayout rowSpan="3" cssClass="activity-indicator">
-          <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" />
-        </AbsoluteLayout>
-        <AbsoluteLayout rowSpan="3" cssClass="fabContainer android">
-          <Image src="~/app/res/add.png" tap="addActivity" stretch="fill" cssClass="fab" />
-        </AbsoluteLayout>
+        <ActivityIndicator rowSpan="3" busy="{{ isLoading }}" cssClass="activity-indicator" />
+        <Image src="~/app/res/add.png" rowSpan="3" tap="addActivity" stretch="fill" cssClass="fab fabContainer android" />
     </GridLayout>
 </Page>

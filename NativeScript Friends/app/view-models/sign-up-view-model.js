@@ -12,6 +12,7 @@ var frameModule = require("ui/frame");
 var validationModule = require("../utils/validate");
 var LocalSettings = require("local-settings");
 
+
 var SignUpViewModel = (function (_super){
     
     __extends(SignUpViewModel, _super);
