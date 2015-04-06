@@ -7,6 +7,8 @@ var __extends = this.__extends || function (d, b) {
 
 var LocalSettings = require("local-settings");
 var observable = require("data/observable");
+var observableArray = require("data/observable-array");
+var Everlive = require("../lib/everlive.all.min");
 
 var booleanToVisibilityConverter = {
 	toView: function (value, format) {
@@ -23,6 +25,7 @@ var activityViewModel = (function (_super) {
     function activityViewModel(source) {
         _super.call(this);
         this._activity = new observable.Observable();
+        this._comments = new observableArray.ObservableArray(); 
     }
 
     Object.defineProperty(activityViewModel.prototype, "activity", {
@@ -35,8 +38,32 @@ var activityViewModel = (function (_super) {
             if (this._activity !== value) {
                 this._activity = value;
                 this.notify({ object: this, eventName: observable.knownEvents.propertyChange, propertyName: "activity", value: value });
+                this.notify({ object: this, eventName: observable.knownEvents.propertyChange, propertyName: "comments", value: this.comments });
             }
         }
+    });
+    
+    Object.defineProperty(activityViewModel.prototype, "comments", {
+        get: function () 
+        {
+            var that = this;
+            var commentsData = EVERLIVE.data("Comments");
+            
+            var filter = new Everlive.Query();
+            filter.where().eq("ActivityId", that._activity.Id);
+            
+            commentsData.get(filter)
+            .then(function(data){
+                that._comments.push(data);       
+            },
+            function(error){
+                alert(JSON.stringify(error));
+            });
+            
+            return this._comments;
+        },
+        enumerable: true,
+        configurable: true
     });
     
     Object.defineProperty(activityViewModel.prototype, "activityDateFormatted", {

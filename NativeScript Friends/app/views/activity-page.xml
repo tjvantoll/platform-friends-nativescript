@@ -1,5 +1,5 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="pageNavigatedTo" swipe="onSwipe">
-    <GridLayout rows="auto, *" >
+    <GridLayout rows="auto, auto, *" >
         <GridLayout cssClass="header-container" rows="auto, auto">
             <Image src="{{ activity.pictureImageSource || '~/app/res/default-activity.png' }}" stretch="aspectFill" rowSpan="2"/>
             <Image src="~/app/res/mask-activity.png" stretch="fill" rowSpan="2"/>
@@ -21,5 +21,27 @@
         </GridLayout>
 
         <Label text="{{activity.Text}}" row="1" textWrap="true" cssClass="activity-text align-top" />
+
+        <ListView id="commentsList" items="{{ comments }}" row="2">
+            <ListView.itemTemplate>
+                <GridLayout columns="auto, *" >
+                    <Image src="{{ avatarImageSource  || '~/app/res/avatar.png' }}" stretch="fill" />
+                    <StackLayout col="1">
+                        <Label>
+                            <Label.formattedText>
+                                <FormattedString>
+                                  <FormattedString.spans>
+                                    <Span text="{{ userName }}" fontAttributes="Bold" />
+                                  </FormattedString.spans>
+                                </FormattedString>
+                            </Label.formattedText>
+                        </Label>
+                        <Label text="{{ Comment }}" textWrap="true"/>
+                        <Label text="Dummy" textWrap="true"/>
+                    </StackLayout>
+                </GridLayout> 
+            </ListView.itemTemplate>  
+        </ListView>
+
     </GridLayout>
 </Page>
