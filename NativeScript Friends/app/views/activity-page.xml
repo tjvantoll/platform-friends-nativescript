@@ -1,47 +1,47 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="pageNavigatedTo" swipe="onSwipe">
-    <GridLayout rows="auto, auto, *" >
-        <GridLayout cssClass="header-container" rows="auto, auto">
-            <Image src="{{ activity.pictureImageSource || '~/app/res/default-activity.png' }}" stretch="aspectFill" rowSpan="2"/>
-            <Image src="~/app/res/mask-activity.png" stretch="fill" rowSpan="2"/>
-            <Image src="~/app/res/back-light.png" tap="backButtonClicked" cssClass="header-button align-left align-top margin-top" />
-            
-            <StackLayout orientation="horizontal" cssClass="align-right align-top">
-                <Image src="~/app/res/delete.png" tap="deleteButtonClicked" cssClass="header-button margin-top" 
-                    visibility="{{ userCanDeleteActivity, userCanDeleteActivity | booleanToVisibilityConverter() }}" />
-                <Image src="~/app/res/comment.png" tap="commentButtonClicked" cssClass="header-button margin-top" />
-            </StackLayout>
-                        
-            <GridLayout row="1" columns="*, auto" verticalAlignment="bottom">
-                <StackLayout orientation="horizontal">
-                    <Image src="{{ activity.avatarImageSource || '~/app/res/avatar.png' }}" stretch="fill" cssClass="activity-avatar align-top"/>
-                    <Label text="{{ activity.userName }}" cssClass="activity-user" />
+    <ScrollView orientation="vertical">
+        <GridLayout rows="auto, auto, *" verticalAlignment="stretch">
+            <GridLayout cssClass="header-container" rows="auto, auto">
+                <Image src="{{ activity.pictureImageSource || '~/app/res/default-activity.png' }}" stretch="aspectFill" rowSpan="2"/>
+                <Image src="~/app/res/mask-activity.png" stretch="fill" rowSpan="2"/>
+                <Image src="~/app/res/back-light.png" tap="backButtonClicked" cssClass="header-button align-left align-top margin-top" />
+                
+                <StackLayout orientation="horizontal" cssClass="align-right align-top">
+                    <Image src="~/app/res/delete.png" tap="deleteButtonClicked" cssClass="header-button margin-top" 
+                        visibility="{{ userCanDeleteActivity, userCanDeleteActivity | booleanToVisibilityConverter() }}" />
+                    <Image src="~/app/res/comment.png" tap="commentButtonClicked" cssClass="header-button margin-top" />
                 </StackLayout>
-                <Label text="{{ activityDateFormatted }}" col="1" cssClass="activity-user align-right margin-right" />
-            </GridLayout>
-        </GridLayout>
-
-        <Label text="{{activity.Text}}" row="1" textWrap="true" cssClass="activity-text align-top" />
-
-        <ListView id="commentsList" items="{{ comments }}" row="2">
-            <ListView.itemTemplate>
-                <GridLayout columns="auto, *" >
-                    <Image src="{{ avatarImageSource  || '~/app/res/avatar.png' }}" stretch="fill" />
-                    <StackLayout col="1">
-                        <Label>
-                            <Label.formattedText>
-                                <FormattedString>
-                                  <FormattedString.spans>
-                                    <Span text="{{ userName }}" fontAttributes="Bold" />
-                                  </FormattedString.spans>
-                                </FormattedString>
-                            </Label.formattedText>
-                        </Label>
-                        <Label text="{{ Comment }}" textWrap="true"/>
-                        <Label text="Dummy" textWrap="true"/>
+                            
+                <GridLayout row="1" columns="*, auto" verticalAlignment="bottom">
+                    <StackLayout orientation="horizontal">
+                        <Image src="{{ activity.avatarImageSource || '~/app/res/avatar.png' }}" stretch="fill" cssClass="activity-avatar align-top"/>
+                        <Label text="{{ activity.userName }}" cssClass="activity-user" />
                     </StackLayout>
-                </GridLayout> 
-            </ListView.itemTemplate>  
-        </ListView>
+                    <Label text="{{ activityDateFormatted }}" col="1" cssClass="activity-user align-right margin-right" />
+                </GridLayout>
+            </GridLayout>
 
-    </GridLayout>
+            <Label text="{{activity.Text}}" row="1" textWrap="true" cssClass="activity-text align-top" />
+
+            <ListView id="commentsList" items="{{ comments }}" row="2" >
+                <ListView.itemTemplate>
+                    <GridLayout columns="auto, *" >
+                        <Image src="{{ avatarImageSource || '~/app/res/avatar.png' }}" stretch="fill" cssClass="activity-avatar" />
+                        <StackLayout col="1" verticalAlignment="center">
+                            <Label cssClass="comment-name">
+                                <Label.formattedText>
+                                    <FormattedString>
+                                      <FormattedString.spans>
+                                        <Span text="{{ UserName }}" fontAttributes="Bold" />
+                                      </FormattedString.spans>
+                                    </FormattedString>
+                                </Label.formattedText>
+                            </Label>
+                            <Label text="{{ Comment }}" textWrap="true" cssClass="comment-text" />
+                        </StackLayout>
+                    </GridLayout> 
+                </ListView.itemTemplate>  
+            </ListView>
+        </GridLayout>
+    </ScrollView>
 </Page>

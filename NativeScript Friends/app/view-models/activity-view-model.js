@@ -38,7 +38,7 @@ var activityViewModel = (function (_super) {
             if (this._activity !== value) {
                 this._activity = value;
                 this.notify({ object: this, eventName: observable.knownEvents.propertyChange, propertyName: "activity", value: value });
-                this.notify({ object: this, eventName: observable.knownEvents.propertyChange, propertyName: "comments", value: this.comments });
+                //this.notify({ object: this, eventName: observable.knownEvents.propertyChange, propertyName: "comments", value: this.comments });
             }
         }
     });
@@ -49,12 +49,23 @@ var activityViewModel = (function (_super) {
             var that = this;
             var commentsData = EVERLIVE.data("Comments");
             
-            var filter = new Everlive.Query();
-            filter.where().eq("ActivityId", that._activity.Id);
+            var query = new Everlive.Query();
+            query.where().eq("ActivityId", that._activity.Id);
+            query.orderDesc("CreatedAt");
             
-            commentsData.get(filter)
-            .then(function(data){
-                that._comments.push(data);       
+            var expandExp = {
+                "UserId": {
+                    "ReturnAs": "UserName",
+                    "SingleField": "DisplayName"
+                }
+            };
+            
+            commentsData.expand(expandExp).get(query)
+            .then(function(data) {
+                if (data && data.count !== 0)
+                {
+                    that._comments.push(data.result);
+                }
             },
             function(error){
                 alert(JSON.stringify(error));

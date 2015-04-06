@@ -48,9 +48,7 @@ var ActivitiesViewModel = (function (_super){
                 }
             };
 
-
             var data = EVERLIVE.data('Activities');
-            
             var query = new Everlive.Query();
             query.orderDesc('CreatedAt');
             

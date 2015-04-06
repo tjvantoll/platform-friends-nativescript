@@ -19,6 +19,15 @@
 }
 
 .activity-text {
-    margin: 20;
+    margin: 30;
     font-size: 12;
+}
+
+.comment-text {
+    font-size: 13;
+}
+
+.comment-name {
+    color: #E91E63;
+    font-size: 13;
 }
