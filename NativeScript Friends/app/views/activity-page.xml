@@ -1,5 +1,5 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="pageNavigatedTo" swipe="onSwipe">
-    <ScrollView orientation="vertical">
+    <ScrollView id="scrollView">
         <GridLayout rows="auto, auto, *" verticalAlignment="stretch">
             <GridLayout cssClass="header-container" rows="auto, auto">
                 <Image src="{{ activity.pictureImageSource || '~/app/res/default-activity.png' }}" stretch="aspectFill" rowSpan="2"/>

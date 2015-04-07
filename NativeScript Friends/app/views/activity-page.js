@@ -2,6 +2,7 @@ var vmModule = require("../view-models/activity-view-model");
 var frameModule = require("ui/frame");
 var gestures = require("ui/gestures");
 var platformModule = require("platform");
+var viewModule = require("ui/core/view");
 var viewModel;
 
 function pageNavigatedTo(args) {
@@ -13,6 +14,8 @@ function pageNavigatedTo(args) {
     page.bindingContext = viewModel
     
     if (platformModule.device.os === "iOS") {
+        var scrollView = viewModule.getViewById(page, "scrollView");
+        scrollView.ios.directionalLockEnabled = true;
         frameModule.topmost().ios.controller.navigationBarHidden = true;
     }
 }
