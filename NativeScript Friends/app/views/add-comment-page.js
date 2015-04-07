@@ -1,6 +1,7 @@
 var vmModule = require("../view-models/add-comment-view-model");
 var frameModule = require("ui/frame");
 var platformModule = require("platform");
+var viewModule = require("ui/core/view");
 var viewModel;
 
 function pageNavigatedTo(args) {
@@ -13,6 +14,15 @@ function pageNavigatedTo(args) {
     if (platformModule.device.os === "iOS") {
         frameModule.topmost().ios.controller.navigationBarHidden = true;
     }
+    
+    setFocusToTextField();
+}
+
+function setFocusToTextField() {
+    var page = frameModule.topmost().currentPage;
+    var commentTextBox = viewModule.getViewById(page, "add-comment-text");
+    
+    commentTextBox.focus();
 }
 
 function backButtonClicked(args){

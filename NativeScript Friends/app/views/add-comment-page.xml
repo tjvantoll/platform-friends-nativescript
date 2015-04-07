@@ -8,7 +8,7 @@
             <Label text="DONE" cssClass="header-text align-right ios" tap="addComment" col="2"/>
         </GridLayout>
         <StackLayout cssClass="horizontal-line ios" row="1"></StackLayout>
-        <TextView text="{{ commentText || '' }}" id="add-activity-text" row="2" textWrap="true" cssClass="text-input" />
+        <TextView text="{{ commentText || '' }}" id="add-comment-text" row="2" textWrap="true" cssClass="text-input" />
         <AbsoluteLayout cssClass="fabContainer android" rowSpan="4">
           <Image src="~/app/res/done.png" stretch="fill" id="test-element" tap="addComment" cssClass="fab" />
         </AbsoluteLayout>
