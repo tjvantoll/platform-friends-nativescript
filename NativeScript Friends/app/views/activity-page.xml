@@ -4,13 +4,23 @@
             <GridLayout dock="top" cssClass="header-container" rows="auto, auto">
                 <Image src="{{ activity.pictureImageSource || '~/app/res/default-activity.png' }}" stretch="aspectFill" rowSpan="2"/>
                 <Image src="~/app/res/mask-activity.png" stretch="fill" rowSpan="2"/>
-                <Image src="~/app/res/back-light.png" tap="backButtonClicked" cssClass="header-button align-left align-top margin-top" />
                 
-                <StackLayout orientation="horizontal" cssClass="align-right align-top">
-                    <Image src="~/app/res/delete.png" tap="deleteButtonClicked" cssClass="header-button margin-top" 
-                        visibility="{{ userCanDeleteActivity, userCanDeleteActivity | booleanToVisibilityConverter() }}" />
-                    <Image src="~/app/res/comment.png" tap="commentButtonClicked" cssClass="header-button margin-top" />
-                </StackLayout>
+                <GridLayout columns="*, auto, *">
+                    <GridLayout tap="backButtonClicked" width="50" cssClass="align-left align-top">
+                        <Image src="~/app/res/back-light.png" cssClass="header-button margin" />
+                    </GridLayout>
+                    
+                    <GridLayout columns="auto, auto" col="2" cssClass="align-right align-top">
+                        <GridLayout tap="deleteButtonClicked" width="50" >
+                            <Image src="~/app/res/delete.png" cssClass="header-button margin" 
+                                visibility="{{ userCanDeleteActivity ? 'visible' : 'collapsed' }}" />
+                        </GridLayout>
+                        
+                        <GridLayout tap="commentButtonClicked" width="50" col="1">
+                            <Image src="~/app/res/comment.png" cssClass="header-button margin" />
+                        </GridLayout>
+                    </GridLayout>
+                </GridLayout>
                             
                 <GridLayout row="1" columns="*, auto" verticalAlignment="bottom">
                     <StackLayout orientation="horizontal">
@@ -22,7 +32,7 @@
             </GridLayout>
             
             <GridLayout dock="top">
-                <Label  text="{{activity.Text}}" textWrap="true" cssClass="activity-text align-top" />
+                <Label text="{{activity.Text}}" textWrap="true" cssClass="activity-text align-top" />
                 <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" />
             </GridLayout>
 

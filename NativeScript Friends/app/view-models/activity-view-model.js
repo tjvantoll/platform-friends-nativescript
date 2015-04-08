@@ -12,15 +12,6 @@ var Everlive = require("../lib/everlive.all.min");
 var imageSource = require("image-source");
 var activityItemViewModel = require("./activity-item-view-model");
 
-var booleanToVisibilityConverter = {
-	toView: function (value, format) {
-		return value === true ? "visible" : "collapsed";
-	},
-	toModel: function (value, format) {
-		return value === "visible";
-	}
-}
-
 var ActivityViewModel = (function (_super) {
     __extends(ActivityViewModel , _super);
 
@@ -132,13 +123,6 @@ var ActivityViewModel = (function (_super) {
         }
     });
     
-    Object.defineProperty(ActivityViewModel.prototype, "booleanToVisibilityConverter", {
-        get: function () 
-        {
-            return booleanToVisibilityConverter;
-        }
-    });
-       
     ActivityViewModel.prototype.deleteActivity = function () {
         var that = this;
         
