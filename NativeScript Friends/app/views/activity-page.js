@@ -16,6 +16,7 @@ function pageNavigatedTo(args) {
     if (platformModule.device.os === "iOS") {
         var scrollView = viewModule.getViewById(page, "scrollView");
         scrollView.ios.directionalLockEnabled = true;
+        
         frameModule.topmost().ios.controller.navigationBarHidden = true;
     }
 }

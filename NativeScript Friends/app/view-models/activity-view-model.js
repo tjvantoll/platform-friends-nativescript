@@ -9,6 +9,8 @@ var LocalSettings = require("local-settings");
 var observable = require("data/observable");
 var observableArray = require("data/observable-array");
 var Everlive = require("../lib/everlive.all.min");
+var imageSource = require("image-source");
+var activityItemViewModel = require("./activity-item-view-model");
 
 var booleanToVisibilityConverter = {
 	toView: function (value, format) {
@@ -38,7 +40,6 @@ var activityViewModel = (function (_super) {
             if (this._activity !== value) {
                 this._activity = value;
                 this.notify({ object: this, eventName: observable.knownEvents.propertyChange, propertyName: "activity", value: value });
-                //this.notify({ object: this, eventName: observable.knownEvents.propertyChange, propertyName: "comments", value: this.comments });
             }
         }
     });
@@ -57,17 +58,29 @@ var activityViewModel = (function (_super) {
                 "UserId": {
                     "ReturnAs": "UserName",
                     "SingleField": "DisplayName"
-                }
+                },
+                "UserId": {
+                    "ReturnAs": "User",
+                    "Expand": {
+                        "Picture": "Picture"
+                    }
+                },
             };
             
             commentsData.expand(expandExp).get(query)
             .then(function(data) {
                 if (data && data.count !== 0)
                 {
+                    for (i=0; i<data.count; i++)
+                    {
+                        var activityItem = new activityItemViewModel.ActivityItemViewModel(data.result[i]);
+                        data.result[i] = activityItem;
+                    }
+                    
                     that._comments.push(data.result);
                 }
             },
-            function(error){
+            function(error) {
                 alert(JSON.stringify(error));
             });
             
@@ -108,7 +121,7 @@ var activityViewModel = (function (_super) {
             return booleanToVisibilityConverter;
         }
     });
-    
+       
     activityViewModel.prototype.deleteActivity = function () {
         var that = this;
         
