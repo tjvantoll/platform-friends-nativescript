@@ -21,16 +21,29 @@ var booleanToVisibilityConverter = {
 	}
 }
 
-var activityViewModel = (function (_super) {
-    __extends(activityViewModel, _super);
+var ActivityViewModel = (function (_super) {
+    __extends(ActivityViewModel , _super);
 
-    function activityViewModel(source) {
+    function ActivityViewModel (source) {
         _super.call(this);
         this._activity = new observable.Observable();
         this._comments = new observableArray.ObservableArray(); 
+        this._isLoading = false;
     }
+    
+    Object.defineProperty(ActivityViewModel.prototype, "isLoading", {
+        get: function () {
+            return this._isLoading;
+        },
+        set: function(value) {
+            this._isLoading = value;
+            this.notify({ object: this, eventName: observable.knownEvents.propertyChange, propertyName: "isLoading", value: value });
+        },
+        enumerable: true,
+        configurable: true
+    });
 
-    Object.defineProperty(activityViewModel.prototype, "activity", {
+    Object.defineProperty(ActivityViewModel.prototype, "activity", {
         get: function () 
         {
             return this._activity;
@@ -44,9 +57,11 @@ var activityViewModel = (function (_super) {
         }
     });
     
-    Object.defineProperty(activityViewModel.prototype, "comments", {
+    Object.defineProperty(ActivityViewModel.prototype, "comments", {
         get: function () 
         {
+            this.isLoading = true;
+            
             var that = this;
             var commentsData = EVERLIVE.data("Comments");
             
@@ -79,9 +94,11 @@ var activityViewModel = (function (_super) {
                     
                     that._comments.push(data.result);
                 }
+                that.isLoading = false;
             },
             function(error) {
                 alert(JSON.stringify(error));
+                that.isLoading = false;
             });
             
             return this._comments;
@@ -90,7 +107,7 @@ var activityViewModel = (function (_super) {
         configurable: true
     });
     
-    Object.defineProperty(activityViewModel.prototype, "activityDateFormatted", {
+    Object.defineProperty(ActivityViewModel.prototype, "activityDateFormatted", {
         get: function () 
         {
             var m_names = new Array("JAN", "FEB", "MAR", 
@@ -107,7 +124,7 @@ var activityViewModel = (function (_super) {
         }
     });
     
-    Object.defineProperty(activityViewModel.prototype, "userCanDeleteActivity", {
+    Object.defineProperty(ActivityViewModel.prototype, "userCanDeleteActivity", {
         get: function () 
         {
             var userId = LocalSettings.getString(USER_ID);
@@ -115,14 +132,14 @@ var activityViewModel = (function (_super) {
         }
     });
     
-    Object.defineProperty(activityViewModel.prototype, "booleanToVisibilityConverter", {
+    Object.defineProperty(ActivityViewModel.prototype, "booleanToVisibilityConverter", {
         get: function () 
         {
             return booleanToVisibilityConverter;
         }
     });
        
-    activityViewModel.prototype.deleteActivity = function () {
+    ActivityViewModel.prototype.deleteActivity = function () {
         var that = this;
         
         return new Promise(function (resolve, reject) {
@@ -140,7 +157,7 @@ var activityViewModel = (function (_super) {
         });
     };
     
-    return activityViewModel;
+    return ActivityViewModel;
 })(observable.Observable);
 
-exports.activityViewModel = activityViewModel;
+exports.ActivityViewModel = ActivityViewModel;

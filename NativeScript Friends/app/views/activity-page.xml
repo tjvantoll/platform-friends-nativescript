@@ -20,8 +20,11 @@
                     <Label text="{{ activityDateFormatted }}" col="1" cssClass="activity-user align-right margin-right" />
                 </GridLayout>
             </GridLayout>
-
-            <Label dock="top" text="{{activity.Text}}" textWrap="true" cssClass="activity-text align-top" />
+            
+            <GridLayout dock="top">
+                <Label  text="{{activity.Text}}" textWrap="true" cssClass="activity-text align-top" />
+                <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" />
+            </GridLayout>
 
             <ListView id="commentsList" items="{{ comments }}" >
                 <ListView.itemTemplate>

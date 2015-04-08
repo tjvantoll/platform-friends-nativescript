@@ -8,7 +8,7 @@ var viewModel;
 function pageNavigatedTo(args) {
     var page = args.object;
 
-    viewModel = new vmModule.activityViewModel();
+    viewModel = new vmModule.ActivityViewModel();
     viewModel.activity = page.navigationContext;
     
     page.bindingContext = viewModel
