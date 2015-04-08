@@ -30,5 +30,10 @@ function clearEmailAndPassword(){
     viewModel.set("password", "");
 }
 
+function logIn(args){
+    viewModel.logIn();
+}
+
 exports.navigateRegister = navigateRegister;
 exports.pageLoaded = pageLoaded;
+exports.logIn = logIn;

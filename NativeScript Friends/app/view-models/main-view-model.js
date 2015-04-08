@@ -32,8 +32,8 @@ var MainViewModel = (function (_super){
        
         var that = this;
 
-        if(validationModule.validate(that._email, [validationModule.minLengthConstraint,validationModule.validEmailConstraint],"Invalid email") &&
-           validationModule.validate(that._password, [validationModule.minLengthConstraint],"Invalid password")){
+        if (validationModule.validate(that._email, [validationModule.minLengthConstraint,validationModule.validEmailConstraint],"Invalid email") &&
+           validationModule.validate(that._password, [validationModule.minLengthConstraint],"Invalid password")) {
             
             this.set("isLoading", true);
        
