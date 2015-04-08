@@ -17,6 +17,9 @@ function pageNavigatedTo(args) {
         var scrollView = viewModule.getViewById(page, "scrollView");
         scrollView.ios.directionalLockEnabled = true;
         
+        var listView = viewModule.getViewById(page, "commentsList");
+        listView.ios.scrollEnabled = false;
+        
         frameModule.topmost().ios.controller.navigationBarHidden = true;
     }
 }

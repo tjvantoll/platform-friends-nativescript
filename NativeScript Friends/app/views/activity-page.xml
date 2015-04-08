@@ -23,7 +23,7 @@
 
             <Label text="{{activity.Text}}" row="1" textWrap="true" cssClass="activity-text align-top" />
 
-            <ListView items="{{ comments }}" row="2" >
+            <ListView id="commentsList" items="{{ comments }}" row="2" >
                 <ListView.itemTemplate>
                     <GridLayout columns="auto, *" >
                         <Image src="{{ avatarImageSource || '~/app/res/avatar.png' }}" stretch="fill" cssClass="activity-avatar" />
