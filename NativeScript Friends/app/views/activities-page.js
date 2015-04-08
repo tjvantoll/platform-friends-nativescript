@@ -12,20 +12,9 @@ function pageLoaded(args) {
     viewModel = new vmModule.ActivitiesViewModel();
     page.bindingContext = viewModel;
     
-    bindActivityIndicatorWithListView(page);
-    
     if (platformModule.device.os === "iOS") {
         frameModule.topmost().ios.controller.navigationBarHidden = true;
     }
-}
-
-function bindActivityIndicatorWithListView(page){
-    //Hide activity indicator when the ListView items loading begin
-    var listView = view.getViewById(page, "activitiesView");
-    listView.on("itemLoading", function (args) {
-        viewModel.set("isLoading",false);
- 
-    });
 }
 
 function onActivityTap(args) {

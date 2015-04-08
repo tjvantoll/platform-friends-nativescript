@@ -15,8 +15,6 @@ var view = require("ui/core/view");
 var platformModule = require("platform");
 
 var cache = new imageCache.Cache();
-//cache.invalid = imageSource.fromFile("~/app/res/avatar.png");
-//cache.placeholder = imageSource.fromFile("~/app/res/avatar.png");
 cache.maxRequests = 5;
 
 var ActivitiesViewModel = (function (_super){
@@ -27,12 +25,25 @@ var ActivitiesViewModel = (function (_super){
         _super.call(this);
         this._source = source;
         this._activities = new observableArray.ObservableArray(); 
+        this._isLoading = false;
         this.set("isLoading", true);
     }
+    
+    Object.defineProperty(ActivitiesViewModel.prototype, "isLoading", {
+        get: function () {
+            return this._isLoading;
+        },
+        set: function(value) {
+            this._isLoading = value;
+            this.notify({ object: this, eventName: observable.knownEvents.propertyChange, propertyName: "isLoading", value: value });
+        },
+        enumerable: true,
+        configurable: true
+    });
 
     Object.defineProperty(ActivitiesViewModel.prototype, "activities", {
         get: function () {
-
+            this.isLoading = true;
             var that = this;
 
             var expandExp = {
@@ -52,17 +63,21 @@ var ActivitiesViewModel = (function (_super){
             var query = new Everlive.Query();
             query.orderDesc('CreatedAt');
             
-            data.expand(expandExp).get(query).then(function(data) {
-               for(var i = 0; i < data.result.length; i++){
-                   data.result[i].dateConverter = dateConverter;
-                   var activityItem = new activityItemViewModel.ActivityItemViewModel(data.result[i]);
+            data.expand(expandExp).get(query)
+            .then(function(data) {
+                for(var i = 0; i < data.result.length; i++){
+                    data.result[i].dateConverter = dateConverter;
+                    var activityItem = new activityItemViewModel.ActivityItemViewModel(data.result[i]);
 
-                   data.result[i] = activityItem;
-               }
+                    data.result[i] = activityItem;
+                }
 
                 that._activities.push(data.result); 
+
+                that.isLoading = false;
             }, function(error) {
-               alert("Activities can't be retrieved");
+                that.isLoading = false;
+                alert("Activities can't be retrieved");
             });      
 
             return this._activities;        
