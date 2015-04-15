@@ -94,7 +94,7 @@ var SignUpViewModel = (function (_super){
             return this._email;
         },
         set: function(value) {
-            this._email = value;
+            this._email = value.toLowerCase();
             this._info.Email = value;
         },
         enumerable: true,

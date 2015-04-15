@@ -71,7 +71,7 @@ var MainViewModel = (function (_super){
             return this._email;
         },
         set: function(value) {
-            this._email = value;
+            this._email = value.toLowerCase();
         },
         enumerable: true,
         configurable: true
