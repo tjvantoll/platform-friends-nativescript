@@ -6,7 +6,7 @@ var __extends = this.__extends || function (d, b) {
 };
 var observable = require("data/observable");
 function isValidImage(url) {
-    return url.indexOf(".png") !== -1 || url.indexOf(".jpg") !== -1;
+    return true;
 }
 var knownEvents;
 (function (knownEvents) {
