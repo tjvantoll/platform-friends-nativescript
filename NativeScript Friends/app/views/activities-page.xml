@@ -25,7 +25,7 @@
                               </Label.formattedText>
                         </Label>
                         <Label text="{{ Text }}" cssClass="activity-summary" textWrap="true"/>
-                        <Image src="{{ pictureImageSource  || '' }}" cssClass="activity-picture" />
+                        <Image src="{{ pictureImageSource  || '' }}" cssClass="activity-picture"/>
                         <Label text="{{ CreatedAt, CreatedAt | dateConverter('DD.MM.YYYY') }}" cssClass="activity-date"/>
                   </StackLayout>
                 </GridLayout> 
