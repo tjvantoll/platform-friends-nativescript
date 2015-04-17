@@ -16,6 +16,8 @@ function pageLoaded(args) {
         frameModule.topmost().ios.controller.navigationBarHidden = true;
     }
     
+    MONITOR.trackFeature('View.SignUp');
+    
 }
 
 function goBack(args){

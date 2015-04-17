@@ -8,7 +8,7 @@ global.BS_API_KEY = "mmfUiB9IBDxb6mvR";
 global.TOKEN_DATA_KEY = "authenticationToken";
 global.USER_ID = "userId";
 global.EVERLIVE = null;
-global.monitor = null;
+global.MONITOR = null;
 
 application.onLaunch = function (context) {
     // For Android applications, the context is an android.content.Intent class.
@@ -28,8 +28,8 @@ application.onResume = function () {
 };
 application.onExit = function () {
     console.log("Application will exit.");
-    if(monitor !== null){
-        monitor.stop();
+    if(MONITOR !== null){
+        MONITOR.stop();
     }
 };
 application.onLowMemory = function () {

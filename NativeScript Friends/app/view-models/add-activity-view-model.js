@@ -35,6 +35,7 @@ var AddActivityViewModel = (function (_super) {
             },
             function(data){
                 that.set("isLoading",false);
+                MONITOR.trackFeature('Event.ActivityCreated');
                 if(typeof(doneCallback) === 'function'){
                     doneCallback();
                 } 

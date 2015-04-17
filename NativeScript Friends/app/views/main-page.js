@@ -1,5 +1,5 @@
-var frameModule = require("ui/frame");
 var vmModule = require("../view-models/main-view-model");
+var frameModule = require("ui/frame");
 var platformModule = require("platform");
 var viewModule = require("ui/core/view");
 var NativeScriptMonitor = require('../lib/NativeScriptMonitor').Monitor;
@@ -19,19 +19,16 @@ function pageLoaded(args) {
         frameModule.topmost().ios.controller.navigationBarHidden = true;
     }
     
-    if(monitor == null){
-        monitor = new NativeScriptMonitor({
-            //productId: 'b81e6d9466854e4fa4a28784660f6641',
-            productId: 'e5f1a86ba2aa4793a6fca40e921975c9',
-            version: '1.2.3.6'
+    if(MONITOR == null){
+        MONITOR = new NativeScriptMonitor({
+            productId: '69eb62db3e894e908f47343ee0a109e9',
+            version: '1.0'
         });
         
-        monitor.start();
+        MONITOR.start();
         
-        monitor.trackFeature('MyCategory.MyFeature');
-        monitor.trackFeatureValue('MyCategory.MyFeature', 100);
-        
-        monitor.stop();
+        MONITOR.trackFeature('View.Login');
+
     }
     
     clearEmailAndPassword();

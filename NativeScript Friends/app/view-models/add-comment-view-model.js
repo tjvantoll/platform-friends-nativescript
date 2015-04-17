@@ -65,6 +65,7 @@ var addCommentViewModel = (function (_super) {
                     },
                     function (data) {
                         that.set("isLoading",false);
+                        MONITOR.trackFeature('Event.CommentCreated');
                         resolve();
                     },
                     function (error) {

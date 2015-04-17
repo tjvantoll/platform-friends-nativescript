@@ -15,6 +15,8 @@ function pageLoaded(args) {
     if (platformModule.device.os === "iOS") {
         frameModule.topmost().ios.controller.navigationBarHidden = true;
     }
+    
+    MONITOR.trackFeature('View.Activities');
 }
 
 function onActivityTap(args) {

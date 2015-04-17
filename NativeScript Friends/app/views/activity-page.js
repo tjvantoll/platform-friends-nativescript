@@ -22,6 +22,8 @@ function pageNavigatedTo(args) {
         
         frameModule.topmost().ios.controller.navigationBarHidden = true;
     }
+    
+    MONITOR.trackFeature('View.Activity');
 }
 
 function backButtonClicked(args){
