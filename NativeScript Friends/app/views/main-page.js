@@ -44,7 +44,13 @@ function clearEmailAndPassword(){
 }
 
 function logIn(args){
-    viewModel.logIn();
+    viewModel.logIn()
+    .then(function() {
+        frameModule.topmost().navigate("app/views/activities-page");
+    }, 
+    function(error) {
+        alert(error || "Can't log in! Please try again!");
+    });
 }
 
 exports.navigateRegister = navigateRegister;

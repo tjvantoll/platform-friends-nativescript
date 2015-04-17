@@ -8,7 +8,6 @@ var __extends = this.__extends || function (d, b) {
 var observable = require("data/observable");
 var Everlive = require("../lib/everlive.all.min");
 var dialogs = require("ui/dialogs");
-var frameModule = require("ui/frame");
 var validationModule = require("../utils/validate");
 var LocalSettings = require("local-settings");
 
@@ -29,30 +28,33 @@ var MainViewModel = (function (_super){
     }
     
    MainViewModel.prototype.logIn = function() {
-       
         var that = this;
-
-        if (validationModule.validate(that._email, [validationModule.minLengthConstraint,validationModule.validEmailConstraint],"Invalid email") &&
-           validationModule.validate(that._password, [validationModule.minLengthConstraint],"Invalid password")) {
-            
-            this.set("isLoading", true);
        
-            EVERLIVE.Users.login(that._email, that._password, 
-            function (data) {
-                if(typeof(data.result) !== 'undefined' && typeof(data.result.principal_id) !== 'undefined' && typeof(data.result.access_token) !== 'undefined'){
-                    //Store in local storage
-                    LocalSettings.setString(TOKEN_DATA_KEY, data.result.access_token);
-                    LocalSettings.setString(USER_ID, data.result.principal_id);
-                    frameModule.topmost().navigate("app/views/activities-page");
-                }
-                else{
-                    alert("Can't log in! Please try again!");
-                }
-            },
-            function(error){
-                alert(error.message || "Can't log in! Please try again!");
-            });
-        }
+        return new Promise(function (resolve, reject) {
+            if (validationModule.validate(that._email, [validationModule.minLengthConstraint,validationModule.validEmailConstraint],"Invalid email") &&
+               validationModule.validate(that._password, [validationModule.minLengthConstraint],"Invalid password")) {
+
+                that.set("isLoading", true);
+
+                EVERLIVE.Users.login(that._email, that._password, 
+                function (data) {
+                    if (typeof(data.result) !== 'undefined' && typeof(data.result.principal_id) !== 'undefined' && typeof(data.result.access_token) !== 'undefined') {
+                        //Store in local storage
+                        LocalSettings.setString(TOKEN_DATA_KEY, data.result.access_token);
+                        LocalSettings.setString(USER_ID, data.result.principal_id);
+                        
+                        resolve();
+                    } else {
+                        reject();
+                    }
+                    that.set("isLoading", false);
+                },
+                function(error) {
+                    reject(error.message);
+                    that.set("isLoading", false);
+                });
+            }            
+        });
     };
     
     Object.defineProperty(MainViewModel.prototype, "isLoading", {
