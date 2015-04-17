@@ -35,6 +35,13 @@ var ActivityItemViewModel = (function (_super){
         }
     });
     
+    Object.defineProperty(ActivityItemViewModel.prototype, "pictureImageWidth", {
+        get: function () {
+           var screenWidth = platformModule.screen.mainScreen.widthPixels;
+           return screenWidth*0.5;
+        }
+    });
+    
     Object.defineProperty(ActivityItemViewModel.prototype, "pictureImageSource", {
         get: function () {
             var that = this;
