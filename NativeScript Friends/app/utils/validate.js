@@ -23,7 +23,7 @@ exports.validate = function(value, constraints, errorMessage){
 }
 
 exports.minLengthConstraint = function(value){
-    return value.length > 3;
+    return value.length > 2;
 }
 
 exports.validEmailConstraint = function(value) {

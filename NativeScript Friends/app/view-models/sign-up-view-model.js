@@ -73,7 +73,7 @@ var SignUpViewModel = (function (_super){
                 },
                 function(error) {         
                     that.set("isLoading", false);
-                    alert(JSON.stringify(error));
+                        alert(error.message || "Can't register");
                 });
         }
     };
