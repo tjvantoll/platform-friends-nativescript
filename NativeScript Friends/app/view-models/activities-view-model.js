@@ -10,12 +10,8 @@ var observableArray = require("data/observable-array");
 var activityItemViewModel = require("./activity-item-view-model");
 var Everlive = require("../lib/everlive.all.min");
 var imageSource = require("image-source");
-var imageCache = require("ui/image-cache");
 var view = require("ui/core/view");
 var platformModule = require("platform");
-
-var cache = new imageCache.Cache();
-cache.maxRequests = 5;
 
 var ActivitiesViewModel = (function (_super){
     

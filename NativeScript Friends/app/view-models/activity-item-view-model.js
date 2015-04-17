@@ -7,6 +7,11 @@ var __extends = this.__extends || function (d, b) {
 
 var observable = require("data/observable");
 var imageSource = require("image-source");
+var imageCache = require("ui/image-cache");
+
+var cache = new imageCache.Cache();
+cache.maxRequests = 5;
+cache.enableDownload();
 
 var ActivityItemViewModel = (function (_super){
     
@@ -23,6 +28,12 @@ var ActivityItemViewModel = (function (_super){
         }
     }
 
+    Object.defineProperty(ActivityItemViewModel.prototype, "hasPicture", {
+        get: function () {
+           return !!this._source.Picture;
+        }
+    });
+    
     Object.defineProperty(ActivityItemViewModel.prototype, "pictureImageSource", {
         get: function () {
             var that = this;
@@ -48,18 +59,36 @@ var ActivityItemViewModel = (function (_super){
     
     Object.defineProperty(ActivityItemViewModel.prototype, "avatarImageSource", {
         get: function () {
+
             var that = this;
             var url = this._source.User.Picture === null ? null : this._source.User.Picture.Uri;
-            
+
             if (!url) {
                 this._avatarImageSource = null;
-            } else if (this._source && !this._avatarImageSource) {
-               imageSource.fromUrl(url).then(function (result) {
-                    that._avatarImageSource = result;
-                    that.notify({ object: that, eventName: observable.knownEvents.propertyChange, propertyName: "avatarImageSource", value: that._avatarImageSource });
-                });
             }
-            
+            else if (this._source && !this._avatarImageSource) {
+                var responsiveImagesUrl = url;//getResponsiveImageUrl(url, 5)
+               
+                if (cache) {
+                    var cachedImg = cache.get(responsiveImagesUrl);
+                    if (cachedImg) {
+                        that._avatarImageSource = cachedImg;
+                    }
+                    else {
+                        cache.push({
+                            key: responsiveImagesUrl,
+                            url: responsiveImagesUrl,
+                            completed: function (result, key) {
+                                if (url === key) {                                    
+                                    that._avatarImageSource = result;
+                                    that.notify({ object: that, eventName: observable.knownEvents.propertyChange, propertyName: "avatarImageSource", value: that._avatarImageSource });
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+
             return this._avatarImageSource;
         }
     });
