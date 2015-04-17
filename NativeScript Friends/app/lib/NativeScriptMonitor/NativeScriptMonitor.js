@@ -26,7 +26,7 @@ exports.Monitor = function(settings) {
     eqatecSettings.loggingInterface = settings.loggingInterface;
 
     eqatecSettings.useCookies = false;
-    //eqatecSettings.userAgent = deviceInfo.userAgent;
+    eqatecSettings.userAgent = deviceInfo.userAgent;
     eqatecSettings.environmentInfo = deviceInfo.environmentInfo;
 
     // NativeScript already exports XMLHttpRequest in the http module
@@ -36,7 +36,11 @@ exports.Monitor = function(settings) {
     }
 
     var locationManager = new LocationManager();
-    var location = locationManager.lastKnownLocation || { latitude: '', longitude: '' };
+    var location = { latitude: '', longitude: '' };
+    if (locationManager.lastKnownLocation) {
+        location.latitude = locationManager.lastKnownLocation.latitude;
+        location.longitude = locationManager.lastKnownLocation.longitude;
+    }
     eqatecSettings.location = location;
 
     var monitor = global._eqatec.createMonitor(eqatecSettings);

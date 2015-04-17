@@ -1,5 +1,5 @@
-var vmModule = require("../view-models/main-view-model");
 var frameModule = require("ui/frame");
+var vmModule = require("../view-models/main-view-model");
 var platformModule = require("platform");
 var viewModule = require("ui/core/view");
 var NativeScriptMonitor = require('../lib/NativeScriptMonitor').Monitor;
@@ -20,18 +20,16 @@ function pageLoaded(args) {
     }
     
     if(monitor == null){
-        alert('new session');
         monitor = new NativeScriptMonitor({
             //productId: 'b81e6d9466854e4fa4a28784660f6641',
-            productId:'837a15b3-02e5-4455-bce6-63448e4c4eb5',
-            serverUri: 'https://sit-monitor.telerik.rocks/json.ashx',
-            version: '1.2.3.5'
+            productId: 'e5f1a86ba2aa4793a6fca40e921975c9',
+            version: '1.2.3.6'
         });
         
         monitor.start();
         
-        monitor.trackFeature('MyCategoryAngel.MyFeature');
-        monitor.trackFeatureValue('MyCategoryAngel.MyFeature', 100);
+        monitor.trackFeature('MyCategory.MyFeature');
+        monitor.trackFeatureValue('MyCategory.MyFeature', 100);
         
         monitor.stop();
     }

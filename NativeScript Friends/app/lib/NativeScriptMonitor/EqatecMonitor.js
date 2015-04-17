@@ -664,7 +664,7 @@
     */
     function CreateAnalyticsMonitor(settings) {
         var startTime = 0,
-                    protocolVersion = 4,
+                    protocolVersion = 5,
         //the line below is modified by buildsever, do not change
                     monitorversion = '0.0.0.0',
 
@@ -1010,8 +1010,6 @@
                     request.onreadystatechange = function () {
                         try {
                             if (4 == request.readyState) {
-                                //alert(fullUri + ' - ' + request.responseText + ' - ' + request.status);
-                                //alert(jsonData);
                                 isSending = false;
                                 var statusText = eqatecUtil.asString(request.status);
                                 var success = statusText.indexOf('2') === 0; //looking for HTTP status codes 2XX to signal success

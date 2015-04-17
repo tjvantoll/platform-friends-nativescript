@@ -12,4 +12,4 @@ var info = {
 };
 
 exports.environmentInfo = info;
-//exports.userAgent = device.userAgent;
+exports.userAgent = device.userAgent;
