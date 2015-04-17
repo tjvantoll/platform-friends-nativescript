@@ -8,6 +8,7 @@ var __extends = this.__extends || function (d, b) {
 var observable = require("data/observable");
 var imageSource = require("image-source");
 var imageCache = require("ui/image-cache");
+var platformModule = require("platform");
 
 var cache = new imageCache.Cache();
 cache.maxRequests = 5;
@@ -38,10 +39,26 @@ var ActivityItemViewModel = (function (_super){
         get: function () {
             var that = this;
             if (this._source && !this._pictureImageSource) {
-               imageSource.fromUrl(that._source.Picture).then(function (result) {
-                    that._pictureImageSource = result;
-                    that.notify({ object: that, eventName: observable.knownEvents.propertyChange, propertyName: "pictureImageSource", value: that._pictureImageSource });
-                });
+                if(cache && that._source.Picture){
+                    var url = that._source.Picture;
+                    var responsiveImagesUrl = getResponsiveUrl(url, 0.5);
+                    var cachedImg = cache.get(responsiveImagesUrl);
+                    if (cachedImg) {
+                        that._pictureImageSource = cachedImg;
+                    }
+                    else {
+                        cache.push({
+                            key: responsiveImagesUrl,
+                            url: responsiveImagesUrl,
+                            completed: function (result, key) {
+                                if (url === key) {                                    
+                                    that._pictureImageSource = result;
+                                    that.notify({ object: that, eventName: observable.knownEvents.propertyChange, propertyName: "pictureImageSource", value: that._pictureImageSource });
+                                }
+                            }
+                        });
+                    }
+                }
             }
             return this._pictureImageSource;
         }
@@ -67,7 +84,7 @@ var ActivityItemViewModel = (function (_super){
                 this._avatarImageSource = null;
             }
             else if (this._source && !this._avatarImageSource) {
-                var responsiveImagesUrl = url;//getResponsiveImageUrl(url, 5)
+                var responsiveImagesUrl = getResponsiveUrl(url, 0.2);
                
                 if (cache) {
                     var cachedImg = cache.get(responsiveImagesUrl);
@@ -92,8 +109,20 @@ var ActivityItemViewModel = (function (_super){
             return this._avatarImageSource;
         }
     });
-    
+   
     return ActivityItemViewModel;
 })(observable.Observable);
+
+//ScaleFactor define how many times the width of the image to be smaller than the screen width. Height is automatically adjusted. 
+function getResponsiveUrl(url, scaleFactor){
+    if(typeof(url) == 'undefined' && typeof(scaleFactor) == 'undefined'){
+        return '';
+    }
+    
+    var screenWidth = platformModule.screen.mainScreen.widthPixels;
+    var scaledWidth = screenWidth*scaleFactor;
+    
+    return "https://bs1.cdn.telerik.com/image/v1/" + BS_API_KEY + "/resize=w:" + scaledWidth + "/" + url;
+}
 
 exports.ActivityItemViewModel = ActivityItemViewModel;
