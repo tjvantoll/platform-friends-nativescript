@@ -38,7 +38,7 @@ var ActivityItemViewModel = (function (_super){
     Object.defineProperty(ActivityItemViewModel.prototype, "pictureImageWidth", {
         get: function () {
            var screenWidth = platformModule.screen.mainScreen.widthPixels;
-           return screenWidth*0.5;
+           return screenWidth * 0.5;
         }
     });
     
@@ -46,7 +46,7 @@ var ActivityItemViewModel = (function (_super){
         get: function () {
             var that = this;
             if (this._source && !this._pictureImageSource) {
-                if(cache && that._source.Picture){
+                if (cache && that._source.Picture) {
                     var url = that._source.Picture;
                     var responsiveImagesUrl = getResponsiveUrl(url, 0.5);
                     var cachedImg = cache.get(responsiveImagesUrl);
@@ -92,7 +92,7 @@ var ActivityItemViewModel = (function (_super){
             }
             else if (this._source && !this._avatarImageSource) {
                 var responsiveImagesUrl = getResponsiveUrl(url, 0.2);
-               
+                
                 if (cache) {
                     var cachedImg = cache.get(responsiveImagesUrl);
                     if (cachedImg) {
@@ -116,6 +116,15 @@ var ActivityItemViewModel = (function (_super){
             return this._avatarImageSource;
         }
     });
+    
+    Object.defineProperty(ActivityItemViewModel.prototype, "defaultAvatarImageSource", {
+        get: function () {
+            var avatarImage = imageSource.fromFile("~/app/res/avatar.png");
+            return avatarImage;
+        },
+        enumerable: true,
+        configurable: true
+    });
    
     return ActivityItemViewModel;
 })(observable.Observable);
@@ -127,7 +136,7 @@ function getResponsiveUrl(url, scaleFactor){
     }
     
     var screenWidth = platformModule.screen.mainScreen.widthPixels;
-    var scaledWidth = screenWidth*scaleFactor;
+    var scaledWidth = screenWidth * scaleFactor;
     
     return "https://bs1.cdn.telerik.com/image/v1/" + BS_API_KEY + "/resize=w:" + scaledWidth + "/" + url;
 }
