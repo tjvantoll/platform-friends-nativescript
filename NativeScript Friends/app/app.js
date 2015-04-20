@@ -20,24 +20,28 @@ application.onLaunch = function (context) {
         console.log("Launched iOS application.");
     }
 };
+
 application.onSuspend = function () {
     console.log("Application suspended.");
 };
+
 application.onResume = function () {
     console.log("Application resumed.");
 };
+
 application.onExit = function () {
     console.log("Application will exit.");
     if(MONITOR !== null){
         MONITOR.stop();
     }
 };
+
 application.onLowMemory = function () {
     console.log("Memory is low.");
 };
+
 application.onUncaughtError = function (error) {
     console.log("Application error: " + error.name + "; " + error.message + "; " + error.nativeError);
 };
-
 
 application.start();
