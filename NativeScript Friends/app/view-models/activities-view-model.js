@@ -13,6 +13,28 @@ var imageSource = require("image-source");
 var view = require("ui/core/view");
 var platformModule = require("platform");
 
+var dateConverter = {
+    toView: function (value, format) {
+        var result = format;
+        var day = value.getDate();
+        result = result.replace("DD", month < 10 ? "0" + day : day);
+        var month = value.getMonth() + 1;
+        result = result.replace("MM", month < 10 ? "0" + month : month);
+        result = result.replace("YYYY", value.getFullYear());
+        return result;
+    },
+    toModel: function (value, format) {
+        var ddIndex = format.indexOf("DD");
+        var day = parseInt(value.substr(ddIndex, 2));
+        var mmIndex = format.indexOf("MM");
+        var month = parseInt(value.substr(mmIndex, 2));
+        var yyyyIndex = format.indexOf("YYYY");
+        var year = parseInt(value.substr(yyyyIndex, 4));
+        var result = new Date(year, month - 1, day);
+        return result;
+    }
+}
+
 var ActivitiesViewModel = (function (_super){
     
     __extends(ActivitiesViewModel, _super);
@@ -85,30 +107,8 @@ var ActivitiesViewModel = (function (_super){
     return ActivitiesViewModel;
 })(observable.Observable);
 
-exports.ActivitiesViewModel = ActivitiesViewModel;
-
 function isValidImageUrl(url) {
     return url && (url.indexOf(".png") !== -1 || url.indexOf(".jpg") !== -1);
 }
 
-var dateConverter = {
-    toView: function (value, format) {
-        var result = format;
-        var day = value.getDate();
-        result = result.replace("DD", month < 10 ? "0" + day : day);
-        var month = value.getMonth() + 1;
-        result = result.replace("MM", month < 10 ? "0" + month : month);
-        result = result.replace("YYYY", value.getFullYear());
-        return result;
-    },
-    toModel: function (value, format) {
-        var ddIndex = format.indexOf("DD");
-        var day = parseInt(value.substr(ddIndex, 2));
-        var mmIndex = format.indexOf("MM");
-        var month = parseInt(value.substr(mmIndex, 2));
-        var yyyyIndex = format.indexOf("YYYY");
-        var year = parseInt(value.substr(yyyyIndex, 4));
-        var result = new Date(year, month - 1, day);
-        return result;
-    }
-}
+exports.ActivitiesViewModel = ActivitiesViewModel;

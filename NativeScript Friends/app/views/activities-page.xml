@@ -12,7 +12,7 @@
             <ListView.itemTemplate>
                 <GridLayout columns="auto, *" >
                     <StackLayout>
-                        <Image src="{{ avatarImageSource  || '~/app/res/avatar.png' }}" stretch="fill" cssClass="activity-avatar"/>
+                        <Image imageSource="{{ avatarImageSource || defaultAvatarImageSource }}" stretch="fill" cssClass="activity-avatar"/>
                     </StackLayout>
                     <StackLayout cssClass="activity-container" col="1">
                         <Label cssClass="activity-name">
