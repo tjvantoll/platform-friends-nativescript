@@ -19,7 +19,7 @@ var AddActivityViewModel = (function (_super) {
         this._activity = "";
     }
 
-    AddActivityViewModel.prototype.addActivity = function(doneCallback, errorCallback){
+    AddActivityViewModel.prototype.addActivity = function () {
         var userId = LocalSettings.getString(USER_ID);
         var data = EVERLIVE.data('Activities');
 
