@@ -48,8 +48,10 @@ var ActivityItemViewModel = (function (_super){
             if (this._source && !this._pictureImageSource) {
                 if (cache && that._source.Picture) {
                     var url = that._source.Picture;
-                    var responsiveImagesUrl = getResponsiveUrl(url, 0.5);
+                    var screenWidth = platformModule.screen.mainScreen.widthPixels;
+                    var responsiveImagesUrl = getResponsiveUrl(url, screenWidth);
                     var cachedImg = cache.get(responsiveImagesUrl);
+                    
                     if (cachedImg) {
                         that._pictureImageSource = cachedImg;
                     } else {
@@ -90,7 +92,7 @@ var ActivityItemViewModel = (function (_super){
                 this._avatarImageSource = null;
             }
             else if (this._source && !this._avatarImageSource) {
-                var responsiveImagesUrl = getResponsiveUrl(url, 0.2);
+                var responsiveImagesUrl = getResponsiveUrl(url, 100);
                 
                 if (cache) {
                     var cachedImg = cache.get(responsiveImagesUrl);
@@ -129,15 +131,12 @@ var ActivityItemViewModel = (function (_super){
 })(observable.Observable);
 
 //ScaleFactor define how many times the width of the image to be smaller than the screen width. Height is automatically adjusted. 
-function getResponsiveUrl(url, scaleFactor){
-    if(typeof(url) == 'undefined' && typeof(scaleFactor) == 'undefined'){
+function getResponsiveUrl (url, targetWidth) {
+    if(typeof(url) === 'undefined' && typeof(targetWidth) === 'undefined'){
         return '';
     }
-    
-    var screenWidth = platformModule.screen.mainScreen.widthPixels;
-    var scaledWidth = screenWidth * scaleFactor;
-    
-    return "https://bs1.cdn.telerik.com/image/v1/" + BS_API_KEY + "/resize=w:" + scaledWidth + "/" + url;
+        
+    return "https://bs1.cdn.telerik.com/image/v1/" + BS_API_KEY + "/resize=w:" + targetWidth + "/" + url;
 }
 
 exports.ActivityItemViewModel = ActivityItemViewModel;
