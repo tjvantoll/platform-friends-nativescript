@@ -1,4 +1,4 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="pageNavigatedTo" swipe="onSwipe">
+<Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="pageNavigatedTo">
     <ScrollView id="scrollView">
         <DockLayout>
             <GridLayout dock="top" cssClass="header-container" rows="auto, auto">

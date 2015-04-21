@@ -30,12 +30,6 @@ function backButtonClicked(args){
     goBack();
 }
 
-function onSwipe(args){
-    if (args.direction === gestures.SwipeDirection.Right) {
-        goBack();
-    }
-}
-
 function goBack(){
     if (frameModule.topmost().canGoBack) {
         frameModule.topmost().goBack();
@@ -71,4 +65,3 @@ exports.backButtonClicked = backButtonClicked;
 exports.commentButtonClicked = commentButtonClicked;
 exports.deleteButtonClicked = deleteButtonClicked;
 exports.pageNavigatedTo = pageNavigatedTo;
-exports.onSwipe = onSwipe;
