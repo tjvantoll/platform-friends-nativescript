@@ -9,7 +9,6 @@ var LocalSettings = require("local-settings");
 var observable = require("data/observable");
 var observableArray = require("data/observable-array");
 var Everlive = require("../lib/everlive.all.min");
-var imageSource = require("image-source");
 var activityItemViewModel = require("./activity-item-view-model");
 
 var ActivityViewModel = (function (_super) {

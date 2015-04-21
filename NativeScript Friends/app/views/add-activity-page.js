@@ -44,14 +44,13 @@ function backButtonClicked(args){
 }
 
 function addActivity() {
-    viewModel.addActivity(
-        function(){
-            frameModule.topmost().navigate("app/views/activities-page");
-        },
-        function(error){
-            alert(JSON.stringify(error));
-        }
-    );
+    viewModel.addActivity()
+    .then(function() { 
+        frameModule.topmost().navigate("app/views/activities-page"); 
+    },
+    function(error) { 
+        alert(JSON.stringify(error));
+    });
 }
 
 exports.backButtonClicked = backButtonClicked;

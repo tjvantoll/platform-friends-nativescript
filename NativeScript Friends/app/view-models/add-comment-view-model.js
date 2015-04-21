@@ -47,7 +47,7 @@ var addCommentViewModel = (function (_super) {
         }
     });
          
-    addCommentViewModel.prototype.addComment = function (doneCallback, errorCallback) {
+    addCommentViewModel.prototype.addComment = function () {
         var userId = LocalSettings.getString(USER_ID);
         var data = EVERLIVE.data('Comments');
 
@@ -76,7 +76,6 @@ var addCommentViewModel = (function (_super) {
 
                 //Clear text field
                 that.set("comment", "");
-                
             }
         });
     };

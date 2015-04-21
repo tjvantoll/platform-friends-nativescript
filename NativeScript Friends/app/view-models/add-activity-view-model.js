@@ -25,31 +25,29 @@ var AddActivityViewModel = (function (_super) {
 
         var that = this;
         
-        if(validationModule.validate(this._activity, [validationModule.minLengthConstraint],"Invalid activity")){
-            //Load busy indicator
-            this.set("isLoading", true);
-            
-            data.create({ 
-                'Text' : this.activity,
-                'UserId': userId
-            },
-            function(data){
-                that.set("isLoading",false);
-                MONITOR.trackFeature('Event.ActivityCreated');
-                if(typeof(doneCallback) === 'function'){
-                    doneCallback();
-                } 
-            },
-            function(error){
-                that.set("isLoading",false);
-                if(typeof(errorCallback) === 'function'){
-                    errorCallback(error);
-                } 
-            });
+        return new Promise(function (resolve, reject) {
+            if(validationModule.validate(that._activity, [validationModule.minLengthConstraint],"Invalid activity")){
+                //Load busy indicator
+                that.set("isLoading", true);
+                
+                data.create({ 
+                        'Text' : that.activity,
+                        'UserId': userId
+                    },
+                    function(data){
+                        that.set("isLoading",false);
+                        MONITOR.trackFeature('Event.ActivityCreated');
+                        resolve();
+                    },
+                    function(error){
+                        that.set("isLoading",false);
+                        reject(error);
+                    });
 
-            //Clear text field
-            this.set("activity", "");
-        }
+                //Clear text field
+                that.set("activity", "");
+            }
+        });
     };
 
     Object.defineProperty(AddActivityViewModel.prototype, "activity", {
