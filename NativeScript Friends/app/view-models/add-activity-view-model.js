@@ -6,7 +6,6 @@ var __extends = this.__extends || function (d, b) {
 };
 
 var observable = require("data/observable");
-var Everlive = require("../lib/everlive.all.min");
 var validationModule = require("../utils/validate");
 var LocalSettings = require("local-settings");
 

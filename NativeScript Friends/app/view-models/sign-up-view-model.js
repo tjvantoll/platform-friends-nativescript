@@ -6,12 +6,9 @@ var __extends = this.__extends || function (d, b) {
 };
 
 var observable = require("data/observable");
-var Everlive = require("../lib/everlive.all.min");
 var dialogs = require("ui/dialogs");
-var frameModule = require("ui/frame");
 var validationModule = require("../utils/validate");
 var LocalSettings = require("local-settings");
-
 
 var SignUpViewModel = (function (_super){
     
@@ -35,22 +32,23 @@ var SignUpViewModel = (function (_super){
     
    SignUpViewModel.prototype.signUp = function() {
         var that = this;
-
-        if(validationModule.validate(that._email, [validationModule.minLengthConstraint, validationModule.validEmailConstraint],"Invalid email") &&
-           validationModule.validate(that._password, [validationModule.minLengthConstraint],"Invalid password") &&
-           validationModule.validate(that._info.DisplayName, [validationModule.minLengthConstraint],"Invalid name")
-          ){
-            
-            this.set("isLoading", true);
-       
-            EVERLIVE.Users.register(
+        
+        return new Promise(function (resolve, reject) {
+        
+            if (validationModule.validate(that._email, [validationModule.minLengthConstraint, validationModule.validEmailConstraint],"Invalid email") &&
+               validationModule.validate(that._password, [validationModule.minLengthConstraint],"Invalid password") &&
+               validationModule.validate(that._info.DisplayName, [validationModule.minLengthConstraint],"Invalid name")) {
+                
+                that.set("isLoading", true);
+                
+                EVERLIVE.Users.register(
                 that._email,
                 that._password,
                 that._info,
                 function(data) {
 
                     EVERLIVE.Users.login(that._email, that._password, 
-                    function (data) {
+                        function (data) {
 
                             //Store in local storage
                             LocalSettings.setString(TOKEN_DATA_KEY, data.result.access_token);
@@ -58,24 +56,26 @@ var SignUpViewModel = (function (_super){
                             
                             that.set("isLoading", false);
 
-                            // //Clear all fields
+                            //Clear all fields
                             that.set("password", "");
                             that.set("name", "");
                             that.set("email", "");
                             that.set("gender", "");
                             that.set("about", "");
-                            frameModule.topmost().navigate("app/views/activities-page");
-
-                    },
-                    function(error){
-                        alert(error.message || "Can't log in! Please try again!");
-                    });
+                            resolve();
+                        },
+                        function(error) {
+                            reject(error.message || "Can't log in! Please try again!");
+                        });
                 },
                 function(error) {         
                     that.set("isLoading", false);
-                        alert(error.message || "Can't register");
+                    reject(error.message || "Can't register");
                 });
-        }
+            } else {
+                reject("Invalid input");
+            }
+        }); 
     };
     
     Object.defineProperty(SignUpViewModel.prototype, "isLoading", {

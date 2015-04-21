@@ -28,6 +28,15 @@ function goBack(args){
     }
 }
 
+function signUp(args){
+    viewModel.signUp().then(function(){
+        frameModule.topmost().navigate("app/views/activities-page");
+    },
+    function(error) {
+        alert(error);
+    });
+}
+
 function chooseGender(args) {
     var options = {
         title: "Choose your gender",
@@ -41,4 +50,5 @@ function chooseGender(args) {
 
 exports.pageLoaded = pageLoaded;
 exports.goBack = goBack;
+exports.signUp = signUp;
 exports.chooseGender = chooseGender;
