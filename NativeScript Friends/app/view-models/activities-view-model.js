@@ -35,7 +35,7 @@ var dateConverter = {
     }
 }
 
-var ActivitiesViewModel = (function (_super){
+var ActivitiesViewModel = (function (_super) {
     
     __extends(ActivitiesViewModel, _super);
     

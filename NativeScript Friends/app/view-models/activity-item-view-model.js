@@ -35,10 +35,10 @@ var ActivityItemViewModel = (function (_super){
         }
     });
     
-    Object.defineProperty(ActivityItemViewModel.prototype, "pictureImageWidth", {
+    Object.defineProperty(ActivityItemViewModel.prototype, "pictureImageHeight", {
         get: function () {
-           var screenWidth = platformModule.screen.mainScreen.widthPixels;
-           return screenWidth * 0.5;
+           var height = platformModule.screen.mainScreen.heightPixels;
+           return height * 0.15;
         }
     });
     
@@ -52,13 +52,12 @@ var ActivityItemViewModel = (function (_super){
                     var cachedImg = cache.get(responsiveImagesUrl);
                     if (cachedImg) {
                         that._pictureImageSource = cachedImg;
-                    }
-                    else {
+                    } else {
                         cache.push({
                             key: responsiveImagesUrl,
                             url: responsiveImagesUrl,
                             completed: function (result, key) {
-                                if (url === key) {                                    
+                                if (responsiveImagesUrl === key) {                                    
                                     that._pictureImageSource = result;
                                     that.notify({ object: that, eventName: observable.knownEvents.propertyChange, propertyName: "pictureImageSource", value: that._pictureImageSource });
                                 }
@@ -103,7 +102,7 @@ var ActivityItemViewModel = (function (_super){
                             key: responsiveImagesUrl,
                             url: responsiveImagesUrl,
                             completed: function (result, key) {
-                                if (url === key) {                                    
+                                if (responsiveImagesUrl === key) {                                    
                                     that._avatarImageSource = result;
                                     that.notify({ object: that, eventName: observable.knownEvents.propertyChange, propertyName: "avatarImageSource", value: that._avatarImageSource });
                                 }
