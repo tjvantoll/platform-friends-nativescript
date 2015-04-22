@@ -20,11 +20,19 @@ var MainViewModel = (function (_super){
         this._source = source;
         this._isLoading = false;
         
-        //User
-        this._email;
-        this._password;   
-        
-        EVERLIVE = new Everlive({ apiKey: BS_API_KEY, token: LocalSettings.getString(TOKEN_DATA_KEY) });
+        // Initialize Everlive SDK
+        var everliveOptions = {
+                                  apiKey: BS_API_KEY,
+                                  scheme: BS_SCHEME,
+                                  token: LocalSettings.getString(TOKEN_DATA_KEY)
+                              };
+
+        if(BS_URL){
+            everliveOptions.url = BS_URL;
+        }
+
+        // Initialize Everlive SDK
+        EVERLIVE = new Everlive(everliveOptions);
     }
     
    MainViewModel.prototype.logIn = function() {
