@@ -12,7 +12,7 @@
         <AbsoluteLayout cssClass="fabContainer android" rowSpan="4">
           <Image src="~/app/res/done.png" stretch="fill" id="test-element" tap="addComment" cssClass="fab" />
         </AbsoluteLayout>
-        <AbsoluteLayout cssClass="activity-indicator" style.visibility="true" rowSpan="4">
+        <AbsoluteLayout cssClass="activity-indicator" rowSpan="4">
           <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" />
         </AbsoluteLayout>
     </GridLayout>

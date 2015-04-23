@@ -18,7 +18,7 @@
                 <TextField id="about" cssClass="text-input" hint="about" text="{{ about }}" row="4" />
                 <Button text="Sign up" id="register" tap="signUp" cssClass="signup-button" row="5" verticalAlignment="bottom" />
         </GridLayout >
-        <AbsoluteLayout  cssClass="activity-indicator" style.visibility="true" row="3">
+        <AbsoluteLayout  cssClass="activity-indicator" row="3">
           <ActivityIndicator busy="{{ isLoading }}" cssClass="activity-indicator" />
         </AbsoluteLayout>
     </GridLayout>
