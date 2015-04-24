@@ -1,12 +1,12 @@
 var application = require("application");
-application.mainModule = "app/views/main-page";
+application.mainModule = "./views/main-page";
 
 /*
  * Define constants which we will use across the application
  */
-global.BS_API_KEY = "$EVERLIVE_API_KEY$";
-global.BS_SCHEME = "$EVERLIVE_API_URL_SCHEMA$";
-global.BS_URL = "$EVERLIVE_API_URL$";
+global.BS_API_KEY = "mmfUiB9IBDxb6mvR";
+global.BS_SCHEME = "http";
+global.BS_URL = "";
 global.TOKEN_DATA_KEY = "authenticationToken";
 global.USER_ID = "userId";
 global.EVERLIVE = null;

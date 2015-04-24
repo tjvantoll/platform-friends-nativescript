@@ -11,10 +11,6 @@ function pageNavigatedTo(args) {
     viewModel.activity = page.navigationContext;
     page.bindingContext = viewModel
     
-    if (platformModule.device.os === "iOS") {
-        frameModule.topmost().ios.controller.navigationBarHidden = true;
-    }
-    
     MONITOR.trackFeature('View.AddComment');
     
     setFocusToTextField();
@@ -36,7 +32,7 @@ function goBack(){
         frameModule.topmost().goBack();
     } else {
         frameModule.topmost().navigate({
-            moduleName: "app/views/activity-page",
+            moduleName: "views/activity-page",
             context: viewModel.activity
         });
     }

@@ -120,7 +120,7 @@ var ActivityItemViewModel = (function (_super){
     
     Object.defineProperty(ActivityItemViewModel.prototype, "defaultAvatarImageSource", {
         get: function () {
-            var avatarImage = imageSource.fromFile("~/app/res/avatar.png");
+            var avatarImage = imageSource.fromFile("~/res/avatar.png");
             return avatarImage;
         },
         enumerable: true,
