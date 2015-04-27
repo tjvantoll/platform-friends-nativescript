@@ -596,7 +596,6 @@
         var Clear = function () {
             exceptions = [];
             featureValues = [];
-            featureUsages = {};
         };
         var GetPayload = function () {
             var features = [];
@@ -608,6 +607,7 @@
                             name: item.featureName,
                             sessionHitCount: item.sessionHitCount
                         });
+                        item.sessionHitCount = 0;
                     }
                 }
             }
@@ -666,7 +666,7 @@
         var startTime = 0,
                     protocolVersion = 5,
         //the line below is modified by buildsever, do not change
-                    monitorversion = '0.0.0.0',
+                    monitorversion = '0.9.29',
 
                     productId = "",
                     isStarted = false,

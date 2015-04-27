@@ -2,7 +2,7 @@ var vmModule = require("../view-models/main-view-model");
 var frameModule = require("ui/frame");
 var platformModule = require("platform");
 var viewModule = require("ui/core/view");
-var NativeScriptMonitor = require('../lib/NativeScriptMonitor').Monitor;
+var NativeScriptMonitor = require('../NativeScriptMonitor').Monitor;
 var viewModel;
 
 // Event handler for Page "loaded" event attached in main-page.xml

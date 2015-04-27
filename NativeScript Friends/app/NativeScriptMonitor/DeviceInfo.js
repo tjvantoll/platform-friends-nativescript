@@ -1,5 +1,5 @@
 var platform = require('platform'),
-    platformExt = require('./tns_modules/platform-ext');
+    platformExt = require('platform-ext');
 
 'use strict'
 
