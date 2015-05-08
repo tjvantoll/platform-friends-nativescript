@@ -21,18 +21,18 @@ function pageLoaded(args) {
 
 function onActivityTap(args) {
     frameModule.topmost().navigate({
-        moduleName: "app/views/activity-page",
+        moduleName: "./views/activity-page",
         context: viewModel.activities.getItem(args.index)
     });   
 }
 
 function addActivity(){
-    frameModule.topmost().navigate("app/views/add-activity-page");
+    frameModule.topmost().navigate("./views/add-activity-page");
 }
 
 function logout(args){
        
-    frameModule.topmost().navigate("app/views/main-page");
+    frameModule.topmost().navigate("./views/main-page");
     
     LocalSettings.setString(TOKEN_DATA_KEY, "");
     LocalSettings.setString(USER_ID, "");

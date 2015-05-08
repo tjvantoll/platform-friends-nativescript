@@ -36,7 +36,7 @@ function goBack(){
         frameModule.topmost().goBack();
     } else {
         frameModule.topmost().navigate({
-            moduleName: "app/views/activity-page",
+            moduleName: "./views/activity-page",
             context: viewModel.activity
         });
     }

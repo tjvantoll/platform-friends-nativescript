@@ -1,5 +1,6 @@
 var application = require("application");
-application.mainModule = "app/views/main-page";
+application.mainModule = "./views/main-page";
+application.cssFile = "./app.css";
 
 /*
  * Define constants which we will use across the application

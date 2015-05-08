@@ -1,7 +1,7 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
     <GridLayout>
         <StackLayout>
-            <Image src="~/app/res/friends.png" cssClass="app-logo" />
+            <Image src="~/res/friends.png" cssClass="app-logo" />
             <TextField id="username" cssClass="text-input" hint="e-mail" keyboardType="email" text="{{ email }}"/>
             <TextField id="password" cssClass="text-input" hint="password" secure="true" text="{{ password }}"/>
             <Button text="Log in" id="login" cssClass="login-button" tap="logIn" />

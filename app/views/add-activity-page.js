@@ -31,7 +31,7 @@ function setFocusToTextField() {
 function verifyUserPermissions(){
     var userId = LocalSettings.getString(USER_ID);
     if(typeof(userId) === 'undefined' || userId === ""){
-        frameModule.topmost().navigate("app/views/main-page");
+        frameModule.topmost().navigate("./views/main-page");
     }
 }
 
@@ -39,14 +39,14 @@ function backButtonClicked(args){
     if (frameModule.topmost().canGoBack) {
         frameModule.topmost().goBack();
     } else {
-        frameModule.topmost().navigate("app/views/activities-page");
+        frameModule.topmost().navigate("./views/activities-page");
     }
 }
 
 function addActivity() {
     viewModel.addActivity()
     .then(function() { 
-        frameModule.topmost().navigate("app/views/activities-page"); 
+        frameModule.topmost().navigate("./views/activities-page"); 
     },
     function(error) { 
         alert(JSON.stringify(error));

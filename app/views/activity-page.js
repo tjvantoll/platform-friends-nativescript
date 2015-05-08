@@ -34,13 +34,13 @@ function goBack(){
     if (frameModule.topmost().canGoBack) {
         frameModule.topmost().goBack();
     } else {
-        frameModule.topmost().navigate("app/views/activities-page");
+        frameModule.topmost().navigate("./views/activities-page");
     }
 }
 
 function commentButtonClicked(args){
     frameModule.topmost().navigate({
-        moduleName: "app/views/add-comment-page",
+        moduleName: "./views/add-comment-page",
         context: viewModel.activity
     });
 }

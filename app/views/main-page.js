@@ -35,7 +35,7 @@ function pageLoaded(args) {
 }
 
 function navigateRegister(args){
-    frameModule.topmost().navigate("app/views/sign-up-page");
+    frameModule.topmost().navigate("./views/sign-up-page");
 }
 
 function clearEmailAndPassword(){
@@ -46,7 +46,7 @@ function clearEmailAndPassword(){
 function logIn(args){
     viewModel.logIn()
     .then(function() {
-        frameModule.topmost().navigate("app/views/activities-page");
+        frameModule.topmost().navigate("./views/activities-page");
     }, 
     function(error) {
         alert(error || "Can't log in! Please try again!");
